@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView20"
+            android:src="@drawable/exambackground"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView21"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView42"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView43"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@drawable/examrounded_corners"
+                android:id="@+id/linearLayout3"
+                android:layout_marginTop="20dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your Result For Exam"
+                    android:id="@+id/textView10"
+                    android:textColor="#2682cb"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:layout_marginTop="40dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="70dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/date">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/"
+                        android:src="@drawable/date_icon"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:02/06/2016"
+                        android:id="@+id/textView"
+                        android:textColor="#ffffff"
+                        android:longClickable="false"
+                        android:inputType="date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="70dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/time">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView48"
+                        android:src="@drawable/time_icon"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time: 9.25-9.48"
+                        android:id="@+id/textView2"
+                        android:inputType="time"
+                        android:textColor="#ffffff" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/examwhitedivider"
+                    android:showDividers="middle|beginning|end"
+                    android:layout_marginTop="50dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/correct_answer"
+                        android:src="@drawable/correct_answers_icon"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/wrong_answer"
+                        android:src="@drawable/wrong_answer_icon"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/time_taken"
+                        android:src="@drawable/time_taken_icon"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="50dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="You Scored "
+                        android:id="@+id/textView19"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:gravity="center" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:baselineAligned="false"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/review_rounded_corners"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/review_exam">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView22"
+                        android:src="@drawable/examicon"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Review Exam"
+                        android:id="@+id/textView20"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/review_rounded_corners"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/back_results">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView23"
+                        android:src="@drawable/backtoresulticon"
+                        android:adjustViewBounds="true"
+                        android:padding="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Back To Results"
+                        android:id="@+id/textView21"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

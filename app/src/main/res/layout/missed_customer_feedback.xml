@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="10dp"
+    android:background="#606166">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView13"
+            android:src="@drawable/missedcustomer_image"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center"
+            android:showDividers="middle"
+            android:divider="@drawable/whitedivider1"
+            android:id="@+id/editText">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView52"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView53"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:background="@drawable/missedrounded_corners"
+                android:id="@+id/linearLayout"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Missed Customer Feedback"
+                    android:id="@+id/textView5"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="100dp"
+                android:layout_marginLeft="100dp"
+                android:showDividers="middle"
+                android:divider="@drawable/whitedivider"
+                android:padding="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/customer_name"
+                    android:background="#d3d4d5"
+                    android:hint="Customer Name"
+                    android:autoText="false"
+                    android:padding="15dp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/contact_number"
+                    android:background="#d3d4d5"
+                    android:padding="15dp"
+                    android:hint="Contact Number"
+                    android:phoneNumber="false"
+                    android:inputType="phone" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/email_id"
+                    android:background="#d3d4d5"
+                    android:padding="15dp"
+                    android:hint="Email Id" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/customer_req"
+                    android:background="#d3d4d5"
+                    android:padding="15dp"
+                    android:hint="Customer Requirement" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile"
+                        android:id="@+id/mobile"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"></LinearLayout>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Accessories"
+                        android:id="@+id/accessories"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#d3d4d5">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/select_brand"
+                        android:padding="15dp"
+                        android:hint="Select Brand"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/arrow_icon"
+                        android:src="@drawable/arrow"
+                        android:adjustViewBounds="false" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#d3d4d5" >
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/select_model"
+                        android:padding="15dp"
+                        android:hint="Select Model"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/arrow_icon2"
+                        android:src="@drawable/arrow"
+                        android:adjustViewBounds="false" />
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reason"
+                    android:background="#d3d4d5"
+                    android:padding="15dp"
+                    android:hint="Reasons For Not Purchasing" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/suggestions"
+                    android:background="#d3d4d5"
+                    android:padding="15dp"
+                    android:hint="Suggestions" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit"
+                    android:layout_gravity="center"
+                    android:background="@drawable/submit_roundedcorners"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Submit"
+                        android:id="@+id/textView5"
+                        android:textColor="#ffffff"
+                        android:textSize="40sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

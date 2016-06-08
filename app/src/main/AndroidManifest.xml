@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.my.bigc" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Dashboard_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".BigC_Login_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".Examresult_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".FeedBack_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".Offer_Details_Activity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    <activity
+        android:name=".Missed_Customer_feedback_Activity"
+        android:label="@string/app_name" >
+
+    </activity>
+        <activity
+        android:name=".Offer_Screen_Activity"
+        android:label="@string/app_name" >
+
+    </activity>
+        <activity
+            android:name=".Review_Exam_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".Review_Result_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".CustomerFeedback_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".Employee_exam_Activity"
+            android:label="@string/app_name" >
+
+        </activity>
+    </application>
+
+</manifest>

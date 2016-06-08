@@ -1,0 +1,72 @@
+package app.my.bigc;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.Toast;
+
+/**
+ * Created by sriven on 6/7/2016.
+ */
+public class Missed_Customer_feedback_Activity extends Activity {
+    EditText customername,contactnumber,emailid,customerrequirement,selectbrand,selectmodel,reason,suggestions;
+    RadioButton mobile,accessories;
+    LinearLayout submit;
+    String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.missed_customer_feedback);
+        customername = (EditText)findViewById(R.id.customer_name);
+        contactnumber = (EditText)findViewById(R.id.contact_number);
+        emailid = (EditText)findViewById(R.id.email_id);
+        customerrequirement = (EditText)findViewById(R.id.customer_req);
+        selectbrand = (EditText)findViewById(R.id.select_brand);
+        selectmodel = (EditText)findViewById(R.id.select_model);
+        reason = (EditText)findViewById(R.id.reason);
+        suggestions = (EditText)findViewById(R.id.suggestions);
+        mobile = (RadioButton)findViewById(R.id.mobile);
+        accessories = (RadioButton)findViewById(R.id.accessories);
+        submit = (LinearLayout)findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customer_str = customername.getText().toString();
+                contact_str = contactnumber.getText().toString();
+                email_str = emailid.getText().toString();
+                requirement_str = customerrequirement.getText().toString();
+                brand_str = selectbrand.getText().toString();
+                model_str = selectmodel.getText().toString();
+                reason_str = reason.getText().toString();
+                suggestions_str = suggestions.getText().toString();
+                if(customer_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter username", Toast.LENGTH_SHORT).show();
+                }
+                if(contact_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
+                }
+                if(email_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
+                }
+                if(requirement_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
+                }
+                if(brand_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
+                }
+                if(model_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
+                }
+                if(reason_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the reason", Toast.LENGTH_SHORT).show();
+                }
+                if(suggestions_str.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}

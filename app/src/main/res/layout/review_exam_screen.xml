@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView24"
+            android:src="@drawable/reviewexam_background"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView25"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView60"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView61"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Exam 22 Review"
+                    android:id="@+id/textView23"
+                    android:textColor="#187ac8"
+                    android:textSize="30sp"
+                    android:background="#ffffff"
+                    android:padding="20dp"
+                    android:layout_marginTop="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginRight="75dp"
+                android:divider="@drawable/whitedivider3"
+                android:showDividers="middle"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText15"
+                    android:textSize="30sp"
+                    android:background="#ffffff"
+                    android:padding="20dp"
+                    android:text="1. What is Latest Version of Android?"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="75dp"
+                    android:divider="@drawable/whitedivider3"
+                    android:showDividers="middle">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView25"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/examreviewrounded_corners"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:text="A" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText16"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:layout_marginLeft="40dp"
+                            android:text="Lollipop"
+                            android:background="#a53b39" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView24"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/examreviewrounded_corners"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:text="B" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView26"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:layout_marginLeft="40dp"
+                            android:text="Jellybeen"
+                            android:background="#d5e7f2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView27"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/examreviewrounded_corners"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:text="C" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView28"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:layout_marginLeft="40dp"
+                            android:text="Marshello"
+                            android:background="#52be25" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView39"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/examreviewrounded_corners"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:text="D" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView40"
+                            android:layout_gravity="center_horizontal"
+                            android:padding="15dp"
+                            android:textSize="30sp"
+                            android:layout_marginLeft="40dp"
+                            android:text="Icecream Sandwich"
+                            android:background="#d5e7f2" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="40dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/review_next"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/exam_roundedcorners1"
+                    android:layout_marginLeft="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Next"
+                        android:id="@+id/textView42"
+                        android:textColor="#ffffff"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"></LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@drawable/exam_rounded_corners"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/review_results">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageView35"
+                        android:src="@drawable/backtoresulticon"
+                        android:adjustViewBounds="true"
+                        android:padding="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Back To Results"
+                        android:id="@+id/textView43"
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:padding="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

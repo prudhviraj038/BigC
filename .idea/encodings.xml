@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/customerfeedback_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboard_whitedivider.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboardrounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboardrounded_corners1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/employee_roundedcorners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/exam_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/exam_roundedcorners1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/examresult1_rounded.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/examresult_rounded.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/examreviewrounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/examrounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/examwhitedivider.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/language_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/login_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/loginpage_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/loginwhitedivider.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/missedcustomer_rounded_corners1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/missedrounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/offers_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/review_rounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/signinrounded_corners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/submit_roundedcorners.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/submit_roundedcorners1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider1.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider2.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider3.xml" charset="UTF-8" />
+  </component>
+</project>

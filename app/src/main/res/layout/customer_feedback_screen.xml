@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView9"
+            android:src="@drawable/customer_background"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView10"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView49"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView50"
+                    android:src="@drawable/bigclogo"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Feedback"
+                    android:id="@+id/textView4"
+                    android:textColor="#187ac8"
+                    android:textSize="30sp"
+                    android:background="@drawable/customerfeedback_rounded_corners" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false"
+                android:layout_marginTop="20dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:showDividers="middle"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:divider="@drawable/whitedivider">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText4"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Customer Name"
+                        android:textSize="30sp"
+                        android:textColor="#000000"
+                        android:background="@drawable/customerfeedback_rounded_corners" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText5"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Contact Name"
+                        android:textSize="30sp"
+                        android:textColor="#000000"
+                        android:background="@drawable/customerfeedback_rounded_corners" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText6"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Email Id"
+                        android:textSize="30sp"
+                        android:textColor="#000000"
+                        android:background="@drawable/customerfeedback_rounded_corners" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customerfeedback_rounded_corners">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText7"
+                            android:hint="Which News Paper You Read Daily"
+                            android:layout_weight="1"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView11"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText8"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="30sp"
+                            android:textColor="#000000"
+                            android:background="@drawable/customerfeedback_rounded_corners"
+                            android:layout_weight="1"
+                            android:hint="Have You Ever Visited BigC Showroom Earlier?" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes"
+                                android:id="@+id/radioButton3"
+                                android:textColor="#ffffff" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:id="@+id/radioButton4"
+                                android:textColor="#ffffff" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText9"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="30sp"
+                            android:textColor="#000000"
+                            android:background="@drawable/customerfeedback_rounded_corners"
+                            android:layout_weight="1"
+                            android:hint="Did You Get Computirized Bill For The Purchase?" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" >
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yes"
+                                android:id="@+id/radioButton5"
+                                android:textColor="#ffffff" />
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="No"
+                                android:id="@+id/radioButton6"
+                                android:textColor="#ffffff" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customerfeedback_rounded_corners" >
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText10"
+                            android:hint="Store Ambiance"
+                            android:layout_weight="1"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView12"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="false" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customerfeedback_rounded_corners" >
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/editText13"
+                            android:hint="How Our Staff Responded?"
+                            android:layout_weight="1"
+                            android:textSize="30sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView51"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="false" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/editText17"
+                        android:layout_gravity="center_horizontal"
+                        android:hint="Suggestions"
+                        android:textSize="30sp"
+                        android:textColor="#000000"
+                        android:background="@drawable/customerfeedback_rounded_corners" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
