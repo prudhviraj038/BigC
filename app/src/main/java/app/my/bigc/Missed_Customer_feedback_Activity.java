@@ -45,25 +45,25 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 if(customer_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter username", Toast.LENGTH_SHORT).show();
                 }
-                if(contact_str.equals("")){
+                else if(contact_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
                 }
-                if(email_str.equals("")){
+                else if(email_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
-                if(requirement_str.equals("")){
+                else if(requirement_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
                 }
-                if(brand_str.equals("")){
+                else if(brand_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
                 }
-                if(model_str.equals("")){
+                else if(model_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
                 }
-                if(reason_str.equals("")){
+                else if(reason_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the reason", Toast.LENGTH_SHORT).show();
                 }
-                if(suggestions_str.equals("")){
+                else if(suggestions_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
                 }
             }
