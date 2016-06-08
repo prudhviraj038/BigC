@@ -1,6 +1,7 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,13 +22,18 @@ public class Dashboard_Activity extends Activity {
         employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
+                intent.putExtra("type","emp");
+                startActivity(intent);
 
             }
         });
         customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
+                intent.putExtra("type","cus");
+                startActivity(intent);
             }
         });
         }

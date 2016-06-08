@@ -125,7 +125,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/"
+                            android:id="@+id/ansa"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/examreviewrounded_corners"
                             android:padding="20dp"

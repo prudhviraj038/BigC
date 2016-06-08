@@ -93,7 +93,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/"
+                        android:id="@+id/jjjh"
                         android:src="@drawable/date_icon"
                         android:adjustViewBounds="true" />
 
