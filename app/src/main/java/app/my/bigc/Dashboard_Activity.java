@@ -16,7 +16,7 @@ public class Dashboard_Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dashboard_screen);
+        setContentView(R.layout.navigation_activity);
         employee = (ImageView)findViewById(R.id.employee);
         customer = (ImageView)findViewById(R.id.customer);
         employee.setOnClickListener(new View.OnClickListener() {

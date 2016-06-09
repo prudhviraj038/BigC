@@ -78,7 +78,7 @@ public class BigC_Login_Activity extends Activity {
                         if (temp.equals("Success"))
                             Toast.makeText(BigC_Login_Activity.this, "welcome user", Toast.LENGTH_SHORT).show();
                         else
-                            Toast.makeText(BigC_Login_Activity.this, "enter a valid usernamed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BigC_Login_Activity.this, "enter a valid username", Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
