@@ -9,6 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,14 +40,17 @@ public class BigC_Login_Activity extends Activity {
             public void onClick(View view) {
                 username_str = username.getText().toString();
                 password_str = password.getText().toString();
-                if(username_str.equals("")){
-                    Toast.makeText(BigC_Login_Activity.this, "please enter username", Toast.LENGTH_SHORT).show();
+                String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+                if(!username_str.matches(emailPattern)){
+                    Toast.makeText(BigC_Login_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(password_str.equals("")){
                     Toast.makeText(BigC_Login_Activity.this, "please enter password", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(BigC_Login_Activity.this, "values are correct", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(BigC_Login_Activity.this, "values are correct", Toast.LENGTH_SHORT).show();
+                    login();
                 }
             }
         });
@@ -48,19 +58,23 @@ public class BigC_Login_Activity extends Activity {
 
         private void login(){
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("loading data...");
+            progressDialog.setMessage("please wait...");
             progressDialog.show();
             progressDialog.setCancelable(false);
+            String url = "";
+            if(type.equals("emp"))
+               url = Settings.SERVER_URL+"store-login.php?email="+username_str+"&password="+password_str;
+            else
+                url = Settings.SERVER_URL+"store-login.php?email="+username_str+"&password="+password_str;
 
-            String url = "http://clients.yellowsoft.in/tourism/api/login.php?email="+username_str+"&password="+password_str;
             Log.e("url", url);
 
-            Response.Listener<JSONObject> listener = new Response.Listener<JSONObject>() {
+            Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {
                 @Override
-                public void onResponse(JSONObject jsonObject) {
+                public void onResponse(JSONArray jsonObject) {
                     Log.e("res", jsonObject.toString());
                     try {
-                        String temp = jsonObject.getString("status");
+                        String temp = jsonObject.getJSONObject(0).getString("status");
                         if (temp.equals("Success"))
                             Toast.makeText(BigC_Login_Activity.this, "welcome user", Toast.LENGTH_SHORT).show();
                         else
@@ -82,7 +96,7 @@ public class BigC_Login_Activity extends Activity {
                 }
             };
 
-            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,url,null,listener,errorListener);
+            JsonArrayRequest request = new JsonArrayRequest(url,listener,errorListener);
 
             AppController.getInstance().addToRequestQueue(request);
 

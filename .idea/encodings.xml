@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/app/libs/volley.jar" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/app/my/bigc/AppController.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/app/my/bigc/LruBitmapCache.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/app/my/bigc/Settings.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/customerfeedback_rounded_corners.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboard_whitedivider.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/dashboardrounded_corners.xml" charset="UTF-8" />
@@ -30,5 +32,7 @@
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider1.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider2.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/whitedivider3.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/navigation_activity.xml" charset="windows-1252" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
