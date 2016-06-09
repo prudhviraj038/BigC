@@ -39,6 +39,9 @@ public class CustomerFeedback_Activity extends Activity {
                 else if(email_str.equals("")){
                     Toast.makeText(CustomerFeedback_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    Toast.makeText(CustomerFeedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
