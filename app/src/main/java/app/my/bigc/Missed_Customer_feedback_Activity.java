@@ -66,6 +66,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 else if(suggestions_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
