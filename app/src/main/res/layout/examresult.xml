@@ -188,7 +188,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="You Scored "
+                        android:text="You Scored 21/25"
                         android:id="@+id/textView19"
                         android:textColor="#ffffff"
                         android:textSize="20sp"
@@ -203,8 +203,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:baselineAligned="false"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp">
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
 
                 <LinearLayout
                     android:orientation="horizontal"
@@ -217,11 +217,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/imageView22"
                         android:src="@drawable/examicon"
-                        android:adjustViewBounds="true"
-                        android:padding="10dp" />
+                        android:adjustViewBounds="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -229,7 +228,8 @@
                         android:text="Review Exam"
                         android:id="@+id/textView20"
                         android:textColor="#ffffff"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:layout_marginLeft="10dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -249,11 +249,10 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:id="@+id/imageView23"
                         android:src="@drawable/backtoresulticon"
-                        android:adjustViewBounds="true"
-                        android:padding="10dp" />
+                        android:adjustViewBounds="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -261,7 +260,8 @@
                         android:text="Back To Results"
                         android:id="@+id/textView21"
                         android:textColor="#ffffff"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:layout_marginLeft="10dp" />
                 </LinearLayout>
             </LinearLayout>
 
