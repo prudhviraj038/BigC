@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Customer Feedback"
                 android:id="@+id/textView50"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -77,14 +77,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView37"
-                android:src="@drawable/home_icon"
+                android:src="@drawable/missedcustomer_icon"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="25dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Missed Customer Feedback"
                 android:id="@+id/textView51"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -102,14 +102,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView45"
-                android:src="@drawable/home_icon"
+                android:src="@drawable/employeexam_icon"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="25dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Employee Exam"
                 android:id="@+id/textView52"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -127,14 +127,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView46"
-                android:src="@drawable/home_icon"
+                android:src="@drawable/exam_icon"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="25dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Exam Results"
                 android:id="@+id/textView53"
                 android:textSize="40sp"
                 android:textStyle="bold"
@@ -152,14 +152,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView47"
-                android:src="@drawable/home_icon"
+                android:src="@drawable/notification_icon"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="25dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home"
+                android:text="Notifications/Offers"
                 android:id="@+id/textView54"
                 android:textSize="40sp"
                 android:textStyle="bold"
