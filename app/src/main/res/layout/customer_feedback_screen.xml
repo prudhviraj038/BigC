@@ -116,8 +116,7 @@
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:padding="15dp"
-                        android:inputType="number" />
+                        android:padding="15dp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -128,8 +127,7 @@
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:padding="15dp"
-                        android:inputType="textEmailAddress" />
+                        android:padding="15dp" />
 
                     <LinearLayout
                         android:orientation="horizontal"

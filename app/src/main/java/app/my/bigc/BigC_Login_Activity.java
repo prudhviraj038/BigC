@@ -101,9 +101,6 @@ public class BigC_Login_Activity extends Activity {
             AppController.getInstance().addToRequestQueue(request);
 
         }
-
-
-
     }
 
 

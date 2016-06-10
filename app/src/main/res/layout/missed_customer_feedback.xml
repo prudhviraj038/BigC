@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="10dp"
-    android:background="#606166">
+    android:background="#000000">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -174,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/arrow_icon"
                         android:src="@drawable/arrow"
-                        android:adjustViewBounds="false" />
+                        android:adjustViewBounds="true" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,7 +196,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/arrow_icon2"
                         android:src="@drawable/arrow"
-                        android:adjustViewBounds="false" />
+                        android:adjustViewBounds="true" />
                 </LinearLayout>
 
                 <EditText

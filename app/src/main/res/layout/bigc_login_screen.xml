@@ -98,7 +98,8 @@
                     android:background="@drawable/loginpage_rounded_corners"
                     android:textSize="20sp"
                     android:textColor="#000000"
-                    android:password="true" />
+                    android:password="true"
+                    android:inputType="textPassword" />
 
                 <LinearLayout
                     android:orientation="horizontal"
