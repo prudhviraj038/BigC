@@ -16,6 +16,29 @@
         android:showDividers="beginning|middle|end">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView56"
+                android:src="@drawable/nav_background"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KUKATPALLY"
+                android:id="@+id/textView55"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textSize="60sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -24,7 +47,7 @@
             android:padding="10dp">
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView7"
                 android:src="@drawable/home_icon"
@@ -36,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:text="Home"
                 android:id="@+id/textView11"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -49,7 +72,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView36"
                 android:src="@drawable/customerfeedback_icon"
@@ -61,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:text="Customer Feedback"
                 android:id="@+id/textView50"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -74,7 +97,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView37"
                 android:src="@drawable/missedcustomer_icon"
@@ -86,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:text="Missed Customer Feedback"
                 android:id="@+id/textView51"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -99,7 +122,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView45"
                 android:src="@drawable/employeexam_icon"
@@ -111,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="Employee Exam"
                 android:id="@+id/textView52"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -124,7 +147,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView46"
                 android:src="@drawable/exam_icon"
@@ -136,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:text="Exam Results"
                 android:id="@+id/textView53"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -149,7 +172,7 @@
             android:padding="10dp" >
 
             <ImageView
-                android:layout_width="60dp"
+                android:layout_width="40sp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView47"
                 android:src="@drawable/notification_icon"
@@ -161,7 +184,7 @@
                 android:layout_height="wrap_content"
                 android:text="Notifications/Offers"
                 android:id="@+id/textView54"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
