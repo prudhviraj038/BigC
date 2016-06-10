@@ -142,7 +142,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:id="@+id/home_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -167,7 +168,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/customer_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -192,7 +194,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/missedcustomer_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -217,7 +220,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/employeeexam_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -242,7 +246,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/result_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -267,7 +272,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/notification_layout">
 
             <ImageView
                 android:layout_width="40sp"

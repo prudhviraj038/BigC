@@ -31,7 +31,7 @@ public class CustomerFeedback_Activity extends Activity {
                 email_str = emailid.getText().toString();
                 customer_suggestions = customersuggestions.getText().toString();
                 if(customer_str.equals("")){
-                    Toast.makeText(CustomerFeedback_Activity.this, "please enter username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomerFeedback_Activity.this, "please enter customername", Toast.LENGTH_SHORT).show();
                 }
                 else if(contact_str.equals("")){
                     Toast.makeText(CustomerFeedback_Activity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
