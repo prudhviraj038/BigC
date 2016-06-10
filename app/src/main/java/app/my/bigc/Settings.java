@@ -17,11 +17,11 @@ import java.util.Locale;
 public class Settings {
    public static final String SERVER_URL    = "http://clients.outlinedesigns.in/bigc/api/";
    static String STORE_ID="store_id";
-   static String EMP_ID="store_id";
+   static String EMP_ID="emp_id";
    static String TYPE="type";
    static String NAME="name";
-   static String S_TYPE="type";
-   static String S_NAME="name";
+   static String S_TYPE="s_type";
+   static String S_NAME="s_name";
    public static void set_store(Context context, String area_id,String type,String name) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -80,15 +80,17 @@ public class BigC_Login_Activity extends Activity {
                         if (temp.equals("Failure"))
                             Toast.makeText(BigC_Login_Activity.this, "enter a valid username", Toast.LENGTH_SHORT).show();
                         else {
-                            String login_type= jsonObject.getJSONObject(0).getString("type");
-                            String name= jsonObject.getJSONObject(0).getString("name");
                             if(type.equals("0")) {
+                                String login_type= jsonObject.getJSONObject(0).getString("type");
+                                String name= jsonObject.getJSONObject(0).getString("name");
                                 String store_id= jsonObject.getJSONObject(0).getString("store_id");
                                 Toast.makeText(BigC_Login_Activity.this, "welcome to "+name+" store", Toast.LENGTH_SHORT).show();
                                 Settings.set_store(getApplicationContext(),store_id,login_type,name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Dashboard_Activity.class);
                                 startActivity(intent);
                             }else {
+                                String login_type= jsonObject.getJSONObject(0).getString("type");
+                                String name= jsonObject.getJSONObject(0).getString("name");
                                 String mem_id= jsonObject.getJSONObject(0).getString("member_id");
                                 Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
                                 Settings.set_emp_id(getApplicationContext(),mem_id,login_type,name);

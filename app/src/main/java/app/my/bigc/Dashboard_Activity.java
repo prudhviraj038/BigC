@@ -52,7 +52,7 @@ public class Dashboard_Activity extends Activity {
         customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
+                Intent intent = new Intent(Dashboard_Activity.this,CustomerFeedback_Activity.class);
                 intent.putExtra("type","cus");
                 startActivity(intent);
             }
@@ -60,22 +60,20 @@ public class Dashboard_Activity extends Activity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
+
             }
         });
         store_name.setText(Settings.get_store_name(getApplicationContext()));
         customerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
-                Intent intent = new Intent(Dashboard_Activity.this,CustomerFeedback_Activity.class);
+                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback_Activity.class);
                 startActivity(intent);
             }
         });
         missedcustomerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_feedback_Activity.class);
                 startActivity(intent);
 
@@ -84,9 +82,9 @@ public class Dashboard_Activity extends Activity {
         employeexam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
                 if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
                     Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
+                    intent.putExtra("type","emp");
                     startActivity(intent);
                 }else {
                     Intent intent = new Intent(Dashboard_Activity.this, Employee_exam_Activity.class);
@@ -97,19 +95,28 @@ public class Dashboard_Activity extends Activity {
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
+                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
+                    Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
+                    intent.putExtra("type","emp");
+                    startActivity(intent);
+                }else {
                 Intent intent = new Intent(Dashboard_Activity.this,Examresult_Activity.class);
                 startActivity(intent);
-            }
+            }}
         });
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDrawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(Dashboard_Activity.this,Offer_Screen_Activity.class);
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(mDrawerLayout!=null)
+            mDrawerLayout.closeDrawer(GravityCompat.START);
     }
 
 }
