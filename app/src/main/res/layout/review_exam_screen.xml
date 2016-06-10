@@ -83,13 +83,13 @@
                 android:layout_marginRight="75dp"
                 android:divider="@drawable/whitedivider3"
                 android:showDividers="middle"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/editText15"
-                    android:textSize="30sp"
+                    android:textSize="20sp"
                     android:background="#ffffff"
                     android:padding="20dp"
                     android:text="1. What is Latest Version of Android?"
@@ -115,7 +115,7 @@
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/examreviewrounded_corners"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:text="A" />
 
                         <TextView
@@ -123,11 +123,11 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/editText16"
                             android:layout_gravity="center_horizontal"
-                            android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:layout_marginLeft="40dp"
                             android:text="Lollipop"
-                            android:background="#a53b39" />
+                            android:background="#a53b39"
+                            android:padding="15dp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -142,7 +142,7 @@
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/examreviewrounded_corners"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:text="B" />
 
                         <TextView
@@ -151,7 +151,7 @@
                             android:id="@+id/textView26"
                             android:layout_gravity="center_horizontal"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:layout_marginLeft="40dp"
                             android:text="Jellybeen"
                             android:background="#d5e7f2" />
@@ -169,7 +169,7 @@
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/examreviewrounded_corners"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:text="C" />
 
                         <TextView
@@ -178,7 +178,7 @@
                             android:id="@+id/textView28"
                             android:layout_gravity="center_horizontal"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:layout_marginLeft="40dp"
                             android:text="Marshello"
                             android:background="#52be25" />
@@ -196,7 +196,7 @@
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/examreviewrounded_corners"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:text="D" />
 
                         <TextView
@@ -205,7 +205,7 @@
                             android:id="@+id/textView40"
                             android:layout_gravity="center_horizontal"
                             android:padding="15dp"
-                            android:textSize="30sp"
+                            android:textSize="20sp"
                             android:layout_marginLeft="40dp"
                             android:text="Icecream Sandwich"
                             android:background="#d5e7f2" />
@@ -259,8 +259,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/imageView35"
                         android:src="@drawable/backtoresulticon"
-                        android:adjustViewBounds="true"
-                        android:padding="15dp" />
+                        android:adjustViewBounds="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -268,8 +267,7 @@
                         android:text="Back To Results"
                         android:id="@+id/textView43"
                         android:textColor="#ffffff"
-                        android:textSize="20sp"
-                        android:padding="10dp" />
+                        android:textSize="20sp" />
                 </LinearLayout>
             </LinearLayout>
 
