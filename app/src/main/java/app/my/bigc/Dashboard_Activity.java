@@ -13,7 +13,7 @@ import android.widget.TextView;
  */
 public class Dashboard_Activity extends Activity {
     ImageView employee,customer;
-    LinearLayout home,customerfeedback,missedcustomerfeedback,employeexam,result,notification;;
+    LinearLayout home,customerfeedback,missedcustomerfeedback,employeexam,result,notifications;;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,7 @@ public class Dashboard_Activity extends Activity {
         missedcustomerfeedback = (LinearLayout)findViewById(R.id.missedcustomer_layout);
         employeexam = (LinearLayout)findViewById(R.id.employeeexam_layout);
         result = (LinearLayout)findViewById(R.id.result_layout);
-        notification = (LinearLayout)findViewById(R.id.notification_layout);
+        notifications = (LinearLayout)findViewById(R.id.notification_layout);
 
         employee.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,7 @@ public class Dashboard_Activity extends Activity {
                 startActivity(intent);
             }
         });
-        notification.setOnClickListener(new View.OnClickListener() {
+        notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard_Activity.this,Offer_Screen_Activity.class);

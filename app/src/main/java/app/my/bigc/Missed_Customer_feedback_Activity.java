@@ -42,13 +42,14 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 model_str = selectmodel.getText().toString();
                 reason_str = reason.getText().toString();
                 suggestions_str = suggestions.getText().toString();
+                String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
                 if(customer_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter username", Toast.LENGTH_SHORT).show();
                 }
                 else if(contact_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
                 }
-                else if(email_str.equals("")){
+                else if(!email_str.matches(emailPattern)){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(requirement_str.equals("")){
