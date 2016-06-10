@@ -2,6 +2,7 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,29 +10,33 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * Created by sriven on 5/31/2016.
  */
 public class BigC_Login_Activity extends Activity {
-    TextView username,password;
+    TextView username,password,login_name;
     LinearLayout signin;
     String username_str,password_str;
-    String type = "";
+    String type = "0";
+    String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bigc_login_screen);
         type = getIntent().getStringExtra("type");
+        login_name = (TextView)findViewById(R.id.sta_login_name);
+        if(type.equals("0"))
+            login_name.setText("Store Login");
+        else
+            login_name.setText("Employee Login");
+
         username = (TextView)findViewById(R.id.uname);
         password = (TextView)findViewById(R.id.pwd);
         signin = (LinearLayout)findViewById(R.id.signin);
@@ -40,9 +45,7 @@ public class BigC_Login_Activity extends Activity {
             public void onClick(View view) {
                 username_str = username.getText().toString();
                 password_str = password.getText().toString();
-                String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-                if(!username_str.matches(emailPattern)){
+                if(username_str.equals("")){
                     Toast.makeText(BigC_Login_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(password_str.equals("")){
@@ -62,11 +65,10 @@ public class BigC_Login_Activity extends Activity {
             progressDialog.show();
             progressDialog.setCancelable(false);
             String url = "";
-            if(type.equals("emp"))
-               url = Settings.SERVER_URL+"store-login.php?email="+username_str+"&password="+password_str;
-            else
+            if(type.equals("0"))
                 url = Settings.SERVER_URL+"store-login.php?email="+username_str+"&password="+password_str;
-
+            else
+            url = Settings.SERVER_URL+"member-login.php?code="+username_str+"&password="+password_str;
             Log.e("url", url);
 
             Response.Listener<JSONArray> listener = new Response.Listener<JSONArray>() {
@@ -75,11 +77,25 @@ public class BigC_Login_Activity extends Activity {
                     Log.e("res", jsonObject.toString());
                     try {
                         String temp = jsonObject.getJSONObject(0).getString("status");
-                        if (temp.equals("Success"))
-                            Toast.makeText(BigC_Login_Activity.this, "welcome user", Toast.LENGTH_SHORT).show();
-                        else
+                        if (temp.equals("Failure"))
                             Toast.makeText(BigC_Login_Activity.this, "enter a valid username", Toast.LENGTH_SHORT).show();
-
+                        else {
+                            String login_type= jsonObject.getJSONObject(0).getString("type");
+                            String name= jsonObject.getJSONObject(0).getString("name");
+                            if(type.equals("0")) {
+                                String store_id= jsonObject.getJSONObject(0).getString("store_id");
+                                Toast.makeText(BigC_Login_Activity.this, "welcome to "+name+" store", Toast.LENGTH_SHORT).show();
+                                Settings.set_store(getApplicationContext(),store_id,login_type,name);
+                                Intent intent = new Intent(BigC_Login_Activity.this, Dashboard_Activity.class);
+                                startActivity(intent);
+                            }else {
+                                String mem_id= jsonObject.getJSONObject(0).getString("member_id");
+                                Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
+                                Settings.set_emp_id(getApplicationContext(),mem_id,login_type,name);
+                                Intent intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
+                                startActivity(intent);
+                            }
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

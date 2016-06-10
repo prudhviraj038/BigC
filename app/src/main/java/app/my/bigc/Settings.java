@@ -1,6 +1,7 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Build;
@@ -15,7 +16,34 @@ import java.util.Locale;
  */
 public class Settings {
    public static final String SERVER_URL    = "http://clients.outlinedesigns.in/bigc/api/";
-
+   static String STORE_ID="store_id";
+   static String EMP_ID="store_id";
+   static String TYPE="type";
+   static String NAME="name";
+   public static void set_store(Context context, String area_id,String type,String name) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(STORE_ID, area_id);
+      editor.putString(TYPE, type);
+      editor.putString(NAME, name);
+      editor.commit();
+   }
+   public static String get_store(Context context) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      return sharedPreferences.getString(STORE_ID, "-1");
+   }
+   public static void set_emp_id(Context context, String area_id,String type,String name) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(EMP_ID, area_id);
+      editor.putString(TYPE, type);
+      editor.putString(NAME, name);
+      editor.commit();
+   }
+   public static String get_emp_id(Context context) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      return sharedPreferences.getString(EMP_ID, "-1");
+   }
    public static   void forceRTLIfSupported(Activity activity)
    {
       SharedPreferences sharedPref;
