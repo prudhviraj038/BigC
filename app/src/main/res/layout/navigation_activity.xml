@@ -119,7 +119,7 @@
         android:id="@+id/linearLayout2"
         android:layout_marginRight="100dp"
         android:gravity="start"
-        android:background="#ff82ff7a">
+        android:background="#ffffff">
 
 
     </LinearLayout>
