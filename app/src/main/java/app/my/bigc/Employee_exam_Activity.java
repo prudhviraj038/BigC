@@ -65,7 +65,7 @@ public class Employee_exam_Activity extends Activity {
     private void getQuestions(){
         String url;
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("please wait.. we are processing your order");
+        progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
         url = Settings.SERVER_URL+"questions.php?member="+Settings.get_emp_id(getApplicationContext());
