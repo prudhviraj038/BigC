@@ -3,9 +3,6 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
@@ -104,13 +101,6 @@
                 android:adjustViewBounds="false" />
         </RelativeLayout>
     </FrameLayout>
-
-    <!-- android:layout_gravity="start" tells DrawerLayout to treat
-         this as a sliding drawer on the left side for left-to-right
-         languages and on the right side for right-to-left languages.
-         The drawer is given a fixed width in dp and extends the full height of
-         the container. A solid background is used for contrast
-         with the content view. -->
     <LinearLayout
         android:layout_gravity="start"
         android:orientation="vertical"
@@ -119,10 +109,59 @@
         android:id="@+id/linearLayout2"
         android:layout_marginRight="100dp"
         android:gravity="start"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        android:divider="@drawable/nav_divider"
+        android:showDividers="beginning|middle|end">
 
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/imageView7"
+                android:src="@drawable/home_icon"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:id="@+id/textView11"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:id="@+id/imageView28" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:id="@+id/textView36"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#2f92df" />
+        </LinearLayout>
 
     </LinearLayout>
+
 
 
 </android.support.v4.widget.DrawerLayout>
