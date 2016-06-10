@@ -94,7 +94,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="60dp"
-                android:id="@+id/imageView44"
+                android:id="@+id/nav_menu_img"
                 android:src="@drawable/headericon"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="KUKATPALLY"
-                android:id="@+id/textView55"
+                android:id="@+id/store_name_navigation"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 android:textSize="60sp"

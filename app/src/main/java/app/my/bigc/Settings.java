@@ -20,17 +20,23 @@ public class Settings {
    static String EMP_ID="store_id";
    static String TYPE="type";
    static String NAME="name";
+   static String S_TYPE="type";
+   static String S_NAME="name";
    public static void set_store(Context context, String area_id,String type,String name) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       SharedPreferences.Editor editor = sharedPreferences.edit();
       editor.putString(STORE_ID, area_id);
-      editor.putString(TYPE, type);
-      editor.putString(NAME, name);
+      editor.putString(S_TYPE, type);
+      editor.putString(S_NAME, name);
       editor.commit();
    }
    public static String get_store(Context context) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       return sharedPreferences.getString(STORE_ID, "-1");
+   }
+   public static String get_store_name(Context context) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      return sharedPreferences.getString(S_NAME, "-1");
    }
    public static void set_emp_id(Context context, String area_id,String type,String name) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
