@@ -6,15 +6,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
  * Created by sriven on 6/7/2016.
  */
 public class Missed_Customer_feedback_Activity extends Activity {
-    EditText customername,contactnumber,emailid,customerrequirement,selectbrand,selectmodel,reason,suggestions;
+    TextView selectbrand;
+    EditText customername,contactnumber,emailid,customerrequirement,selectmodel,reason,suggestions;
     RadioButton mobile,accessories;
-    LinearLayout submit;
+    LinearLayout submit,select_brand_ll;
     String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,19 @@ public class Missed_Customer_feedback_Activity extends Activity {
         contactnumber = (EditText)findViewById(R.id.contact_number);
         emailid = (EditText)findViewById(R.id.email_id);
         customerrequirement = (EditText)findViewById(R.id.customer_req);
-        selectbrand = (EditText)findViewById(R.id.select_brand);
+        selectbrand = (TextView)findViewById(R.id.select_brand);
         selectmodel = (EditText)findViewById(R.id.select_model);
         reason = (EditText)findViewById(R.id.reason);
         suggestions = (EditText)findViewById(R.id.suggestions);
         mobile = (RadioButton)findViewById(R.id.mobile);
         accessories = (RadioButton)findViewById(R.id.accessories);
+        select_brand_ll = (LinearLayout)findViewById(R.id.select_brand_ll);
+        select_brand_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         submit = (LinearLayout)findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -27,7 +28,8 @@ public class Employee_exam_Activity extends Activity {
     ArrayList<Exam> exams;
     TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count;
     LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll;
-    int i=0;
+    int i=0,temp=0;
+    int corect_count=0,wrong_count=0;
     String correct="0";
     TextView mTextField;
     CountDownTimer countDownTimer;
@@ -70,6 +72,7 @@ public class Employee_exam_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 Set_option(1);
+                temp=1;
                 correct="a";
             }
         });
@@ -77,6 +80,7 @@ public class Employee_exam_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 Set_option(2);
+                temp=2;
                 correct="b";
             }
         });
@@ -84,6 +88,7 @@ public class Employee_exam_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 Set_option(3);
+                temp=3;
                 correct="c";
             }
         });
@@ -91,6 +96,7 @@ public class Employee_exam_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 Set_option(4);
+                temp=4;
                 correct="d";
             }
         });
@@ -98,7 +104,15 @@ public class Employee_exam_Activity extends Activity {
         next_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Set_option(0);
+                if(temp==Integer.parseInt(exams.get(0).questions.get(i).correct))
+                    corect_count++;
+                else
+                    wrong_count++;
+                Log.e("cor",String.valueOf(corect_count));
+                Log.e("wor",String.valueOf(wrong_count));
                 i++;
+                temp=0;
                 if(i<exams.get(0).questions.size()){
                     question.setText(exams.get(0).questions.get(i).que);
                     ans1.setText(exams.get(0).questions.get(i).ans1);
@@ -108,6 +122,14 @@ public class Employee_exam_Activity extends Activity {
                     question_count.setText(String.valueOf(i+1)+"/"+String.valueOf(exams.get(0).questions.size()));
                     countDownTimer.cancel();
                     countDownTimer.start();
+
+                }else{
+                    Intent intent = new Intent(Employee_exam_Activity.this, Examresult_Activity.class);
+                    intent.putExtra("number",String.valueOf(exams.get(0).questions.size()));
+                    intent.putExtra("correct",String.valueOf(corect_count));
+                    intent.putExtra("wrong",String.valueOf(wrong_count));
+                    startActivity(intent);
+                    finish();
                 }
 
             }
@@ -165,14 +187,22 @@ public class Employee_exam_Activity extends Activity {
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
     public  void Set_option(int i){
-    a.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    b.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    c.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    d.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    ans1.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    ans2.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    ans3.setBackgroundResource(R.drawable.examreviewrounded_corners);
-    ans4.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        a.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        a.setTextColor(Color.parseColor("#000000"));
+        b.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        b.setTextColor(Color.parseColor("#000000"));
+        c.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        c.setTextColor(Color.parseColor("#000000"));
+        d.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        d.setTextColor(Color.parseColor("#000000"));
+        ans1.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        ans1.setTextColor(Color.parseColor("#000000"));
+        ans2.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        ans2.setTextColor(Color.parseColor("#000000"));
+        ans3.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        ans3.setTextColor(Color.parseColor("#000000"));
+        ans4.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        ans4.setTextColor(Color.parseColor("#000000"));
         switch (i){
             case 1:
                 a.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
