@@ -2,6 +2,7 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -175,19 +176,27 @@ public class Employee_exam_Activity extends Activity {
         switch (i){
             case 1:
                 a.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                a.setTextColor(Color.parseColor("#ffffff"));
                 ans1.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans1.setTextColor(Color.parseColor("#ffffff"));
                 break;
             case 2:
                 b.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                b.setTextColor(Color.parseColor("#ffffff"));
                 ans2.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans2.setTextColor(Color.parseColor("#ffffff"));
                 break;
             case 3:
                 c.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                c.setTextColor(Color.parseColor("#ffffff"));
                 ans3.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans3.setTextColor(Color.parseColor("#ffffff"));
                 break;
             case 4:
                 d.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                d.setTextColor(Color.parseColor("#ffffff"));
                 ans4.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans4.setTextColor(Color.parseColor("#ffffff"));
                 break;
         }
     }
