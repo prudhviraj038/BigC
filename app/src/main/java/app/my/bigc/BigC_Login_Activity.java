@@ -78,7 +78,7 @@ public class BigC_Login_Activity extends Activity {
                     try {
                         String temp = jsonObject.getJSONObject(0).getString("status");
                         if (temp.equals("Failure"))
-                            Toast.makeText(BigC_Login_Activity.this, "enter a valid username", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BigC_Login_Activity.this, jsonObject.getJSONObject(0).getString("message"), Toast.LENGTH_SHORT).show();
                         else {
                             if(type.equals("0")) {
                                 String login_type= jsonObject.getJSONObject(0).getString("type");
