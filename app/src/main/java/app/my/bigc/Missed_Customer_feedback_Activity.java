@@ -1,6 +1,7 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -70,6 +71,10 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 else {
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
                 }
+                Intent intent;
+                intent = new Intent(Missed_Customer_feedback_Activity.this,Offer_Screen_Activity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
