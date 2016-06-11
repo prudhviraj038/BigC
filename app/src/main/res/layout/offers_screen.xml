@@ -69,64 +69,90 @@
                 android:layout_marginTop="40dp"
                 android:padding="20dp" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@drawable/whitedivider2"
-                android:showDividers="middle"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="70dp"
-                android:layout_marginRight="70dp">
+            <ViewFlipper
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/viewFlipper" >
 
-                <LinearLayout
-                    android:orientation="horizontal"
+                <RelativeLayout
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#f3f1f1">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp" >
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="7dp"
+                        android:background="#f9f8f8" >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView66"
+                            android:adjustViewBounds="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:src="@drawable/offersimage"
+                            android:scaleType="fitXY" />
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:gravity="center" >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vel diam iaculis augue convallis commodo ut in massa. Pellentesque varius, nibh lacinia posuere fringilla, erat quam egestas est, sit amet elementum metus est id erat."
+                                android:id="@+id/textView38"
+                                android:layout_marginTop="10dp"
+                                android:textColor="#000000" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="02/06/2016"
+                                android:id="@+id/textView19"
+                                android:textColor="#000000"
+                                android:textStyle="bold"
+                                android:textSize="15dp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/offers_icon1"
-                        android:src="@drawable/offersicon1"
-                        android:adjustViewBounds="true"
-                        android:paddingLeft="10dp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#f3f1f1" >
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/offers_icon2"
-                        android:src="@drawable/offersicon2"
-                        android:adjustViewBounds="true"
-                        android:paddingLeft="10dp" />
-
-                </LinearLayout>
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/imageView67"
+                        android:layout_alignParentEnd="true"
+                        android:focusableInTouchMode="false"
+                        android:src="@drawable/active_img" />
+                </RelativeLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#f3f1f1">
+                    android:divider="@drawable/whitedivider2"
+                    android:showDividers="middle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginBottom="10dp">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/offers_icon3"
-                        android:src="@drawable/offersicon3"
-                        android:adjustViewBounds="true"
-                        android:paddingLeft="10dp" />
-
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/offer_list"
+                        android:divider="#00000000" />
                 </LinearLayout>
-            </LinearLayout>
+            </ViewFlipper>
 
         </LinearLayout>
 
