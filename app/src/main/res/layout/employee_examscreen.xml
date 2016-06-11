@@ -107,21 +107,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30"
-                    android:id="@+id/timer"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,7 +137,8 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end">
+                    android:gravity="end"
+                    android:id="@+id/">
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -169,7 +155,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="0:27"
-                            android:id="@+id/time_exam" />
+                            android:id="@+id/time_exam"
+                            android:textColor="#ffffff" />
                     </LinearLayout>
                 </LinearLayout>
 

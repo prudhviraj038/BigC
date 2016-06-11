@@ -2,6 +2,7 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class Employee_exam_Activity extends Activity {
     TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count;
     LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll;
     int i=0;
+    String correct="0";
     TextView mTextField;
     CountDownTimer countDownTimer;
     @Override
@@ -64,7 +66,34 @@ public class Employee_exam_Activity extends Activity {
             }
 
         };
-
+        ans1_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(1);
+                correct="a";
+            }
+        });
+        ans2_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(2);
+                correct="b";
+            }
+        });
+        ans3_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(3);
+                correct="c";
+            }
+        });
+        ans4_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(4);
+                correct="d";
+            }
+        });
 
         next_ll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +164,42 @@ public class Employee_exam_Activity extends Activity {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
-
-
+    public  void Set_option(int i){
+    a.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    b.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    c.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    d.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans1.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans2.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans3.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans4.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        switch (i){
+            case 1:
+                a.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                a.setTextColor(Color.parseColor("#ffffff"));
+                ans1.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans1.setTextColor(Color.parseColor("#ffffff"));
+                break;
+            case 2:
+                b.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                b.setTextColor(Color.parseColor("#ffffff"));
+                ans2.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans2.setTextColor(Color.parseColor("#ffffff"));
+                break;
+            case 3:
+                c.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                c.setTextColor(Color.parseColor("#ffffff"));
+                ans3.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans3.setTextColor(Color.parseColor("#ffffff"));
+                break;
+            case 4:
+                d.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                d.setTextColor(Color.parseColor("#ffffff"));
+                ans4.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans4.setTextColor(Color.parseColor("#ffffff"));
+                break;
+        }
     }
+}
 
 
