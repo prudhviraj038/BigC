@@ -176,15 +176,19 @@ public class Employee_exam_Activity extends Activity {
             case 1:
                 a.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
                 ans1.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                break;
             case 2:
                 b.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
                 ans2.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                break;
             case 3:
                 c.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
                 ans3.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                break;
             case 4:
                 d.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
                 ans4.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                break;
         }
     }
 }
