@@ -27,6 +27,7 @@ public class Employee_exam_Activity extends Activity {
     TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count;
     LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll;
     int i=0;
+    String correct="0";
     TextView mTextField;
     CountDownTimer countDownTimer;
     @Override
@@ -64,7 +65,34 @@ public class Employee_exam_Activity extends Activity {
             }
 
         };
-
+        ans1_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(1);
+                correct="a";
+            }
+        });
+        ans2_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(2);
+                correct="b";
+            }
+        });
+        ans3_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(3);
+                correct="c";
+            }
+        });
+        ans4_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Set_option(4);
+                correct="d";
+            }
+        });
 
         next_ll.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,8 +163,30 @@ public class Employee_exam_Activity extends Activity {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
-
-
+    public  void Set_option(int i){
+    a.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    b.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    c.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    d.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans1.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans2.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans3.setBackgroundResource(R.drawable.examreviewrounded_corners);
+    ans4.setBackgroundResource(R.drawable.examreviewrounded_corners);
+        switch (i){
+            case 1:
+                a.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans1.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+            case 2:
+                b.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans2.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+            case 3:
+                c.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans3.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+            case 4:
+                d.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+                ans4.setBackgroundResource(R.drawable.examreviewrounded_red_corners);
+        }
     }
+}
 
 
