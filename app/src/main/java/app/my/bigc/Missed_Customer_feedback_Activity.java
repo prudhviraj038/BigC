@@ -1,34 +1,59 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 /**
  * Created by sriven on 6/7/2016.
  */
 public class Missed_Customer_feedback_Activity extends Activity {
-    TextView selectbrand;
-    EditText customername,contactnumber,emailid,customerrequirement,selectmodel,reason,suggestions;
+    String brand_id="0";
+    String model_id="0";
+    TextView selectbrand,selectmodel;
+    ArrayList<String> brands_id;
+    ArrayList<String> brands_title;
+    ArrayList<String> models_id;
+    ArrayList<String> models_title;
+    EditText customername,contactnumber,emailid,customerrequirement,reason,suggestions;
     RadioButton mobile,accessories;
-    LinearLayout submit,select_brand_ll;
+    LinearLayout submit,select_brand_ll,select_model_ll;
     String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.missed_customer_feedback);
+        brands_id= new ArrayList<String>();
+        brands_title=new ArrayList<String>();
+        models_id= new ArrayList<String>();
+        models_title=new ArrayList<String>();
         customername = (EditText)findViewById(R.id.customer_name);
         contactnumber = (EditText)findViewById(R.id.contact_number);
         emailid = (EditText)findViewById(R.id.email_id);
         customerrequirement = (EditText)findViewById(R.id.customer_req);
         selectbrand = (TextView)findViewById(R.id.select_brand);
-        selectmodel = (EditText)findViewById(R.id.select_model);
+        selectmodel = (TextView)findViewById(R.id.select_model);
         reason = (EditText)findViewById(R.id.reason);
         suggestions = (EditText)findViewById(R.id.suggestions);
         mobile = (RadioButton)findViewById(R.id.mobile);
@@ -37,9 +62,49 @@ public class Missed_Customer_feedback_Activity extends Activity {
         select_brand_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
+                builder.setTitle("CHOOSE BRAND");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, brands_title);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        brand_id = brands_id.get(which);
+                        selectbrand.setText(brands_title.get(which));
+                        get_model();
+                    }
+                });
 
+                final AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
+        get_brand();
+        select_model_ll = (LinearLayout)findViewById(R.id.select_model_ll);
+        select_model_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (brand_id.equals(""))
+                    Toast.makeText(getApplicationContext(), "Please select Brand", Toast.LENGTH_SHORT).show();
+                else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
+                    builder.setTitle("CHOOSE MODEL");
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, models_title);
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                            model_id = models_id.get(which);
+                            selectmodel.setText(models_title.get(which));
+                        }
+                    });
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+
         submit = (LinearLayout)findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,5 +152,78 @@ public class Missed_Customer_feedback_Activity extends Activity {
             }
         });
     }
-
+    private void get_brand(){
+        String url=Settings.SERVER_URL+"brands.php";
+        Log.e("url--->", url);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setCancelable(false);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonArray.toString());
+                try {
+                    brands_title.clear();
+                    brands_id.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject sub = jsonArray.getJSONObject(i);
+                        String brand_name = sub.getString("title");
+                        String bran_id = sub.getString("id");
+                        brands_id.add(bran_id);
+                        brands_title.add(brand_name);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            // TODO Auto-generated method stub
+            Log.e("response is:", error.toString());
+                Toast.makeText(Missed_Customer_feedback_Activity.this,"Server not connected",Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+    private void get_model(){
+        String url=Settings.SERVER_URL+"models.php?brand="+brand_id;
+        Log.e("url--->", url);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setCancelable(false);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonArray.toString());
+                try {
+                    models_title.clear();
+                    models_id.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject sub = jsonArray.getJSONObject(i);
+                        String model_name = sub.getString("title");
+                        String mode_id = sub.getString("id");
+                        models_id.add(mode_id);
+                        models_title.add(model_name);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+                Toast.makeText(Missed_Customer_feedback_Activity.this,"Server not connected",Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
 }
