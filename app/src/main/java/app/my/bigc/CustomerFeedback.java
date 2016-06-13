@@ -1,0 +1,279 @@
+package app.my.bigc;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+/**
+ * Created by sriven on 6/13/2016.
+ */
+public class CustomerFeedback extends Activity {
+    String newspaper_id = "0";
+    String storeambiance_id = "0";
+    String staffresponce_id = "0";
+    EditText customername,contactnumber,emailid,suggestion;
+    ArrayList<String> newspapers_id;
+    ArrayList<String> newspapers_title;
+    ArrayList<String> staffresponces_id;
+    ArrayList<String> staffresponces_title;
+    ArrayList<String> storeambiances_id;
+    ArrayList<String> storeambiances_title;
+    TextView selectnewspaper,selectstaffresponce,selectstoreambiance;
+    LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll;
+    String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.customer_feedback_screen);
+        newspapers_id= new ArrayList<String>();
+        newspapers_title=new ArrayList<String>();
+        staffresponces_id= new ArrayList<String>();
+        staffresponces_title=new ArrayList<String>();
+        storeambiances_id= new ArrayList<String>();
+        storeambiances_title=new ArrayList<String>();
+        customername = (EditText)findViewById(R.id.cname);
+        contactnumber = (EditText)findViewById(R.id.cnumber);
+        emailid = (EditText)findViewById(R.id.emailId);
+        suggestion = (EditText)findViewById(R.id.customer_suggestions);
+        selectnewspaper = (TextView)findViewById(R.id.news_paper);
+        selectstaffresponce = (TextView)findViewById(R.id.staff_responce);
+        selectstoreambiance = (TextView)findViewById(R.id.store_ambiance);
+        news_paper_ll = (LinearLayout)findViewById(R.id.news_paper_ll);
+        news_paper_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                builder.setTitle("CHOOSE Newspaper");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, newspapers_title);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        newspaper_id = newspapers_id.get(which);
+                        selectnewspaper.setText(newspapers_title.get(which));
+                        get_newspaper();
+                    }
+                });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        store_ambiance_ll = (LinearLayout)findViewById(R.id.store_ambiance_ll);
+        store_ambiance_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                builder.setTitle("CHOOSE AMBIANCE");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, storeambiances_title);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        storeambiance_id = storeambiances_id.get(which);
+                        selectstoreambiance.setText(storeambiances_title.get(which));
+                        get_storeambiance();
+                    }
+                });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        staff_responce_ll = (LinearLayout)findViewById(R.id.staff_responce_ll);
+        staff_responce_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                builder.setTitle("CHOOSE STAFFRESPONCE");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, newspapers_title);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        staffresponce_id = staffresponces_id.get(which);
+                        selectstaffresponce.setText(staffresponces_title.get(which));
+                        get_staffresponce();
+                    }
+                });
+
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+        submit = (LinearLayout)findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customer_str = customername.getText().toString();
+                contact_str = contactnumber.getText().toString();
+                email_str = emailid.getText().toString();
+                newspaper_str = selectnewspaper.getText().toString();
+                storeambiance_str = selectstoreambiance.getText().toString();
+                staffresponce_str = selectstaffresponce.getText().toString();
+                suggestion_str = suggestion.getText().toString();
+                String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+                if(customer_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please enter username", Toast.LENGTH_SHORT).show();
+                }
+                else if(contact_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please enter contact number", Toast.LENGTH_SHORT).show();
+                }
+                else if(!email_str.matches(emailPattern)){
+                    Toast.makeText(CustomerFeedback.this, "please enter valid email", Toast.LENGTH_SHORT).show();
+                }
+                else if(newspaper_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
+                }
+                else if(staffresponce_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please select the staffresponce", Toast.LENGTH_SHORT).show();
+                }
+                else if(storeambiance_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please select the ambiance", Toast.LENGTH_SHORT).show();
+                }
+
+                else if(suggestion_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(CustomerFeedback.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                }
+                Intent intent;
+                intent = new Intent(CustomerFeedback.this,Offer_Screen_Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    private void get_newspaper(){
+        String url=Settings.SERVER_URL+"newspaper.php";
+        Log.e("url--->", url);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setCancelable(false);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonArray.toString());
+                try {
+                    newspapers_title.clear();
+                    newspapers_id.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject sub = jsonArray.getJSONObject(i);
+                        String newspaper_name = sub.getString("title");
+                        String news_id = sub.getString("id");
+                        newspapers_id.add(news_id);
+                        newspapers_title.add(newspaper_name);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+    private void get_storeambiance(){
+        String url=Settings.SERVER_URL+"storeambiance.php";
+        Log.e("url--->", url);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setCancelable(false);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonArray.toString());
+                try {
+                    newspapers_title.clear();
+                    newspapers_id.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject sub = jsonArray.getJSONObject(i);
+                        String storeambiance_name = sub.getString("title");
+                        String store_id = sub.getString("id");
+                        storeambiances_id.add(store_id);
+                        storeambiances_title.add(storeambiance_name);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+    private void get_staffresponce(){
+        String url=Settings.SERVER_URL+"newspaper.php";
+        Log.e("url--->", url);
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait....");
+        progressDialog.setCancelable(false);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonArray.toString());
+                try {
+                    staffresponces_title.clear();
+                    staffresponces_id.clear();
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject sub = jsonArray.getJSONObject(i);
+                        String staff_responce = sub.getString("title");
+                        String staff_id = sub.getString("id");
+                        staffresponces_id.add(staff_id);
+                        staffresponces_title.add(staff_responce);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+        });
+        // Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+}
