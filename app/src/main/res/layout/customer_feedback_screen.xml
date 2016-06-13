@@ -100,7 +100,8 @@
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:singleLine="true" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -111,7 +112,9 @@
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:singleLine="true"
+                        android:inputType="phone" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -122,7 +125,8 @@
                         android:textSize="20sp"
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:singleLine="true" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -133,7 +137,8 @@
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
                         android:padding="15dp"
-                        android:hint="Which News Paper You Read Daily" />
+                        android:hint="Which News Paper You Read Daily"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"
