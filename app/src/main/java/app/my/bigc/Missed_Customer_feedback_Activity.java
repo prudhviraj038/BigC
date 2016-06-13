@@ -44,6 +44,23 @@ public class Missed_Customer_feedback_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.missed_customer_feedback);
+        mobile = (RadioButton) findViewById(R.id.mobile);
+        accessories = (RadioButton) findViewById(R.id.accessories);
+        mobile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accessories.setChecked(false);
+
+            }
+        });
+
+        accessories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mobile.setChecked(false);
+
+            }
+        });
         brands_id= new ArrayList<String>();
         brands_title=new ArrayList<String>();
         models_id= new ArrayList<String>();
