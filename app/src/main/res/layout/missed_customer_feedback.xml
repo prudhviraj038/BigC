@@ -103,7 +103,8 @@
                         android:background="#d3d4d5"
                         android:hint="Customer Name"
                         android:autoText="false"
-                        android:padding="15dp" />
+                        android:padding="15dp"
+                        android:singleLine="true" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -113,7 +114,8 @@
                         android:padding="15dp"
                         android:hint="Contact Number"
                         android:phoneNumber="false"
-                        android:inputType="phone" />
+                        android:inputType="phone"
+                        android:singleLine="true" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -122,7 +124,8 @@
                         android:background="#d3d4d5"
                         android:padding="15dp"
                         android:hint="Email Id"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -130,7 +133,8 @@
                         android:id="@+id/customer_req"
                         android:background="#d3d4d5"
                         android:padding="15dp"
-                        android:hint="Customer Requirement" />
+                        android:hint="Customer Requirement"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:orientation="horizontal"

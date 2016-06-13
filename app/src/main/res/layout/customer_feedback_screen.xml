@@ -60,10 +60,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="30dp">
+                android:background="@drawable/feedbackrounded_corners"
+                android:id="@+id/linearLayout4"
+                android:layout_marginTop="20dp" >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,9 +73,7 @@
                     android:text="Customer Feedback"
                     android:id="@+id/textView4"
                     android:textColor="#187ac8"
-                    android:textSize="30sp"
-                    android:background="@drawable/customerfeedback_rounded_corners" />
-
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <ScrollView
@@ -137,8 +137,9 @@
                         android:textColor="#000000"
                         android:background="@drawable/customerfeedback_rounded_corners"
                         android:padding="15dp"
-                        android:hint="Which News Paper You Read Daily"
-                        android:singleLine="true" />
+                        android:hint="Which News Paper You Read Daily ?"
+                        android:singleLine="true"
+                        android:textIsSelectable="false" />
 
                     <LinearLayout
                         android:orientation="horizontal"
