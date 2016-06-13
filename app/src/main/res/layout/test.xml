@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="250dp">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -31,10 +31,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="KUKATPALLY"
-                android:id="@+id/textView55"
+                android:id="@+id/store_name_navigation"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
-                android:textSize="60sp"
+                android:textSize="40dp"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -44,22 +44,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:id="@+id/home_layout">
 
             <ImageView
-                android:layout_width="40sp"
+                android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView7"
                 android:src="@drawable/home_icon"
                 android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                android:layout_marginRight="25dp"
+                android:adjustViewBounds="false" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Home"
                 android:id="@+id/textView11"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -69,10 +71,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/customer_layout">
 
             <ImageView
-                android:layout_width="40sp"
+                android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:id="@+id/imageView36"
                 android:src="@drawable/customerfeedback_icon"
@@ -84,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:text="Customer Feedback"
                 android:id="@+id/textView50"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -94,7 +97,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/missedcustomer_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -109,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:text="Missed Customer Feedback"
                 android:id="@+id/textView51"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -119,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/employeeexam_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -134,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:text="Employee Exam"
                 android:id="@+id/textView52"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -144,7 +149,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/result_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -159,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:text="Exam Results"
                 android:id="@+id/textView53"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>
@@ -169,7 +175,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:id="@+id/notification_layout">
 
             <ImageView
                 android:layout_width="40sp"
@@ -184,7 +191,7 @@
                 android:layout_height="wrap_content"
                 android:text="Notifications/Offers"
                 android:id="@+id/textView54"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000" />
         </LinearLayout>

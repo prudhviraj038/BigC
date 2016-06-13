@@ -124,12 +124,24 @@
                         android:background="@drawable/customerfeedback_rounded_corners"
                         android:padding="15dp" />
 
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/newspaper"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:textColor="#000000"
+                        android:background="@drawable/customerfeedback_rounded_corners"
+                        android:padding="15dp"
+                        android:hint="Which News Paper You Read Daily" />
+
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/customerfeedback_rounded_corners"
-                        android:id="@+id/news_paper_ll">
+                        android:id="@+id/news_paper_ll"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -151,37 +163,49 @@
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:baselineAligned="false">
 
-                        <EditText
+                        <LinearLayout
+                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/editText8"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="20sp"
-                            android:textColor="#000000"
-                            android:background="@drawable/customerfeedback_rounded_corners"
-                            android:hint="Have You Ever Visited BigC Showroom Earlier?"
-                            android:padding="15dp" />
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/editText8"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:background="@drawable/customerfeedback_rounded_corners"
+                                android:hint="Have You Ever Visited BigC Showroom Earlier?"
+                                android:padding="15dp" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
+                            android:layout_height="wrap_content">
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Yes"
                                 android:id="@+id/radioButton3"
-                                android:textColor="#ffffff" />
+                                android:textColor="#ffffff"
+                                android:singleLine="false"
+                                android:textSize="20sp" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="No"
                                 android:id="@+id/radioButton4"
-                                android:textColor="#ffffff" />
+                                android:textColor="#ffffff"
+                                android:singleLine="false"
+                                android:textSize="20sp" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -191,35 +215,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <EditText
+                        <LinearLayout
+                            android:orientation="horizontal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/editText9"
-                            android:layout_gravity="center_horizontal"
-                            android:textSize="20sp"
-                            android:textColor="#000000"
-                            android:background="@drawable/customerfeedback_rounded_corners"
-                            android:hint="Did You Get Computirized Bill For The Purchase?"
-                            android:padding="15dp" />
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/editText9"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="20sp"
+                                android:textColor="#000000"
+                                android:background="@drawable/customerfeedback_rounded_corners"
+                                android:hint="Did You Get Computirized Bill For The Purchase?"
+                                android:padding="15dp" />
+                        </LinearLayout>
 
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent" >
+                            android:layout_height="wrap_content" >
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Yes"
                                 android:id="@+id/radioButton5"
-                                android:textColor="#ffffff" />
+                                android:textColor="#ffffff"
+                                android:textSize="20sp" />
 
                             <RadioButton
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="No"
                                 android:id="@+id/radioButton6"
-                                android:textColor="#ffffff" />
+                                android:textColor="#ffffff"
+                                android:textSize="20sp" />
                         </LinearLayout>
                     </LinearLayout>
 

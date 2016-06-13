@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,10 +43,51 @@ public class CustomerFeedback extends Activity {
     TextView selectnewspaper,selectstaffresponce,selectstoreambiance;
     LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll;
     String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str;
+    RadioButton visited_yes,visited_no,bill_yes,bill_no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_feedback_screen);
+        visited_yes = (RadioButton) findViewById(R.id.radioButton3);
+        visited_no = (RadioButton) findViewById(R.id.radioButton4);
+
+        bill_yes = (RadioButton) findViewById(R.id.radioButton5);
+        bill_no = (RadioButton) findViewById(R.id.radioButton6);
+
+
+
+        visited_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                visited_no.setChecked(false);
+
+            }
+        });
+
+        visited_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                visited_yes.setChecked(false);
+
+            }
+        });
+
+        bill_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bill_no.setChecked(false);
+
+            }
+        });
+
+        bill_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bill_yes.setChecked(false);
+
+            }
+        });
+
         newspapers_id= new ArrayList<String>();
         newspapers_title=new ArrayList<String>();
         staffresponces_id= new ArrayList<String>();
@@ -79,49 +122,24 @@ public class CustomerFeedback extends Activity {
                 dialog.show();
             }
         });
+
+
+
         store_ambiance_ll = (LinearLayout)findViewById(R.id.store_ambiance_ll);
         store_ambiance_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
-                builder.setTitle("CHOOSE AMBIANCE");
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, storeambiances_title);
-                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
-                        storeambiance_id = storeambiances_id.get(which);
-                        selectstoreambiance.setText(storeambiances_title.get(which));
-                        get_storeambiance();
-                    }
-                });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
+                get_storeambiance();
             }
         });
         staff_responce_ll = (LinearLayout)findViewById(R.id.staff_responce_ll);
         staff_responce_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
-                builder.setTitle("CHOOSE STAFFRESPONCE");
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, newspapers_title);
-                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
-                        staffresponce_id = staffresponces_id.get(which);
-                        selectstaffresponce.setText(staffresponces_title.get(which));
-                        get_staffresponce();
-                    }
-                });
-
-                final AlertDialog dialog = builder.create();
-                dialog.show();
-            }
+                get_staffresponce();
+                            }
         });
-        submit = (LinearLayout)findViewById(R.id.submit);
+        submit = (LinearLayout)findViewById(R.id.customer_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,6 +182,8 @@ public class CustomerFeedback extends Activity {
                 finish();
             }
         });
+
+
     }
     private void get_newspaper(){
         String url=Settings.SERVER_URL+"newspaper.php";
@@ -203,7 +223,7 @@ public class CustomerFeedback extends Activity {
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
     private void get_storeambiance(){
-        String url=Settings.SERVER_URL+"storeambiance.php";
+        String url=Settings.SERVER_URL+"store_ambience.php";
         Log.e("url--->", url);
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait....");
@@ -214,8 +234,8 @@ public class CustomerFeedback extends Activity {
                 progressDialog.dismiss();
                 Log.e("response is: ", jsonArray.toString());
                 try {
-                    newspapers_title.clear();
-                    newspapers_id.clear();
+                    storeambiances_id.clear();
+                    storeambiances_title.clear();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject sub = jsonArray.getJSONObject(i);
                         String storeambiance_name = sub.getString("title");
@@ -223,6 +243,20 @@ public class CustomerFeedback extends Activity {
                         storeambiances_id.add(store_id);
                         storeambiances_title.add(storeambiance_name);
                     }
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                    builder.setTitle("CHOOSE AMBIANCE");
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, storeambiances_title);
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                            storeambiance_id = storeambiances_id.get(which);
+                            selectstoreambiance.setText(storeambiances_title.get(which));
+
+                        }
+                    });
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -240,7 +274,7 @@ public class CustomerFeedback extends Activity {
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
     private void get_staffresponce(){
-        String url=Settings.SERVER_URL+"newspaper.php";
+        String url=Settings.SERVER_URL+"staff_response.php";
         Log.e("url--->", url);
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait....");
@@ -255,11 +289,28 @@ public class CustomerFeedback extends Activity {
                     staffresponces_id.clear();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject sub = jsonArray.getJSONObject(i);
-                        String staff_responce = sub.getString("title");
+                        String staff_responce = sub.getString("response");
                         String staff_id = sub.getString("id");
                         staffresponces_id.add(staff_id);
                         staffresponces_title.add(staff_responce);
                     }
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                    builder.setTitle("CHOOSE STAFFRESPONCE");
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, staffresponces_title);
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                            staffresponce_id = staffresponces_id.get(which);
+                            selectstaffresponce.setText(staffresponces_title.get(which));
+
+                        }
+                    });
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

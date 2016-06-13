@@ -58,6 +58,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
         suggestions = (EditText)findViewById(R.id.suggestions);
         mobile = (RadioButton)findViewById(R.id.mobile);
         accessories = (RadioButton)findViewById(R.id.accessories);
+
         select_brand_ll = (LinearLayout)findViewById(R.id.select_brand_ll);
         select_brand_ll.setOnClickListener(new View.OnClickListener() {
             @Override

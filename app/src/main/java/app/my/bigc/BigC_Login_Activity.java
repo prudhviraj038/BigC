@@ -88,6 +88,7 @@ public class BigC_Login_Activity extends Activity {
                                 Settings.set_store(getApplicationContext(),store_id,login_type,name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Dashboard_Activity.class);
                                 startActivity(intent);
+                                finish();
                             }else {
                                 String login_type= jsonObject.getJSONObject(0).getString("type");
                                 String name= jsonObject.getJSONObject(0).getString("name");
@@ -96,6 +97,7 @@ public class BigC_Login_Activity extends Activity {
                                 Settings.set_emp_id(getApplicationContext(),mem_id,login_type,name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     } catch (JSONException e) {
