@@ -62,6 +62,6 @@
             android:id="@+id/act_img"
             android:layout_alignParentEnd="true"
             android:focusableInTouchMode="false"
-            android:src="@drawable/active_img" />
+            android:src="@drawable/missedcustomer_image" />
     </RelativeLayout>
 </LinearLayout>

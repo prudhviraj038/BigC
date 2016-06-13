@@ -76,25 +76,20 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:transitionGroup="false">
+                android:id="@+id/scrollView2" >
 
                 <LinearLayout
                     android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
                     android:showDividers="middle"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:divider="@drawable/whitedivider">
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:divider="@drawable/whitedivider"
+                    android:layout_marginTop="20dp">
 
                     <EditText
                         android:layout_width="match_parent"
@@ -133,20 +128,22 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/customerfeedback_rounded_corners">
+                        android:background="@drawable/customerfeedback_rounded_corners"
+                        android:id="@+id/news_paper_ll">
 
-                        <EditText
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:id="@+id/editText7"
+                            android:id="@+id/news_paper"
                             android:hint="Which News Paper You Read Daily"
                             android:textSize="20sp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:gravity="center_vertical" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView11"
+                            android:id="@+id/arrow_l"
                             android:src="@drawable/arrow"
                             android:adjustViewBounds="false" />
                     </LinearLayout>
@@ -230,20 +227,23 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/customerfeedback_rounded_corners" >
+                        android:background="@drawable/customerfeedback_rounded_corners"
+                        android:id="@+id/store_ambiance_ll"
+                        android:gravity="center_vertical">
 
-                        <EditText
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/store_ambiance"
                             android:hint="Store Ambiance"
                             android:textSize="20sp"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:gravity="center_vertical" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView12"
+                            android:id="@+id/arrow_ll"
                             android:src="@drawable/arrow"
                             android:adjustViewBounds="false" />
                     </LinearLayout>
@@ -252,20 +252,23 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/customerfeedback_rounded_corners" >
+                        android:background="@drawable/customerfeedback_rounded_corners"
+                        android:gravity="center"
+                        android:id="@+id/staff_responce_ll">
 
-                        <EditText
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/staff_responce"
                             android:hint="How Our Staff Responded?"
                             android:layout_weight="1"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:gravity="center_vertical" />
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/imageView51"
+                            android:id="@+id/arrow_lll"
                             android:src="@drawable/arrow"
                             android:adjustViewBounds="false" />
                     </LinearLayout>
@@ -281,29 +284,28 @@
                         android:background="@drawable/customerfeedback_rounded_corners"
                         android:gravity="top" />
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/customer_submit"
+                        android:layout_gravity="center"
+                        android:background="@drawable/submit_roundedcorners1"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Submit"
+                            android:id="@+id/textView8"
+                            android:textColor="#187ac8"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/customer_submit"
-                android:layout_gravity="center"
-                android:background="@drawable/submit_roundedcorners1"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Submit"
-                    android:id="@+id/textView8"
-                    android:textColor="#187ac8"
-                    android:textSize="20sp" />
-            </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 

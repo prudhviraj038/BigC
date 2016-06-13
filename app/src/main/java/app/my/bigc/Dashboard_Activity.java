@@ -52,7 +52,7 @@ public class Dashboard_Activity extends Activity {
         customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this,CustomerFeedback_Activity.class);
+                Intent intent = new Intent(Dashboard_Activity.this,CustomerFeedback.class);
                 intent.putExtra("type","cus");
                 startActivity(intent);
             }
@@ -67,7 +67,7 @@ public class Dashboard_Activity extends Activity {
         customerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback_Activity.class);
+                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback.class);
                 startActivity(intent);
             }
         });

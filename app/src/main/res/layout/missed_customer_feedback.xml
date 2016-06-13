@@ -78,166 +78,172 @@
                     android:text="Missed Customer Feedback"
                     android:id="@+id/textView5"
                     android:textColor="#ffffff"
-                    android:textSize="30sp" />
+                    android:textSize="20sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="vertical"
+            <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginRight="100dp"
-                android:layout_marginLeft="100dp"
-                android:showDividers="middle"
-                android:divider="@drawable/whitedivider"
-                android:padding="10dp">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/customer_name"
-                    android:background="#d3d4d5"
-                    android:hint="Customer Name"
-                    android:autoText="false"
-                    android:padding="15dp" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/contact_number"
-                    android:background="#d3d4d5"
-                    android:padding="15dp"
-                    android:hint="Contact Number"
-                    android:phoneNumber="false"
-                    android:inputType="phone" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/email_id"
-                    android:background="#d3d4d5"
-                    android:padding="15dp"
-                    android:hint="Email Id"
-                    android:inputType="textEmailAddress" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/customer_req"
-                    android:background="#d3d4d5"
-                    android:padding="15dp"
-                    android:hint="Customer Requirement" />
+                android:id="@+id/scrollView" >
 
                 <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="80dp"
+                    android:layout_marginLeft="80dp"
+                    android:showDividers="middle"
+                    android:divider="@drawable/whitedivider"
+                    android:padding="10dp">
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Mobile"
-                        android:id="@+id/mobile"
-                        android:textColor="#ffffff"
-                        android:textSize="30sp" />
+                        android:id="@+id/customer_name"
+                        android:background="#d3d4d5"
+                        android:hint="Customer Name"
+                        android:autoText="false"
+                        android:padding="15dp" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/contact_number"
+                        android:background="#d3d4d5"
+                        android:padding="15dp"
+                        android:hint="Contact Number"
+                        android:phoneNumber="false"
+                        android:inputType="phone" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/email_id"
+                        android:background="#d3d4d5"
+                        android:padding="15dp"
+                        android:hint="Email Id"
+                        android:inputType="textEmailAddress" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/customer_req"
+                        android:background="#d3d4d5"
+                        android:padding="15dp"
+                        android:hint="Customer Requirement" />
 
                     <LinearLayout
                         android:orientation="horizontal"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"></LinearLayout>
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Accessories"
-                        android:id="@+id/accessories"
-                        android:textColor="#ffffff"
-                        android:textSize="30sp" />
-                </LinearLayout>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Mobile"
+                            android:id="@+id/mobile"
+                            android:textColor="#ffffff"
+                            android:textSize="30sp" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#d3d4d5"
-                    android:id="@+id/select_brand_ll">
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"></LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Accessories"
+                            android:id="@+id/accessories"
+                            android:textColor="#ffffff"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/select_brand"
+                        android:background="#d3d4d5"
+                        android:id="@+id/select_brand_ll">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/select_brand"
+                            android:padding="15dp"
+                            android:hint="Select Brand"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/arrow_icon"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#d3d4d5"
+                        android:id="@+id/select_model_ll">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/select_model"
+                            android:padding="15dp"
+                            android:hint="Select Model"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/arrow_icon2"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="true" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/reason"
+                        android:background="#d3d4d5"
                         android:padding="15dp"
-                        android:hint="Select Brand"
-                        android:layout_weight="1" />
+                        android:hint="Reasons For Not Purchasing" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/arrow_icon"
-                        android:src="@drawable/arrow"
-                        android:adjustViewBounds="true" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#d3d4d5"
-                    android:id="@+id/select_model_ll">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/select_model"
+                        android:id="@+id/suggestions"
+                        android:background="#d3d4d5"
                         android:padding="15dp"
-                        android:hint="Select Model"
-                        android:layout_weight="1" />
+                        android:hint="Suggestions" />
 
-                    <ImageView
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/arrow_icon2"
-                        android:src="@drawable/arrow"
-                        android:adjustViewBounds="true" />
-                </LinearLayout>
+                        android:id="@+id/submit"
+                        android:layout_gravity="center"
+                        android:background="@drawable/submit_roundedcorners"
+                        android:layout_marginTop="10dp"
+                        android:padding="20dp">
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/reason"
-                    android:background="#d3d4d5"
-                    android:padding="15dp"
-                    android:hint="Reasons For Not Purchasing" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Submit"
+                            android:id="@+id/textView5"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/suggestions"
-                    android:background="#d3d4d5"
-                    android:padding="15dp"
-                    android:hint="Suggestions" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/submit"
-                    android:layout_gravity="center"
-                    android:background="@drawable/submit_roundedcorners"
-                    android:layout_marginTop="10dp"
-                    android:padding="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Submit"
-                        android:id="@+id/textView5"
-                        android:textColor="#ffffff"
-                        android:textSize="20sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 
