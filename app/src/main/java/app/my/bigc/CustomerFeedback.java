@@ -40,9 +40,10 @@ public class CustomerFeedback extends Activity {
     ArrayList<String> staffresponces_title;
     ArrayList<String> storeambiances_id;
     ArrayList<String> storeambiances_title;
-    TextView selectnewspaper,selectstaffresponce,selectstoreambiance;
+    EditText selectnewspaper;
+    TextView selectstaffresponce,selectstoreambiance;
     LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll;
-    String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str;
+    String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str,visited_str,bill_str;
     RadioButton visited_yes,visited_no,bill_yes,bill_no;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +55,16 @@ public class CustomerFeedback extends Activity {
         bill_yes = (RadioButton) findViewById(R.id.radioButton5);
         bill_no = (RadioButton) findViewById(R.id.radioButton6);
 
-
+            storeambiance_str="";
+            staffresponce_str="";
+            visited_str="";
+            bill_str="";
 
         visited_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 visited_no.setChecked(false);
-
+                visited_str="yes";
             }
         });
 
@@ -68,6 +72,7 @@ public class CustomerFeedback extends Activity {
             @Override
             public void onClick(View v) {
                 visited_yes.setChecked(false);
+                visited_str="no";
 
             }
         });
@@ -76,7 +81,7 @@ public class CustomerFeedback extends Activity {
             @Override
             public void onClick(View v) {
                 bill_no.setChecked(false);
-
+                bill_str="yes";
             }
         });
 
@@ -84,7 +89,7 @@ public class CustomerFeedback extends Activity {
             @Override
             public void onClick(View v) {
                 bill_yes.setChecked(false);
-
+                bill_str="no";
             }
         });
 
@@ -98,7 +103,7 @@ public class CustomerFeedback extends Activity {
         contactnumber = (EditText)findViewById(R.id.cnumber);
         emailid = (EditText)findViewById(R.id.emailId);
         suggestion = (EditText)findViewById(R.id.customer_suggestions);
-        selectnewspaper = (TextView)findViewById(R.id.news_paper);
+        selectnewspaper = (EditText)findViewById(R.id.newspaperedit);
         selectstaffresponce = (TextView)findViewById(R.id.staff_responce);
         selectstoreambiance = (TextView)findViewById(R.id.store_ambiance);
         news_paper_ll = (LinearLayout)findViewById(R.id.news_paper_ll);
@@ -147,8 +152,6 @@ public class CustomerFeedback extends Activity {
                 contact_str = contactnumber.getText().toString();
                 email_str = emailid.getText().toString();
                 newspaper_str = selectnewspaper.getText().toString();
-                storeambiance_str = selectstoreambiance.getText().toString();
-                staffresponce_str = selectstaffresponce.getText().toString();
                 suggestion_str = suggestion.getText().toString();
                 String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
                 if(customer_str.equals("")){
@@ -161,13 +164,19 @@ public class CustomerFeedback extends Activity {
                     Toast.makeText(CustomerFeedback.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(newspaper_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter the newspaper", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomerFeedback.this, "please enter which newspaper you read", Toast.LENGTH_SHORT).show();
                 }
-                else if(staffresponce_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please select the staffresponce", Toast.LENGTH_SHORT).show();
+                else if(visited_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please select have you ever visited BigC Showroom", Toast.LENGTH_SHORT).show();
+                }
+                else if(bill_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please select the bill type for your purchase", Toast.LENGTH_SHORT).show();
                 }
                 else if(storeambiance_str.equals("")){
                     Toast.makeText(CustomerFeedback.this, "please select the ambiance", Toast.LENGTH_SHORT).show();
+                }
+                else if(staffresponce_str.equals("")){
+                    Toast.makeText(CustomerFeedback.this, "please select the staffresponce", Toast.LENGTH_SHORT).show();
                 }
 
                 else if(suggestion_str.equals("")){
@@ -175,11 +184,12 @@ public class CustomerFeedback extends Activity {
                 }
                 else {
                     Toast.makeText(CustomerFeedback.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                    Intent intent;
+                    intent = new Intent(CustomerFeedback.this,FeedBack_Activity.class);
+                    startActivity(intent);
+                    finish();
                 }
-                Intent intent;
-                intent = new Intent(CustomerFeedback.this,Offer_Screen_Activity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
 
@@ -252,7 +262,7 @@ public class CustomerFeedback extends Activity {
                             //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                             storeambiance_id = storeambiances_id.get(which);
                             selectstoreambiance.setText(storeambiances_title.get(which));
-
+                            storeambiance_str = storeambiances_title.get(which);
                         }
                     });
                     final AlertDialog dialog = builder.create();
@@ -303,6 +313,7 @@ public class CustomerFeedback extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                             staffresponce_id = staffresponces_id.get(which);
+                            staffresponce_str = staffresponces_title.get(which);
                             selectstaffresponce.setText(staffresponces_title.get(which));
 
                         }

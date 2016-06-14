@@ -11,11 +11,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class OfferAdapter extends BaseAdapter{
+public class ExamAdapter extends BaseAdapter{
     Context context;
     ArrayList<Offers> users;
     private static LayoutInflater inflater=null;
-    public OfferAdapter(Activity mainActivity, ArrayList<Offers> users) {
+    public ExamAdapter(Activity mainActivity, ArrayList<Offers> users) {
         // TODO Auto-generated constructor stu
         context=mainActivity;
         this.users=users;

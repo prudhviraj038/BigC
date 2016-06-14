@@ -39,18 +39,22 @@ public class Missed_Customer_feedback_Activity extends Activity {
     EditText customername,contactnumber,emailid,customerrequirement,reason,suggestions;
     RadioButton mobile,accessories;
     LinearLayout submit,select_brand_ll,select_model_ll;
-    String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str;
+    String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str,mobile_acs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.missed_customer_feedback);
+        brand_str="";
+        model_str="";
+        mobile_acs="";
+
         mobile = (RadioButton) findViewById(R.id.mobile);
         accessories = (RadioButton) findViewById(R.id.accessories);
         mobile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 accessories.setChecked(false);
-
+                mobile_acs="mobile";
             }
         });
 
@@ -58,6 +62,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
             @Override
             public void onClick(View v) {
                 mobile.setChecked(false);
+                mobile_acs="accessories";
 
             }
         });
@@ -88,6 +93,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                         brand_id = brands_id.get(which);
+                        brand_str = brands_title.get(which);
                         selectbrand.setText(brands_title.get(which));
                         get_model();
                     }
@@ -113,6 +119,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
                         public void onClick(DialogInterface dialog, int which) {
                             //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                             model_id = models_id.get(which);
+                            model_str = models_title.get(which);
                             selectmodel.setText(models_title.get(which));
                         }
                     });
@@ -131,7 +138,6 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 contact_str = contactnumber.getText().toString();
                 email_str = emailid.getText().toString();
                 requirement_str = customerrequirement.getText().toString();
-                brand_str = selectbrand.getText().toString();
                 model_str = selectmodel.getText().toString();
                 reason_str = reason.getText().toString();
                 suggestions_str = suggestions.getText().toString();
@@ -148,6 +154,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 else if(requirement_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
                 }
+                else if(mobile_acs.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select mobile or accessories", Toast.LENGTH_SHORT).show();
+                }
                 else if(brand_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
                 }
@@ -162,11 +171,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 }
                 else {
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                         finish();
                 }
-                Intent intent;
-                intent = new Intent(Missed_Customer_feedback_Activity.this,Offer_Screen_Activity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
     }

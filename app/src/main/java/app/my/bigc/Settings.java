@@ -49,6 +49,7 @@ public class Settings {
    public static String get_emp_id(Context context) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       return sharedPreferences.getString(EMP_ID, "-1");
+    //  return  "-1";
    }
    public static   void forceRTLIfSupported(Activity activity)
    {

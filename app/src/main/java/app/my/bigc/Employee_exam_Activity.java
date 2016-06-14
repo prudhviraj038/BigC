@@ -230,6 +230,17 @@ public class Employee_exam_Activity extends Activity {
                 break;
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();  // Always call the superclass method first
+
+        // Save the note's current draft, because the activity is stopping
+        // and we want to be sure the current note progress isn't lost.
+        countDownTimer.cancel();
+        Log.e("count down ","cleared");
+
+    }
 }
 
 

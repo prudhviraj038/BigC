@@ -94,10 +94,20 @@ public class BigC_Login_Activity extends Activity {
                                 String name= jsonObject.getJSONObject(0).getString("name");
                                 String mem_id= jsonObject.getJSONObject(0).getString("member_id");
                                 Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
-                                Settings.set_emp_id(getApplicationContext(),mem_id,login_type,name);
+                                Settings.set_emp_id(getApplicationContext(), mem_id, login_type, name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
+                                if(getIntent().getStringExtra("goto").equals("exam"))
+                                    intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
+
+                                else if(getIntent().getStringExtra("goto").equals("reexam"))
+                                    intent = new Intent(BigC_Login_Activity.this, Examresult_Activity.class);
+
+                                else if(getIntent().getStringExtra("goto").equals("missed"))
+                                    intent = new Intent(BigC_Login_Activity.this, Missed_Customer_feedback_Activity.class);
+
                                 startActivity(intent);
                                 finish();
+
                             }
                         }
                     } catch (JSONException e) {

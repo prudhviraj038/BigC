@@ -45,15 +45,16 @@ public class Dashboard_Activity extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
                 intent.putExtra("type","emp");
+                intent.putExtra("goto","exam");
                 startActivity(intent);
-
             }
+
         });
         customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this,CustomerFeedback.class);
-                intent.putExtra("type","cus");
+                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback.class);
+                intent.putExtra("type", "cus");
                 startActivity(intent);
             }
         });
@@ -74,17 +75,27 @@ public class Dashboard_Activity extends Activity {
         missedcustomerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_feedback_Activity.class);
-                startActivity(intent);
+               if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")|| true) {
 
+                    Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
+                    intent.putExtra("type", "emp");
+                    intent.putExtra("goto", "missed");
+                    startActivity(intent);
+
+                } else {
+                    Intent intent = new Intent(Dashboard_Activity.this, Employee_exam_Activity.class);
+                    startActivity(intent);
+                }
             }
         });
         employeexam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
+                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")|| true){
                     Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
                     intent.putExtra("type","emp");
+                    intent.putExtra("goto","exam");
+
                     startActivity(intent);
                 }else {
                     Intent intent = new Intent(Dashboard_Activity.this, Employee_exam_Activity.class);
@@ -95,9 +106,10 @@ public class Dashboard_Activity extends Activity {
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
+                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")|| true){
                     Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
                     intent.putExtra("type","emp");
+                    intent.putExtra("goto","reexam");
                     startActivity(intent);
                 }else {
                 Intent intent = new Intent(Dashboard_Activity.this,Examresult_Activity.class);
