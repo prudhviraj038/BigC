@@ -25,6 +25,5 @@ public class Offers implements Serializable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 }

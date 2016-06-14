@@ -161,7 +161,7 @@ public class CustomerFeedback extends Activity {
                     Toast.makeText(CustomerFeedback.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(newspaper_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomerFeedback.this, "please enter the newspaper", Toast.LENGTH_SHORT).show();
                 }
                 else if(staffresponce_str.equals("")){
                     Toast.makeText(CustomerFeedback.this, "please select the staffresponce", Toast.LENGTH_SHORT).show();
