@@ -7,7 +7,6 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants"
         android:background="#bcdbf4"
         android:padding="10dp">
 
@@ -19,7 +18,8 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -27,8 +27,7 @@
                     android:id="@+id/review_exam"
                     android:textColor="#000000"
                     android:text="Exam22"
-                    android:textSize="20sp"
-                    android:layout_margin="5dp" />
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -37,8 +36,8 @@
                     android:id="@+id/review_date"
                     android:textColor="#000000"
                     android:textSize="20sp"
-                    android:inputType="date"
-                    android:layout_margin="5dp" />
+                    android:layout_marginLeft="10dp"
+                    android:inputType="date" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -46,8 +45,9 @@
                     android:text="Time:"
                     android:id="@+id/review_time"
                     android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
                     android:inputType="time"
-                    android:layout_margin="5dp" />
+                    android:textColor="#000000" />
 
             </LinearLayout>
 
@@ -62,7 +62,8 @@
                     android:text="Score"
                     android:id="@+id/review_score"
                     android:textSize="20sp"
-                    android:layout_margin="5dp" />
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                     android:padding="10dp"
                     android:textStyle="bold"
                     android:inputType="number"
-                    android:layout_margin="5dp" />
+                    android:textColor="#000000" />
             </LinearLayout>
         </LinearLayout>
 
