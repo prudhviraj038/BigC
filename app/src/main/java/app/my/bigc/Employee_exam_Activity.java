@@ -150,7 +150,7 @@ public class Employee_exam_Activity extends Activity {
             public void onResponse(JSONArray jsonArray) {
                 if(progressDialog!=null)
                     progressDialog.dismiss();
-                Log.e("reponse", jsonArray.toString());
+                Log.e("response", jsonArray.toString());
                 try {
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
