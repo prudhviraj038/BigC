@@ -95,9 +95,9 @@ public class BigC_Login_Activity extends Activity {
                                 String mem_id= jsonObject.getJSONObject(0).getString("member_id");
                                 Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
                                 Settings.set_emp_id(getApplicationContext(), mem_id, login_type, name);
-                                Intent intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
+                                Intent intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
                                 if(getIntent().getStringExtra("goto").equals("exam"))
-                                    intent = new Intent(BigC_Login_Activity.this, Employee_exam_Activity.class);
+                                    intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
 
                                 else if(getIntent().getStringExtra("goto").equals("reexam"))
                                     intent = new Intent(BigC_Login_Activity.this, Examresult_Activity.class);

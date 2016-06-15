@@ -56,273 +56,281 @@
                     android:visibility="invisible" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name Of The Question Paper"
-                android:id="@+id/que_name"
-                android:textColor="#ffffff"
-                android:textSize="30sp"
-                android:layout_gravity="left"
-                android:padding="10dp"
-                android:layout_margin="20dp" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginBottom="5dp"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/employee_roundedcorners"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:id="@+id/editText12"
-                        android:background="#ff2eff12"
-                        android:text="        " />
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1/20"
-                    android:id="@+id/question_count"
-                    android:textColor="#ffffff"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:showDividers="middle"
                 android:layout_weight="1"
-                android:gravity="center|center_vertical|start"
-                android:padding="20dp"
-                android:layout_margin="20dp"
-                android:divider="@drawable/whitedivider">
+                android:id="@+id/all_views">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name Of The Question Paper"
+                    android:id="@+id/que_name"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:layout_gravity="left"
+                    android:padding="10dp"
+                    android:layout_margin="20dp" />
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/examreviewrounded_corners"
-                    android:padding="10dp"
-                    android:id="@+id/hj">
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/employee_roundedcorners"
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/editText12"
+                            android:background="#ff2eff12"
+                            android:text="        " />
+
+                    </LinearLayout>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/question"
-                        android:textSize="25dp"
-                        android:text="1. What is Latest Version of Android?" />
+                        android:text="1/20"
+                        android:id="@+id/question_count"
+                        android:textColor="#ffffff"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:id="@+id/ab">
+                    android:showDividers="middle"
+                    android:layout_weight="1"
+                    android:gravity="center|center_vertical|start"
+                    android:padding="20dp"
+                    android:layout_margin="20dp"
+                    android:divider="@drawable/whitedivider">
 
                     <LinearLayout
                         android:orientation="vertical"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/exam_roundedcorners1"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="10dp"
-                        android:paddingRight="20dp"
-                        android:paddingBottom="10dp"
-                        android:layout_marginBottom="10dp">
+                        android:background="@drawable/examreviewrounded_corners"
+                        android:padding="10dp"
+                        android:id="@+id/hj">
 
                         <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/question"
+                            android:textSize="25dp"
+                            android:text="1. What is Latest Version of Android?" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:id="@+id/ab">
+
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0:27"
-                            android:id="@+id/time_exam"
-                            android:textColor="#ffffff" />
+                            android:background="@drawable/exam_roundedcorners1"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:paddingBottom="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0:27"
+                                android:id="@+id/time_exam"
+                                android:textColor="#ffffff" />
+                        </LinearLayout>
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:showDividers="middle"
+                            android:divider="@drawable/whitedivider">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ans1_ll">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/a_ll"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="A" />
+
+                                <TextView
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView36" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ans1"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="Lollipop" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ans2_ll">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/b_ll"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="B" />
+
+                                <TextView
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView56" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ans2"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="Jellybeen" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ans3_ll">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/c_ll"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="C" />
+
+                                <TextView
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView57" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ans3"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="Marshello" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/ans4_ll">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/d_ll"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="D" />
+
+                                <TextView
+                                    android:layout_width="30dp"
+                                    android:layout_height="match_parent"
+                                    android:id="@+id/textView58" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/ans4"
+                                    android:layout_gravity="center_horizontal"
+                                    android:background="@drawable/examreviewrounded_corners"
+                                    android:textSize="25dp"
+                                    android:text="Icecream Sandwich" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"></LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/next"
+                    android:background="@drawable/exam_roundedcorners1"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
 
-                    <LinearLayout
-                        android:orientation="vertical"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:showDividers="middle"
-                        android:divider="@drawable/whitedivider">
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ans1_ll">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/a_ll"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="A" />
-
-                            <TextView
-                                android:layout_width="30dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView36" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/ans1"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="Lollipop" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ans2_ll">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/b_ll"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="B" />
-
-                            <TextView
-                                android:layout_width="30dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView56" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/ans2"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="Jellybeen" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ans3_ll">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/c_ll"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="C" />
-
-                            <TextView
-                                android:layout_width="30dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView57" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/ans3"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="Marshello" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ans4_ll">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/d_ll"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="D" />
-
-                            <TextView
-                                android:layout_width="30dp"
-                                android:layout_height="match_parent"
-                                android:id="@+id/textView58" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/ans4"
-                                android:layout_gravity="center_horizontal"
-                                android:background="@drawable/examreviewrounded_corners"
-                                android:textSize="25dp"
-                                android:text="Icecream Sandwich" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"></LinearLayout>
+                        android:text="Next"
+                        android:id="@+id/textView49"
+                        android:textColor="#ffffff"
+                        android:textSize="25dp" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/next"
-                android:background="@drawable/exam_roundedcorners1"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_marginBottom="30dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Next"
-                    android:id="@+id/textView49"
-                    android:textColor="#ffffff"
-                    android:textSize="25dp" />
             </LinearLayout>
 
         </LinearLayout>

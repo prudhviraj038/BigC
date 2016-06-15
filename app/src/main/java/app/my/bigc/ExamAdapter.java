@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class ExamAdapter extends BaseAdapter{
     Context context;
-    ArrayList<Offers> users;
+    ArrayList<Exam> users;
     private static LayoutInflater inflater=null;
-    public ExamAdapter(Activity mainActivity, ArrayList<Offers> users) {
+    public ExamAdapter(Activity mainActivity, ArrayList<Exam> users) {
         // TODO Auto-generated constructor stu
         context=mainActivity;
         this.users=users;
@@ -23,9 +23,13 @@ public class ExamAdapter extends BaseAdapter{
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
     @Override
+    public boolean isEnabled (int position) {
+        return true;
+    }
+    @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return 10;
+        return users.size();
     }
 
     @Override
@@ -43,7 +47,7 @@ public class ExamAdapter extends BaseAdapter{
     public class Holder
     {
 
-        ImageView offerimage,act_img;
+        TextView time,score;
         TextView date,title;
     }
     @Override
@@ -51,14 +55,13 @@ public class ExamAdapter extends BaseAdapter{
         // TODO Auto-generated method stub
         Holder holder=new Holder();
         View rowView;
-        if(convertView==null)
-        rowView = inflater.inflate(R.layout.offer_item, parent,false);
-        else
-        rowView = convertView;
-        holder.offerimage=(ImageView) rowView.findViewById(R.id.offer_image);
-        holder.act_img=(ImageView) rowView.findViewById(R.id.offer_image);
-        holder.date=(TextView) rowView.findViewById(R.id.offer_date);
-        holder.title=(TextView) rowView.findViewById(R.id.offer_title);
+        rowView = inflater.inflate(R.layout.review_result, parent,false);
+        holder.time=(TextView) rowView.findViewById(R.id.review_time);
+        holder.score=(TextView) rowView.findViewById(R.id.review_score_ll);
+        holder.date=(TextView) rowView.findViewById(R.id.review_date);
+        holder.title=(TextView) rowView.findViewById(R.id.review_exam);
+        holder.title.setText(users.get(position).title);
+
 //        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
 //        holder.date.setText(users.get(position).date);
 //        holder.title.setText(users.get(position).title);

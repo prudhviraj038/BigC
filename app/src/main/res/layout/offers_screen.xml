@@ -74,6 +74,24 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/viewFlipper" >
 
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/whitedivider2"
+                    android:showDividers="middle"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginBottom="10dp">
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/offer_list"
+                        android:divider="#00000000" />
+                </LinearLayout>
+
                 <RelativeLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
@@ -135,23 +153,6 @@
                         android:src="@drawable/missedcustomer_image" />
                 </RelativeLayout>
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:divider="@drawable/whitedivider2"
-                    android:showDividers="middle"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginRight="70dp"
-                    android:layout_marginBottom="10dp">
-
-                    <ListView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/offer_list"
-                        android:divider="#00000000" />
-                </LinearLayout>
             </ViewFlipper>
 
         </LinearLayout>

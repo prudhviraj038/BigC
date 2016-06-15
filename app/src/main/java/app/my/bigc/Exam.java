@@ -9,11 +9,14 @@ import java.util.ArrayList;
 /**
  * Created by Chinni on 10-06-2016.
  */
-public class Exam {
+public class Exam implements java.io.Serializable{
     String id,title;
     JSONArray jsonArray;
     ArrayList<Question> questions;
+    JSONObject jsonObject;
+
     Exam(JSONObject jsonObject){
+        this.jsonObject = jsonObject;
         questions=new ArrayList<>();
         try {
             id=jsonObject.getString("id");
@@ -27,7 +30,7 @@ public class Exam {
             e.printStackTrace();
         }
     }
-    public  class Question{
+    public  class Question implements java.io.Serializable{
         String id,que,ans1,ans2,ans3,ans4,correct;
         Question(JSONObject json_question){
             try {
