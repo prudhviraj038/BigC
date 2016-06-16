@@ -258,7 +258,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
     }
     public  void send_missed_customer_feedback(){
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("please wait.. we are processing your order");
+        progressDialog.setMessage("please wait.. we are processing");
         progressDialog.show();
         progressDialog.setCancelable(false);
         String url = Settings.SERVER_URL+"missed-customer.php?";
