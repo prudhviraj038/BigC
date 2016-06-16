@@ -33,6 +33,7 @@ public class Examresult_Activity extends Activity {
         reviewexam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(Examresult_Activity.this, Employee_exam_Activity.class);
 
 
             }
