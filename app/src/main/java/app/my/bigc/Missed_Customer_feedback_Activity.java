@@ -15,15 +15,19 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by sriven on 6/7/2016.
@@ -170,8 +174,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
-                         finish();
+                    send_missed_customer_feedback();
+//                    Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
@@ -250,5 +255,61 @@ public class Missed_Customer_feedback_Activity extends Activity {
         });
         // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+    public  void send_missed_customer_feedback(){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("please wait.. we are processing your order");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        String url = Settings.SERVER_URL+"missed-customer.php?";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(progressDialog!=null)
+                    progressDialog.dismiss();
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    String reply=jsonObject.getString("status");
+                    if(reply.equals("Success")) {
+                        String msg = jsonObject.getString("message");
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                    else {
+                        String msg=jsonObject.getString("message");
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if(progressDialog!=null)
+                            progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("member_id",Settings.get_emp_id(getApplicationContext()));
+                params.put("name",customer_str);
+                params.put("phone",contact_str);
+                params.put("email",email_str);
+                params.put("requirement",requirement_str);
+                params.put("type",mobile_acs);
+                params.put("brand",brand_id);
+                params.put("model",model_id);
+                params.put("reason",reason_str);
+                params.put("suggestions",suggestions_str);
+                return params;
+            }
+        };
+        AppController.getInstance().addToRequestQueue(stringRequest);
     }
 }

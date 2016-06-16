@@ -16,15 +16,19 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by sriven on 6/13/2016.
@@ -183,11 +187,8 @@ public class CustomerFeedback extends Activity {
                     Toast.makeText(CustomerFeedback.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(CustomerFeedback.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
-                    Intent intent;
-                    intent = new Intent(CustomerFeedback.this,FeedBack_Activity.class);
-                    startActivity(intent);
-                    finish();
+//                    Toast.makeText(CustomerFeedback.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+                    send_customer_feedback();
                 }
 
             }
@@ -338,4 +339,65 @@ public class CustomerFeedback extends Activity {
         // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
+    public  void send_customer_feedback(){
+    final ProgressDialog progressDialog = new ProgressDialog(this);
+    progressDialog.setMessage("please wait.. we are processing");
+    progressDialog.show();
+    progressDialog.setCancelable(false);
+    String url = Settings.SERVER_URL+"customer-feedback.php?";
+
+    StringRequest stringRequest = new StringRequest(Request.Method.POST, url,new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            if(progressDialog!=null)
+                progressDialog.dismiss();
+            try {
+                JSONObject jsonObject=new JSONObject(response);
+                String reply=jsonObject.getString("status");
+                if(reply.equals("Success")) {
+                    String msg = jsonObject.getString("message");
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    Intent intent;
+                    intent = new Intent(CustomerFeedback.this,FeedBack_Activity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    String msg=jsonObject.getString("message");
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if(progressDialog!=null)
+                        progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }){
+        @Override
+        protected Map<String,String> getParams(){
+            Map<String,String> params = new HashMap<String, String>();
+            params.put("member_id",Settings.get_emp_id(getApplicationContext()));
+            params.put("name",customer_str);
+            params.put("phone",contact_str);
+            params.put("email",email_str);
+            params.put("newspaper",newspaper_str);
+            params.put("visited", visited_str);
+            Log.e("visit", visited_str);
+            params.put("computerised", bill_str);
+            Log.e("bill", bill_str);
+            params.put("store_ambience",storeambiance_id);
+            params.put("staff_response",staffresponce_id);
+            params.put("suggestions",suggestion_str);
+            return params;
+        }
+    };
+    AppController.getInstance().addToRequestQueue(stringRequest);
+}
 }

@@ -22,6 +22,8 @@ public class Settings {
    static String NAME="name";
    static String S_TYPE="s_type";
    static String S_NAME="s_name";
+
+
    public static void set_store(Context context, String area_id,String type,String name) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       SharedPreferences.Editor editor = sharedPreferences.edit();

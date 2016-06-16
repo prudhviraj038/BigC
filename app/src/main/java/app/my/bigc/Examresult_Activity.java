@@ -1,6 +1,7 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -39,6 +40,7 @@ public class Examresult_Activity extends Activity {
         backtoresults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
             }
         });
