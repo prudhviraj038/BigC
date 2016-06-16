@@ -223,8 +223,26 @@ public class Employee_exam_Activity extends Activity {
                     progressDialog.dismiss();
                 Log.e("reponse", jsonObject.toString());
                 if(status.equals("0")) {
-                    countDownTimer.start();
+                    Set_option(0);
+                    temp = 0;
+                    if (i < exams.questions.size()) {
+                        question.setText(exams.questions.get(i).que);
+                        ans1.setText(exams.questions.get(i).ans1);
+                        ans2.setText(exams.questions.get(i).ans2);
+                        ans3.setText(exams.questions.get(i).ans3);
+                        ans4.setText(exams.questions.get(i).ans4);
+                        question_count.setText(String.valueOf(i + 1) + "/" + String.valueOf(exams.questions.size()));
+                        countDownTimer.start();
+
+                    } else {
+
+                        update_exam_status("1");
+
+                    }
+
+
                     all_views.setVisibility(View.VISIBLE);
+
                 }
                 else {
                     Intent intent = new Intent(Employee_exam_Activity.this, Examresult_Activity.class);
