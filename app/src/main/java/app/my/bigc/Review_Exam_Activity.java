@@ -16,7 +16,7 @@ public class Review_Exam_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_exam_screen);
         next = (LinearLayout)findViewById(R.id.review_next);
-        backtoresult = (LinearLayout)findViewById(R.id.back_offers);
+        backtoresult = (LinearLayout)findViewById(R.id.review_results);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
