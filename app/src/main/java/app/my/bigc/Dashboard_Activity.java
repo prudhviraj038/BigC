@@ -133,7 +133,7 @@ public class Dashboard_Activity extends Activity {
                     intent.putExtra("goto","reexam");
                     startActivity(intent);
                 }else {
-                Intent intent = new Intent(Dashboard_Activity.this,Examresult_Activity.class);
+                Intent intent = new Intent(Dashboard_Activity.this,Exams_list_Activity.class);
                 startActivity(intent);
             }}
         });

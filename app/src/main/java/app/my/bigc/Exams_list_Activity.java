@@ -40,17 +40,23 @@ public class Exams_list_Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.e("reponse", exams.get(position).title);
-                if(exams.get(position).questions.size()==0){
-                    Toast.makeText(Exams_list_Activity.this,"No Questions added to this Exam",Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
+                if (exams.get(position).status.equals("Completed")) {
+                    Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
                     intent.putExtra("exam", exams.get(position).jsonObject.toString());
                     startActivity(intent);
                 }
+                else {
+                    if (exams.get(position).questions.size() == 0) {
+                        Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
+                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
+                        startActivity(intent);
+                    }
+                }
             }
         });
-        getQuestions();
+
 
     }
 
@@ -70,6 +76,7 @@ public class Exams_list_Activity extends Activity {
                 if(progressDialog!=null)
                     progressDialog.dismiss();
                 Log.e("reponse", jsonArray.toString());
+                exams.clear();
                 try {
                     jsonArray = jsonArray.getJSONObject(0).getJSONArray("exams");
                     for (int i=0;i<jsonArray.length();i++){
@@ -98,5 +105,9 @@ public class Exams_list_Activity extends Activity {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
-
-}
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getQuestions();
+    }
+    }

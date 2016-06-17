@@ -101,7 +101,7 @@ public class BigC_Login_Activity extends Activity {
                                     intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
 
                                 else if(getIntent().getStringExtra("goto").equals("reexam"))
-                                    intent = new Intent(BigC_Login_Activity.this, Examresult_Activity.class);
+                                    intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
 
                                 else if(getIntent().getStringExtra("goto").equals("missed"))
                                     intent = new Intent(BigC_Login_Activity.this, Missed_Customer_feedback_Activity.class);

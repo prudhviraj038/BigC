@@ -62,6 +62,26 @@ public class ExamAdapter extends BaseAdapter{
         holder.title=(TextView) rowView.findViewById(R.id.review_exam);
         holder.title.setText(users.get(position).title);
         holder.score.setText(users.get(position).correctt+ "/" +users.get(position).total);
+        if(!users.get(position).status.equals("Completed")){
+            holder.score.setText("Write this exam now");
+        }
+        String CurrentString = users.get(position).started;
+        String[] separated = CurrentString.split(" ");
+        if(separated.length>0)
+            holder.date.setText(separated[0]);
+        else
+            holder.date.setText("");
+
+        String CurrentString2 = users.get(position).started;
+        String CurrentString3 = users.get(position).ended;
+        String[] separated2 = CurrentString2.split(" ");
+        String[] separated3 = CurrentString3.split(" ");
+
+        if(separated2.length>1 && separated3.length>1)
+            holder.time.setText(separated2[1]+" - "+separated3[1] );
+        else
+            holder.time.setText("");
+
 
 //        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
 //        holder.date.setText(users.get(position).date);
