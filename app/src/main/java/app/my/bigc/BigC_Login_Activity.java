@@ -96,6 +96,7 @@ public class BigC_Login_Activity extends Activity {
                                 Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
                                 Settings.set_emp_id(getApplicationContext(), mem_id, login_type, name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
+
                                 if(getIntent().getStringExtra("goto").equals("exam"))
                                     intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
 

@@ -61,6 +61,7 @@ public class ExamAdapter extends BaseAdapter{
         holder.date=(TextView) rowView.findViewById(R.id.review_date);
         holder.title=(TextView) rowView.findViewById(R.id.review_exam);
         holder.title.setText(users.get(position).title);
+        holder.score.setText(users.get(position).correctt+ "/" +users.get(position).total);
 
 //        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
 //        holder.date.setText(users.get(position).date);

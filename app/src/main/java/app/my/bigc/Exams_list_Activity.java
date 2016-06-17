@@ -61,7 +61,7 @@ public class Exams_list_Activity extends Activity {
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"questions.php?member="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"member_exams.php?member_id="+Settings.get_emp_id(getApplicationContext());
         Log.e("url", url);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 
@@ -71,6 +71,7 @@ public class Exams_list_Activity extends Activity {
                     progressDialog.dismiss();
                 Log.e("reponse", jsonArray.toString());
                 try {
+                    jsonArray = jsonArray.getJSONObject(0).getJSONArray("exams");
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
                         Exam exam=new Exam(tmp_json);
