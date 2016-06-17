@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 public class Dashboard_Activity extends Activity {
     ImageView employee,customer,menu;
-    LinearLayout home,customerfeedback,missedcustomerfeedback,employeexam,result,notifications,logout;
+    LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout;
     TextView store_name;
     DrawerLayout mDrawerLayout;
     @Override
@@ -30,6 +30,7 @@ public class Dashboard_Activity extends Activity {
         home = (LinearLayout)findViewById(R.id.home_layout);
         customerfeedback = (LinearLayout)findViewById(R.id.customer_layout);
         missedcustomerfeedback = (LinearLayout)findViewById(R.id.missedcustomer_layout);
+        missedcustomerlist = (LinearLayout)findViewById(R.id.missedcustomerlist_layout);
         employeexam = (LinearLayout)findViewById(R.id.employeeexam_layout);
         result = (LinearLayout)findViewById(R.id.result_layout);
         notifications = (LinearLayout)findViewById(R.id.notification_layout);
@@ -105,6 +106,20 @@ public class Dashboard_Activity extends Activity {
 
                 } else {
                     Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_feedback_Activity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        missedcustomerlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")) {
+                    Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_List_Activity.class);
+                    intent.putExtra("type", "emp");
+                    intent.putExtra("goto", "reexam");
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(Dashboard_Activity.this,Missed_Customer_List_Activity.class);
                     startActivity(intent);
                 }
             }
