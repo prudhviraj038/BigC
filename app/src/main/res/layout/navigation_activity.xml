@@ -109,242 +109,283 @@
         android:id="@+id/linearLayout2"
         android:layout_marginRight="100dp"
         android:gravity="start"
-        android:background="#ffffff"
-        android:divider="@drawable/nav_divider"
-        android:showDividers="beginning|middle|end">
+        android:background="#ffffff">
 
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView3"
+            android:fillViewport="true">
 
-            <ImageView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/imageView56"
-                android:src="@drawable/nav_background"
-                android:scaleType="centerCrop" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KUKATPALLY"
-                android:id="@+id/store_name_navigation"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:textSize="40dp"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
-        </RelativeLayout>
+                android:divider="@drawable/nav_divider"
+                android:showDividers="middle">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/home_layout">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView7"
-                android:src="@drawable/home_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp"
-                android:adjustViewBounds="false" />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageView56"
+                        android:src="@drawable/nav_background"
+                        android:scaleType="centerCrop" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:id="@+id/textView11"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KUKATPALLY"
+                        android:id="@+id/store_name_navigation"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="40dp"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                </RelativeLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/customer_layout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/home_layout">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView36"
-                android:src="@drawable/customerfeedback_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView7"
+                        android:src="@drawable/home_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp"
+                        android:adjustViewBounds="false" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Customer Feedback"
-                android:id="@+id/textView50"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:id="@+id/textView11"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/missedcustomer_layout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/customer_layout">
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView37"
-                android:src="@drawable/missedcustomer_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView36"
+                        android:src="@drawable/customerfeedback_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Missed Customer Feedback"
-                android:id="@+id/textView51"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Feedback"
+                        android:id="@+id/textView50"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/missedcustomerlist_layout" >
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/missedcustomer_layout">
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView58"
-                android:src="@drawable/missedcustomer_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView37"
+                        android:src="@drawable/missedcustomer_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Missed Customer List"
-                android:id="@+id/textView19"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Missed Customer Feedback"
+                        android:id="@+id/textView51"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/employeeexam_layout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/missedcustomerlist_layout" >
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView45"
-                android:src="@drawable/employeexam_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView57"
+                        android:src="@drawable/missedcustomer_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Employee Exam"
-                android:id="@+id/textView52"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Missed Customer List"
+                        android:id="@+id/textView16"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/result_layout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/employeeexam_layout">
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView46"
-                android:src="@drawable/exam_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView45"
+                        android:src="@drawable/employeexam_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Exam Results"
-                android:id="@+id/textView53"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Employee Exam"
+                        android:id="@+id/textView52"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/notification_layout">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/result_layout">
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView47"
-                android:src="@drawable/notification_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView46"
+                        android:src="@drawable/exam_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notifications/Offers"
-                android:id="@+id/textView54"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exam Results"
+                        android:id="@+id/textView53"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:id="@+id/logout" >
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/notification_layout">
 
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="60dp"
-                android:id="@+id/imageView4"
-                android:src="@drawable/notification_icon"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="25dp" />
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView47"
+                        android:src="@drawable/notification_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LogOut"
-                android:id="@+id/textView13"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notifications/Offers"
+                        android:id="@+id/textView54"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/logout"
+                    android:visibility="visible">
+
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView4"
+                        android:src="@drawable/logout_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LogOut (Employee)"
+                        android:id="@+id/textView13"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:id="@+id/logout_store"
+                    android:visibility="visible" >
+
+                    <ImageView
+                        android:layout_width="40sp"
+                        android:layout_height="60dp"
+                        android:id="@+id/imageView66"
+                        android:src="@drawable/logout_icon"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="25dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LogOut (Store)"
+                        android:id="@+id/textView23"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

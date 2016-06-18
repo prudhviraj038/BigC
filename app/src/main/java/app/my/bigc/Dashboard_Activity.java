@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 public class Dashboard_Activity extends Activity {
     ImageView employee,customer,menu;
-    LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout;
+    LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout,logout_store;
     TextView store_name;
     DrawerLayout mDrawerLayout;
     @Override
@@ -35,6 +35,7 @@ public class Dashboard_Activity extends Activity {
         result = (LinearLayout)findViewById(R.id.result_layout);
         notifications = (LinearLayout)findViewById(R.id.notification_layout);
         logout=(LinearLayout) findViewById(R.id.logout);
+        logout_store =(LinearLayout) findViewById(R.id.logout_store);
         if(Settings.get_emp_id(this).equals("-1")){
 
             logout.setVisibility(View.GONE);
@@ -47,6 +48,20 @@ public class Dashboard_Activity extends Activity {
                 logout.setVisibility(View.GONE);
                 if(mDrawerLayout!=null)
                     mDrawerLayout.closeDrawer(GravityCompat.START);
+
+            }
+        });
+        logout_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Settings.set_store(Dashboard_Activity.this,"-1","-1","-1");
+                logout.setVisibility(View.GONE);
+                if(mDrawerLayout!=null)
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
+                intent.putExtra("type","0");
+                startActivity(intent);
+                finish();
 
             }
         });
