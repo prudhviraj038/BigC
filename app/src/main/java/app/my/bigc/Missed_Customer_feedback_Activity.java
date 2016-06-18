@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,15 +34,16 @@ import java.util.Map;
 public class Missed_Customer_feedback_Activity extends Activity {
     String brand_id="0";
     String model_id="0";
-    TextView selectbrand,selectmodel;
+    TextView selectbrand,selectmodel,no_of_days_tv;
     ArrayList<String> brands_id;
     ArrayList<String> brands_title;
     ArrayList<String> models_id;
     ArrayList<String> models_title;
+    ArrayList<String> no_of_days;
     EditText customername,contactnumber,emailid,customerrequirement,reason,suggestions;
     RadioButton mobile,accessories;
-    LinearLayout submit,select_brand_ll,select_model_ll;
-    String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str,mobile_acs;
+    LinearLayout submit,select_brand_ll,select_model_ll,no_of_days_ll;
+    String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str,mobile_acs,no_days;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +70,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
 
             }
         });
+        no_of_days= new ArrayList<String>();
+        for(int i=1;i<=10;i++)
+        no_of_days.add(String.valueOf(i));
         brands_id= new ArrayList<String>();
         brands_title=new ArrayList<String>();
         models_id= new ArrayList<String>();
@@ -80,6 +83,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
         customerrequirement = (EditText)findViewById(R.id.customer_req);
         selectbrand = (TextView)findViewById(R.id.select_brand);
         selectmodel = (TextView)findViewById(R.id.select_model);
+        no_of_days_tv = (TextView)findViewById(R.id.no_of_days_tv);
         reason = (EditText)findViewById(R.id.reason);
         suggestions = (EditText)findViewById(R.id.suggestions);
         mobile = (RadioButton)findViewById(R.id.mobile);
@@ -131,6 +135,28 @@ public class Missed_Customer_feedback_Activity extends Activity {
                     final AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+            }
+        });
+        no_of_days_ll = (LinearLayout)findViewById(R.id.no_of_dayss);
+        no_of_days_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
+                    builder.setTitle("Select no of days");
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, no_of_days);
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+
+                            no_days = no_of_days.get(which);
+                            no_of_days_tv.setText(no_of_days.get(which));
+                        }
+                    });
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
             }
         });
 

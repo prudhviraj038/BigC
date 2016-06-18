@@ -210,6 +210,30 @@
                             android:adjustViewBounds="true" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#d3d4d5"
+                        android:id="@+id/no_of_dayss" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/no_of_days_tv"
+                            android:padding="15dp"
+                            android:hint="Select Brand"
+                            android:layout_weight="1"
+                            android:text="Number of days to fulfill" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/imageView68"
+                            android:src="@drawable/arrow"
+                            android:adjustViewBounds="true" />
+                    </LinearLayout>
+
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
