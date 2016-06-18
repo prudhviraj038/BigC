@@ -44,7 +44,6 @@ public class Missed_Customer_List_Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
             }
         });
 
@@ -57,7 +56,7 @@ public class Missed_Customer_List_Activity extends Activity {
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"member_exams.php?member_id="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"missed-customer-list.php?member_id=="+Settings.get_emp_id(getApplicationContext());
         Log.e("url", url);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 

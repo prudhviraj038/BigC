@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by sriven on 5/26/2016.
  */
 public class Missed_Customer implements Serializable {
-    String name,number,brand,model;
+    String id,name,phone,email,requirement,type,brand,model,reason,suggestions,status;
 
 
     Missed_Customer(JSONObject object){
