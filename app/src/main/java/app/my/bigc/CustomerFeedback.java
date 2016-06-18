@@ -127,6 +127,8 @@ public class CustomerFeedback extends Activity {
 
                     }
                 });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         purchase_ll.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +145,8 @@ public class CustomerFeedback extends Activity {
 
                     }
                 });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
         selectstoreambiance = (TextView)findViewById(R.id.store_ambiance);

@@ -104,7 +104,8 @@
                         android:hint="Customer Name"
                         android:autoText="false"
                         android:padding="15dp"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -115,7 +116,8 @@
                         android:hint="Contact Number"
                         android:phoneNumber="false"
                         android:inputType="phone"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -125,7 +127,8 @@
                         android:padding="15dp"
                         android:hint="Email Id"
                         android:inputType="textEmailAddress"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -134,12 +137,13 @@
                         android:background="#d3d4d5"
                         android:padding="15dp"
                         android:hint="Customer Requirement"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -147,13 +151,13 @@
                             android:text="Mobile"
                             android:id="@+id/mobile"
                             android:textColor="#ffffff"
-                            android:textSize="30sp" />
+                            android:textSize="18sp"
+                            android:elegantTextHeight="false" />
 
                         <LinearLayout
                             android:orientation="horizontal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"></LinearLayout>
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"></LinearLayout>
 
                         <RadioButton
                             android:layout_width="wrap_content"
@@ -161,7 +165,7 @@
                             android:text="Accessories"
                             android:id="@+id/accessories"
                             android:textColor="#ffffff"
-                            android:textSize="30sp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -177,7 +181,8 @@
                             android:id="@+id/select_brand"
                             android:padding="15dp"
                             android:hint="Select Brand"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -200,7 +205,8 @@
                             android:id="@+id/select_model"
                             android:padding="15dp"
                             android:hint="Select Model"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -240,7 +246,8 @@
                         android:id="@+id/reason"
                         android:background="#d3d4d5"
                         android:padding="15dp"
-                        android:hint="Reasons For Not Purchasing" />
+                        android:hint="Reasons For Not Purchasing"
+                        android:textSize="18sp" />
 
                     <EditText
                         android:layout_width="match_parent"
@@ -248,7 +255,8 @@
                         android:id="@+id/suggestions"
                         android:background="#d3d4d5"
                         android:padding="15dp"
-                        android:hint="Suggestions" />
+                        android:hint="Suggestions"
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:orientation="horizontal"
