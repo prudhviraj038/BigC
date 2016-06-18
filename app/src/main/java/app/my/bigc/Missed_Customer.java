@@ -15,7 +15,8 @@ public class Missed_Customer implements Serializable {
     Missed_Customer(JSONObject object){
         try {
             name= object.getString("name");
-            number = object.getString("number");
+            phone = object.getString("number");
+            phone = object.getString("number");
             brand = object.getString("brand");
             model = object.getString("model");
 
