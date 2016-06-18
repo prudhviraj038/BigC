@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class OfferAdapter extends BaseAdapter{
@@ -25,7 +27,7 @@ public class OfferAdapter extends BaseAdapter{
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return 10;
+        return users.size();
     }
 
     @Override
@@ -59,7 +61,9 @@ public class OfferAdapter extends BaseAdapter{
         holder.act_img=(ImageView) rowView.findViewById(R.id.offer_image);
         holder.date=(TextView) rowView.findViewById(R.id.offer_date);
         holder.title=(TextView) rowView.findViewById(R.id.offer_title);
-//        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
+        holder.title.setText(users.get(position).title);
+        holder.date.setText(users.get(position).date);
+        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
 //        holder.date.setText(users.get(position).date);
 //        holder.title.setText(users.get(position).title);
 

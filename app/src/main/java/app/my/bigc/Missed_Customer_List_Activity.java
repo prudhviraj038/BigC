@@ -148,7 +148,7 @@ public class Missed_Customer_List_Activity extends Activity {
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"missed-customer-list.php?member_id="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"missed-customer-update.php?missed_customer_id="+missedcustomers.get(posi).id;
         Log.e("url", url);
         final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
 

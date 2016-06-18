@@ -14,12 +14,12 @@ public class Offers implements Serializable {
 
     Offers(JSONObject object){
         try {
-            date = object.getString("date");
-            thumb = object.getString("thumb");
+            date = object.getString("expiry_date");
+            thumb = object.getString("image");
             image = object.getString("image");
             title = object.getString("title");
-            discription = object.getString("discription");
-            expirydate = object.getString("expirydate");
+            discription = object.getString("message");
+            expirydate = object.getString("expiry_date");
 
 
         } catch (JSONException e) {

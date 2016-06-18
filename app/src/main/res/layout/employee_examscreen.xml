@@ -85,21 +85,15 @@
                     android:gravity="center">
 
                     <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/employee_roundedcorners"
                         android:gravity="center_vertical"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/editText12"
-                            android:background="#ff2eff12"
-                            android:text="        " />
+                        android:layout_weight="1"
+                        android:id="@+id/progress_bar">
 
                     </LinearLayout>
 

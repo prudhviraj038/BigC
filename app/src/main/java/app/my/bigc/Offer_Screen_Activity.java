@@ -43,7 +43,7 @@ public class Offer_Screen_Activity extends Activity {
         offers=new ArrayList<>();
         offersdisplay = (LinearLayout)findViewById(R.id.offers_dispaly);
         offer_details = (ViewFlipper)findViewById(R.id.viewFlipper);
-        title = (TextView)findViewById(R.id.offer_title);
+        title = (TextView)findViewById(R.id.offers_title);
         discription = (TextView)findViewById(R.id.offers_discription);
         expiry = (TextView)findViewById(R.id.offers_expiry);
         expirydate = (TextView)findViewById(R.id.offers_expiry_date);
@@ -55,12 +55,12 @@ public class Offer_Screen_Activity extends Activity {
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Log.e("reponse", offers.get(position).title);
+                Log.e("reponse", offers.get(position).title);
                 offer_details.setDisplayedChild(1);
-//                title.setText(offers.get(position).title);
-//                Picasso.with(getApplicationContext()).load(offers.get(position).image).into(offers_image);
-//                discription.setText(offers.get(position).discription);
-//                expirydate.setText(offers.get(position).expirydate);
+               title.setText(offers.get(position).title);
+               Picasso.with(getApplicationContext()).load(offers.get(position).image).into(offers_image);
+              discription.setText(offers.get(position).discription);
+                expirydate.setText(offers.get(position).expirydate);
             }
         });
         getOffers();
@@ -78,7 +78,7 @@ public class Offer_Screen_Activity extends Activity {
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"offers.php?member="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"offers.php";
         Log.e("url", url);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 

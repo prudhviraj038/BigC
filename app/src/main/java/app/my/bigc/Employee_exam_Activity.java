@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,20 +31,22 @@ import java.util.ArrayList;
 public class Employee_exam_Activity extends Activity {
     Exam exams;
     TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count;
-    LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll;
+    LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll,progress_bar;
     int i=0,temp=0;
     int corect_count=0,wrong_count=0;
     String correct="0";
     TextView mTextField;
     CountDownTimer countDownTimer;
     LinearLayout all_views ;
-
+    ArrayList<TextView> progress_blocks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_examscreen);
         mTextField = (TextView) findViewById(R.id.time_exam);
+        progress_bar = (LinearLayout) findViewById(R.id.progress_bar);
+        progress_blocks=new ArrayList<>();
         all_views = (LinearLayout) findViewById(R.id.all_views);
         all_views.setVisibility(View.GONE);
         question_count = (TextView) findViewById(R.id.question_count);
@@ -234,6 +237,16 @@ public class Employee_exam_Activity extends Activity {
                         question_count.setText(String.valueOf(i + 1) + "/" + String.valueOf(exams.questions.size()));
                         countDownTimer.start();
 
+                        for(int i =0 ;i<exams.questions.size();i++){
+                            TextView temp = new TextView(Employee_exam_Activity.this);
+                            temp.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1f));
+                            temp.setBackgroundColor(Color.parseColor("#ff2eff12"));
+                            temp.setVisibility(View.INVISIBLE);
+                            progress_blocks.add(temp);
+                            progress_bar.addView(progress_blocks.get(i));
+                        }
+                        progress_blocks.get(i).setVisibility(View.VISIBLE);
+
                     } else {
 
                         update_exam_status("1");
@@ -309,6 +322,7 @@ public class Employee_exam_Activity extends Activity {
                             question_count.setText(String.valueOf(i + 1) + "/" + String.valueOf(exams.questions.size()));
                             countDownTimer.cancel();
                             countDownTimer.start();
+                            progress_blocks.get(i).setVisibility(View.VISIBLE);
 
                         } else {
 
