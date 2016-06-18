@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -44,9 +43,10 @@ public class CustomerFeedback extends Activity {
     ArrayList<String> staffresponces_title;
     ArrayList<String> storeambiances_id;
     ArrayList<String> storeambiances_title;
+    ArrayList<String> visit;
     EditText selectnewspaper;
     TextView selectstaffresponce,selectstoreambiance;
-    LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll;
+    LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll,visit_ll,purchase_ll;
     String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str,visited_str,bill_str;
     RadioButton visited_yes,visited_no,bill_yes,bill_no;
     @Override
@@ -96,7 +96,9 @@ public class CustomerFeedback extends Activity {
                 bill_str="no";
             }
         });
-
+        visit= new ArrayList<String>();
+        visit.add("Yes");
+        visit.add("No");
         newspapers_id= new ArrayList<String>();
         newspapers_title=new ArrayList<String>();
         staffresponces_id= new ArrayList<String>();
@@ -109,6 +111,40 @@ public class CustomerFeedback extends Activity {
         suggestion = (EditText)findViewById(R.id.customer_suggestions);
         selectnewspaper = (EditText)findViewById(R.id.newspaperedit);
         selectstaffresponce = (TextView)findViewById(R.id.staff_responce);
+        visit_ll = (LinearLayout)findViewById(R.id.visted_ll);
+        purchase_ll = (LinearLayout)findViewById(R.id.bill_purchase_ll);
+        visit_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+//                builder.setTitle("CHOOSE Newspaper");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, visit);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        visited_str = visit.get(which);
+
+                    }
+                });
+            }
+        });
+        purchase_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+//                builder.setTitle("CHOOSE Newspaper");
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, visit);
+                builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+                        bill_str = visit.get(which);
+
+                    }
+                });
+            }
+        });
         selectstoreambiance = (TextView)findViewById(R.id.store_ambiance);
         news_paper_ll = (LinearLayout)findViewById(R.id.news_paper_ll);
         news_paper_ll.setOnClickListener(new View.OnClickListener() {
