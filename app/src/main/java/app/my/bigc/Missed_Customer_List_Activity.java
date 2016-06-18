@@ -86,6 +86,7 @@ public class Missed_Customer_List_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 viewFlipper.setDisplayedChild(0);
+                getMissedcustomer();
             }
         });
         statua_ll.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +115,7 @@ public class Missed_Customer_List_Activity extends Activity {
                     progressDialog.dismiss();
                 Log.e("reponse", jsonArray.toString());
                 try {
+                    missedcustomers.clear();
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
                         Missed_Customer missedcustomer=new Missed_Customer(tmp_json);
