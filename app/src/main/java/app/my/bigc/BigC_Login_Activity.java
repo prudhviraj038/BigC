@@ -106,6 +106,9 @@ public class BigC_Login_Activity extends Activity {
                                 else if(getIntent().getStringExtra("goto").equals("missed"))
                                     intent = new Intent(BigC_Login_Activity.this, Missed_Customer_feedback_Activity.class);
 
+                                else if(getIntent().getStringExtra("goto").equals("missed_list"))
+                                    intent = new Intent(BigC_Login_Activity.this, Missed_Customer_List_Activity.class);
+
                                 startActivity(intent);
                                 finish();
 

@@ -114,9 +114,9 @@ public class Dashboard_Activity extends Activity {
             @Override
             public void onClick(View view) {
                 if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")) {
-                    Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_List_Activity.class);
+                    Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
                     intent.putExtra("type", "emp");
-                    intent.putExtra("goto", "reexam");
+                    intent.putExtra("goto", "missed_list");
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(Dashboard_Activity.this,Missed_Customer_List_Activity.class);

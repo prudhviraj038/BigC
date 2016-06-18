@@ -20,17 +20,19 @@
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" >
+                android:gravity="center">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/missed_name"
                     android:textColor="#000000"
                     android:text="Name:"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:padding="10dp"
+                    android:gravity="center" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -43,29 +45,32 @@
                     android:inputType="date" />
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Number"
                     android:id="@+id/missed_number"
                     android:textSize="20sp"
-                    android:layout_marginLeft="10dp"
                     android:inputType="time"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:padding="10dp"
+                    android:gravity="center" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Brand"
                     android:id="@+id/missed_brand"
                     android:textSize="20sp"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:padding="10dp"
+                    android:gravity="center" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,14 +83,15 @@
                     android:inputType="date" />
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Model"
                     android:id="@+id/missed_model"
                     android:textSize="20sp"
                     android:padding="10dp"
                     android:inputType="number"
-                    android:textColor="#000000" />
+                    android:textColor="#000000"
+                    android:gravity="center" />
             </LinearLayout>
 
         </LinearLayout>

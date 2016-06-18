@@ -24,7 +24,7 @@ public class MissedCustomerAdapter extends BaseAdapter{
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return 10;
+        return missedcustomers.size();
     }
 
     @Override
@@ -42,7 +42,7 @@ public class MissedCustomerAdapter extends BaseAdapter{
     public class Holder
     {
 
-        TextView name,number,brand,model;
+        TextView name,number,brand,model,status;
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -57,7 +57,12 @@ public class MissedCustomerAdapter extends BaseAdapter{
         holder.number=(TextView) rowView.findViewById(R.id.missed_number);
         holder.brand=(TextView) rowView.findViewById(R.id.missed_brand);
         holder.model=(TextView) rowView.findViewById(R.id.missed_model);
-
+        holder.status=(TextView) rowView.findViewById(R.id.missed_open);
+        holder.name.setText("Name : "+missedcustomers.get(position).name);
+        holder.number.setText("Number : "+missedcustomers.get(position).phone);
+        holder.brand.setText("Brand : "+missedcustomers.get(position).brand);
+        holder.model.setText("Model : "+missedcustomers.get(position).model);
+        holder.status.setText(missedcustomers.get(position).status);
 //        Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
 //        holder.date.setText(users.get(position).date);
 //        holder.title.setText(users.get(position).title);
