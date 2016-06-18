@@ -45,7 +45,7 @@ public class OfferAdapter extends BaseAdapter{
     public class Holder
     {
 
-        ImageView offerimage,act_img;
+        ImageView offerimage,act_img,status;
         TextView date,title;
     }
     @Override
@@ -64,6 +64,11 @@ public class OfferAdapter extends BaseAdapter{
         holder.title.setText(users.get(position).title);
         holder.date.setText(users.get(position).date);
         Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
+        holder.status=(ImageView) rowView.findViewById(R.id.offer_status);
+        if(users.get(position).status.equals("Opened"))
+            holder.status.setImageResource(R.drawable.active_img);
+        else
+            holder.status.setImageResource(R.drawable.expired_img);
 //        holder.date.setText(users.get(position).date);
 //        holder.title.setText(users.get(position).title);
 

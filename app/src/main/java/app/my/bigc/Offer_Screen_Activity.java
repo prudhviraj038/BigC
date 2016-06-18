@@ -2,7 +2,6 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.android.volley.Response;
@@ -34,8 +32,9 @@ public class Offer_Screen_Activity extends Activity {
     ListView offer_list;
     LinearLayout backtooffers,offersdisplay;
     TextView title,discription,expiry,expirydate;
-    ImageView offers_image;
+    ImageView offers_image,status;
     ViewFlipper offer_details;
+    int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +51,7 @@ public class Offer_Screen_Activity extends Activity {
         offerAdapter=new OfferAdapter(this,offers);
         offer_list=(ListView)findViewById(R.id.offer_list);
         offer_list.setAdapter(offerAdapter);
+        status=(ImageView)findViewById(R.id.offer_status_page);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,15 +61,22 @@ public class Offer_Screen_Activity extends Activity {
                Picasso.with(getApplicationContext()).load(offers.get(position).image).into(offers_image);
               discription.setText(offers.get(position).discription);
                 expirydate.setText(offers.get(position).expirydate);
+                if(offers.get(position).status.equals("Opened"))
+                    status.setImageResource(R.drawable.active_img);
+                else
+                    status.setImageResource(R.drawable.expired_img);
             }
         });
         getOffers();
+
         backtooffers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 offer_details.setDisplayedChild(0);
+                getOffers();
             }
         });
+
 
     }
     private void getOffers(){
@@ -88,6 +95,7 @@ public class Offer_Screen_Activity extends Activity {
                     progressDialog.dismiss();
                 Log.e("reponse", jsonArray.toString());
                 try {
+                    offers.clear();
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
                         Offers offer=new Offers(tmp_json);
