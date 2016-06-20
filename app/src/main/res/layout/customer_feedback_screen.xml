@@ -248,7 +248,7 @@
                                 android:textSize="20sp"
                                 android:textColor="#000000"
                                 android:background="@drawable/customerfeedback_rounded_corners"
-                                android:hint="Did You Get Computirized Bill For The Purchase?"
+                                android:hint="Did You Get computerized Bill For The Purchase?"
                                 android:padding="15dp"
                                 android:layout_weight="1" />
 

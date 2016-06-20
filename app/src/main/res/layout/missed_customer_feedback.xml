@@ -230,7 +230,8 @@
                             android:padding="15dp"
                             android:hint="Select Brand"
                             android:layout_weight="1"
-                            android:text="Number of days to fulfill" />
+                            android:text="Number of days to fulfill"
+                            android:textSize="18sp" />
 
                         <ImageView
                             android:layout_width="wrap_content"

@@ -69,17 +69,22 @@ public class Missed_Customer_List_Activity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 viewFlipper.setDisplayedChild(1);
                 posi = i;
-                cus_name.setText("Customer Name: " + missedcustomers.get(i).name);
-                cus_number.setText("Customer Number: " + missedcustomers.get(i).phone);
-                cus_mobile.setText("Mobile/Accrssories: " + missedcustomers.get(i).type);
-                cus_email.setText("Email id: " + missedcustomers.get(i).email);
-                cue_requri.setText("Customer Requirement: " + missedcustomers.get(i).requirement);
-                cus_brand.setText("Brand: " + missedcustomers.get(i).brand);
-                cus_model.setText("Model: " + missedcustomers.get(i).model);
-                cus_reason.setText("Reason For Not Purchasing: " + missedcustomers.get(i).reason);
-                cus_suggestions.setText("Suggestions: " + missedcustomers.get(i).suggestions);
-                cus_date.setText("Submitted Date: " + missedcustomers.get(i).date);
-                cus_status.setText(missedcustomers.get(i).status);
+                cus_name.setText       (": " + missedcustomers.get(i).name);
+                cus_number.setText     (": " + missedcustomers.get(i).phone);
+                cus_mobile.setText     (": " + missedcustomers.get(i).type);
+                cus_email.setText      (": " + missedcustomers.get(i).email);
+                cue_requri.setText     (": " + missedcustomers.get(i).requirement);
+                cus_brand.setText      (": " + missedcustomers.get(i).brand);
+                cus_model.setText      (": " + missedcustomers.get(i).model);
+                cus_reason.setText     (": " + missedcustomers.get(i).reason);
+                cus_suggestions.setText(": " + missedcustomers.get(i).suggestions);
+
+                cus_date.setText       ("Submitted Date: " + missedcustomers.get(i).date);
+                if(missedcustomers.get(i).status.equals("Open"))
+                    cus_status.setText("Close");
+                else
+                    cus_status.setText("Open");
+
             }
         });
         back_to_list.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +97,6 @@ public class Missed_Customer_List_Activity extends Activity {
         statua_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(missedcustomers.get(posi).status.equals("Open"))
                 get_status_close();
         }
         });
@@ -162,8 +166,8 @@ public class Missed_Customer_List_Activity extends Activity {
                     String reply=jsonObject.getString("status");
                     if(reply.equals("Success")) {
                         String msg = jsonObject.getString("message");
-                        cus_status.setText("Close");
-                        Toast.makeText(Missed_Customer_List_Activity.this, msg, Toast.LENGTH_SHORT).show();
+                       back_to_list.performClick();
+                     //   Toast.makeText(Missed_Customer_List_Activity.this, msg, Toast.LENGTH_SHORT).show();
                     }else {
                         String msg = jsonObject.getString("message");
                         Toast.makeText(Missed_Customer_List_Activity.this, msg, Toast.LENGTH_SHORT).show();

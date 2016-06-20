@@ -23,7 +23,7 @@ import org.json.JSONObject;
  */
 public class Employee_reexam_Activity extends Activity {
     Exam exams;
-    TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count;
+    TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count,title_reexam;
     LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll,back;
     int i=-1,temp=0;
     int corect_count=0,wrong_count=0;
@@ -38,6 +38,7 @@ public class Employee_reexam_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.employee_reexamscreen);
         mTextField = (TextView) findViewById(R.id.time_exam);
+        title_reexam = (TextView) findViewById(R.id.title_reexam);
         all_views = (LinearLayout) findViewById(R.id.all_views);
 
         question_count = (TextView) findViewById(R.id.question_count);
@@ -46,6 +47,7 @@ public class Employee_reexam_Activity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        title_reexam.setText(exams.title + "  Review");
         ques_name=(TextView)findViewById(R.id.que_name);
         question=(TextView)findViewById(R.id.question);
         ans1=(TextView)findViewById(R.id.ans1);

@@ -16,7 +16,7 @@ import org.json.JSONObject;
 public class Examresult_Activity extends Activity {
     LinearLayout reviewexam,backtoresults;
     String correct,wrong,number;
-    TextView correct_tv,wrong_tv,you_scored,time_tacken,date,time;
+    TextView correct_tv,wrong_tv,you_scored,time_tacken,date,time,title;
     Exam exams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +30,14 @@ public class Examresult_Activity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        title = (TextView) findViewById(R.id.exam_title_review);
         correct_tv=(TextView)findViewById(R.id.correct_answer);
         wrong_tv=(TextView)findViewById(R.id.wrong_answer);
         time_tacken=(TextView)findViewById(R.id.time_taken);
         you_scored=(TextView)findViewById(R.id.you_scored);
         date = (TextView)findViewById(R.id.date_tv);
         time = (TextView)findViewById(R.id.time_tv);
+        title.setText("Your Result For "+exams.title);
         reviewexam = (LinearLayout)findViewById(R.id.review_exam);
         backtoresults = (LinearLayout)findViewById(R.id.back_results);
         correct_tv.setText(correct);
