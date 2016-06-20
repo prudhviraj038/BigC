@@ -2,6 +2,7 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -54,11 +55,19 @@ public class Offer_Screen_Activity extends Activity {
         status=(ImageView)findViewById(R.id.offer_status_page);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Log.e("reponse", offers.get(position).title);
                 offer_details.setDisplayedChild(1);
                title.setText(offers.get(position).title);
                Picasso.with(getApplicationContext()).load(offers.get(position).image).into(offers_image);
+                offers_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Offer_Screen_Activity.this,ImageZoomActivity.class);
+                        intent.putExtra("url",offers.get(position).image);
+                        startActivity(intent);
+                    }
+                });
               discription.setText(offers.get(position).discription);
                 expirydate.setText(offers.get(position).expirydate);
                 if(offers.get(position).status.equals("Opened"))
