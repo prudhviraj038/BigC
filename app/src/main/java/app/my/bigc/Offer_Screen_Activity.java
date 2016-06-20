@@ -88,6 +88,11 @@ public class Offer_Screen_Activity extends Activity {
 
 
     }
+    @Override
+    public void onBackPressed() {
+        if (offer_details.getDisplayedChild()==1)
+            offer_details.setDisplayedChild(0);
+    }
     private void getOffers(){
         String url;
         final ProgressDialog progressDialog = new ProgressDialog(this);
