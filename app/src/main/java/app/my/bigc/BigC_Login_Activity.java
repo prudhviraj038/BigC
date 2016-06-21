@@ -10,12 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by sriven on 5/31/2016.
@@ -88,6 +91,7 @@ public class BigC_Login_Activity extends Activity {
                                 Settings.set_store(getApplicationContext(),store_id,login_type,name);
                                 Intent intent = new Intent(BigC_Login_Activity.this, Dashboard_Activity.class);
                                 startActivity(intent);
+                                update_gcm(store_id);
                                 finish();
                             }else {
                                 String login_type= jsonObject.getJSONObject(0).getString("type");
@@ -135,6 +139,48 @@ public class BigC_Login_Activity extends Activity {
             AppController.getInstance().addToRequestQueue(request);
 
         }
+
+    public void update_gcm(String memberid ) {
+        String url = null;
+        url = CommonUtilities.SERVER_URL+"?store_id="+Settings.get_store(this)+ "&device_token=" + Settings.get_gcmid(this);
+        Log.e("register url", url);
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("response is", jsonObject.toString());
+                try {
+                    Log.e("response is", jsonObject.getString("response"));
+                    JSONArray jsonArray = jsonObject.getJSONArray("response");
+                    JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+                    String result = jsonObject1.getString("status");
+                    if (result.equals("Success")) {
+                        //finish();
+                        //  Toast.makeText(context, Settings.getword(context, "contact_us_message_sent"), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        //  Toast.makeText(context, Settings.getword(context, "please_try_again"), Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("error response is:", error.toString());
+                //  Toast.makeText(context, Settings.getword(context, "please_try_again"), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
+
+
+}
 
 
