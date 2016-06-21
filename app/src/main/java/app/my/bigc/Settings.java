@@ -95,9 +95,15 @@ public class Settings {
       editor.putString(lan_key,user_id);
       editor.commit();
    }
-   public static String get_user_language(Context context){
+   public static String get_append(Context context){
       SharedPreferences  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-      return sharedPreferences.getString(lan_key,"en");
+      if(sharedPreferences.getString(lan_key,"en").equals("en")){
+         return  "";
+      }
+      else{
+         return "_te";
+      }
+
    }
 
    public static String get_gcmid(Context context) {

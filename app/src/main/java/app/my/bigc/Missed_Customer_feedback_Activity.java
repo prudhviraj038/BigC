@@ -220,7 +220,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
                 }
                 else if(model_str.equals("")){
-                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
                 }
                 else if(reason_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the reason", Toast.LENGTH_SHORT).show();
@@ -230,7 +230,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 }
                 else {
                     send_missed_customer_feedback();
-//                    Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
+//                   Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
 
                 }
 

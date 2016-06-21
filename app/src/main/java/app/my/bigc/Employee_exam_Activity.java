@@ -51,7 +51,7 @@ public class Employee_exam_Activity extends Activity {
         all_views.setVisibility(View.GONE);
         question_count = (TextView) findViewById(R.id.question_count);
         try {
-            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")));
+            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")),Employee_exam_Activity.this);
         } catch (JSONException e) {
             e.printStackTrace();
         }

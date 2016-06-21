@@ -23,7 +23,7 @@ public class Examresult_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.examresult);
         try {
-            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")));
+            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")),this);
             number=String.valueOf(exams.questions.size());
             correct=exams.correctt;
             wrong=exams.wrong;

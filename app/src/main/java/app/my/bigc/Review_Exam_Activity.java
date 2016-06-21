@@ -20,7 +20,7 @@ public class Review_Exam_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.review_exam_screen);
         try {
-            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")));
+            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")),this);
 
         } catch (JSONException e) {
             e.printStackTrace();

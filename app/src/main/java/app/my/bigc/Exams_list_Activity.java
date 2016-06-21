@@ -75,7 +75,7 @@ public class Exams_list_Activity extends Activity {
                     jsonArray = jsonArray.getJSONObject(0).getJSONArray("exams");
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
-                        Exam exam=new Exam(tmp_json);
+                        Exam exam=new Exam(tmp_json,Exams_list_Activity.this);
                         exams.add(exam);
                     }
                     offerAdapter.notifyDataSetChanged();

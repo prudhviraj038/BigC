@@ -1,5 +1,7 @@
 package app.my.bigc;
 
+import android.content.Context;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,9 +16,12 @@ public class Exam implements java.io.Serializable{
     JSONArray jsonArray;
     ArrayList<Question> questions;
     JSONObject jsonObject;
-
-    Exam(JSONObject jsonObject){
+    Context context;
+    String append ;
+    Exam(JSONObject jsonObject,Context context){
         this.jsonObject = jsonObject;
+        this.context=context;
+        append = Settings.get_append(context);
         questions=new ArrayList<>();
         try {
             id=jsonObject.getString("exam_id");
@@ -42,11 +47,11 @@ public class Exam implements java.io.Serializable{
         Question(JSONObject json_question){
             try {
                 id=json_question.getString("question_id");
-                que=json_question.getString("question");
-                ans1=json_question.getString("answer1");
-                ans2=json_question.getString("answer2");
-                ans3=json_question.getString("answer3");
-                ans4=json_question.getString("answer4");
+                que=json_question.getString("question"+append);
+                ans1=json_question.getString("answer1"+append);
+                ans2=json_question.getString("answer2"+append);
+                ans3=json_question.getString("answer3"+append);
+                ans4=json_question.getString("answer4"+append);
                 correct=json_question.getString("correct");
                 result =json_question.getString("result");
             } catch (JSONException e) {
