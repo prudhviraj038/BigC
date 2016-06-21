@@ -2,12 +2,14 @@ package app.my.bigc;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -25,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +37,8 @@ import java.util.Map;
 public class Missed_Customer_feedback_Activity extends Activity {
     String brand_id="0";
     String model_id="0";
+    String fulfill_date;
+    private int  mYear, mMonth, mDay,mHour, mMinute;
     TextView selectbrand,selectmodel,no_of_days_tv;
     ArrayList<String> brands_id;
     ArrayList<String> brands_title;
@@ -141,24 +146,48 @@ public class Missed_Customer_feedback_Activity extends Activity {
         no_of_days_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
-                    builder.setTitle("Select no of days");
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, no_of_days);
-                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
-
-                            no_days = no_of_days.get(which);
-                            no_of_days_tv.setText(no_of_days.get(which));
-                        }
-                    });
-
-                    final AlertDialog dialog = builder.create();
-                    dialog.show();
-
+                final Calendar c = Calendar.getInstance();
+                mYear = c.get(Calendar.YEAR);
+                mMonth = c.get(Calendar.MONTH);
+                mDay = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(Missed_Customer_feedback_Activity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        String temp=String.valueOf(monthOfYear);
+                        if(temp.length()<2)
+                            temp="0"+temp;
+                        String temp1=String.valueOf(dayOfMonth);
+                        if(temp1.length()<2)
+                            temp1="0"+temp1;
+                        fulfill_date = year + "-" + temp + "-" +temp1;
+//                        date1 = temp1+"-"+temp+"-"+year;
+                        no_of_days_tv.setText(fulfill_date);
+                    }
+                }, mYear, mMonth, mDay);
+                datePickerDialog.show();
             }
         });
+//        no_of_days_ll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
+//                    builder.setTitle("Select no of days");
+//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, no_of_days);
+//                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+//
+//                            no_days = no_of_days.get(which);
+//                            no_of_days_tv.setText(no_of_days.get(which));
+//                        }
+//                    });
+//
+//                    final AlertDialog dialog = builder.create();
+//                    dialog.show();
+//
+//            }
+//        });
 
         submit = (LinearLayout)findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -333,6 +362,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 params.put("brand",brand_id);
                 params.put("model",model_id);
                 params.put("reason",reason_str);
+                params.put("fulfill_date",fulfill_date);
                 params.put("suggestions",suggestions_str);
                 return params;
             }

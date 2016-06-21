@@ -130,16 +130,6 @@
                         android:singleLine="true"
                         android:textSize="18sp" />
 
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/customer_req"
-                        android:background="#d3d4d5"
-                        android:padding="15dp"
-                        android:hint="Customer Requirement"
-                        android:singleLine="true"
-                        android:textSize="18sp" />
-
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -216,6 +206,16 @@
                             android:adjustViewBounds="true" />
                     </LinearLayout>
 
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/customer_req"
+                        android:background="#d3d4d5"
+                        android:padding="15dp"
+                        android:hint="If Any Other"
+                        android:singleLine="true"
+                        android:textSize="18sp" />
+
                     <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -228,10 +228,10 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/no_of_days_tv"
                             android:padding="15dp"
-                            android:hint="Select Brand"
+                            android:hint="Fulfill Date"
                             android:layout_weight="1"
-                            android:text="Number of days to fulfill"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:text="Fulfill Date" />
 
                         <ImageView
                             android:layout_width="wrap_content"
