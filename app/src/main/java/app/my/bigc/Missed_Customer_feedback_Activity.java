@@ -323,6 +323,7 @@ public class Missed_Customer_feedback_Activity extends Activity {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
+                params.put("store_id",Settings.get_store(getApplicationContext()));
                 params.put("member_id",Settings.get_emp_id(getApplicationContext()));
                 params.put("name",customer_str);
                 params.put("phone",contact_str);

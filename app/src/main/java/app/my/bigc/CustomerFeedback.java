@@ -394,6 +394,7 @@ public class CustomerFeedback extends Activity {
             try {
                 JSONObject jsonObject=new JSONObject(response);
                 String reply=jsonObject.getString("status");
+                Log.e("response",jsonObject.toString());
                 if(reply.equals("Success")) {
                     String msg = jsonObject.getString("message");
                     Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
@@ -423,7 +424,8 @@ public class CustomerFeedback extends Activity {
         @Override
         protected Map<String,String> getParams(){
             Map<String,String> params = new HashMap<String, String>();
-            params.put("member_id",Settings.get_emp_id(getApplicationContext()));
+            params.put("store_id",Settings.get_store(getApplicationContext()));
+            params.put("member_id",Settings.get_store(getApplicationContext()));
             params.put("name",customer_str);
             params.put("phone",contact_str);
             params.put("email",email_str);

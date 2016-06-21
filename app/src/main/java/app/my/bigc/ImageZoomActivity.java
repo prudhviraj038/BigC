@@ -18,6 +18,8 @@ import java.io.InputStream;
 /**
  * Created by HP on 6/20/2016.
  */
+
+
 public class ImageZoomActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

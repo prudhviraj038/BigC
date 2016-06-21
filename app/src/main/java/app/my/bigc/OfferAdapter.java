@@ -62,7 +62,7 @@ public class OfferAdapter extends BaseAdapter{
         holder.date=(TextView) rowView.findViewById(R.id.offer_date);
         holder.title=(TextView) rowView.findViewById(R.id.offer_title);
         holder.title.setText(users.get(position).title);
-        holder.date.setText(users.get(position).date);
+        holder.date.setText("From : "+ users.get(position).startdate+" To :"+ users.get(position).expirydate);
         Picasso.with(context).load(users.get(position).image).into(holder.offerimage);
         holder.status=(ImageView) rowView.findViewById(R.id.offer_status);
         if(users.get(position).status.equals("Opened"))

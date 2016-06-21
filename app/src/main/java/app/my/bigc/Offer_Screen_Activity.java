@@ -27,6 +27,8 @@ import java.util.ArrayList;
 /**
  * Created by sriven on 6/7/2016.
  */
+
+
 public class Offer_Screen_Activity extends Activity {
     OfferAdapter offerAdapter;
     ArrayList<Offers> offers;
@@ -63,13 +65,13 @@ public class Offer_Screen_Activity extends Activity {
                 offers_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Offer_Screen_Activity.this,ImageZoomActivity.class);
-                        intent.putExtra("url",offers.get(position).image);
+                        Intent intent = new Intent(Offer_Screen_Activity.this, ImageZoomActivity.class);
+                        intent.putExtra("url", offers.get(position).image);
                         startActivity(intent);
                     }
                 });
               discription.setText(offers.get(position).discription);
-                expirydate.setText(offers.get(position).expirydate);
+                expirydate.setText("From : " + offers.get(position).startdate+" To : "+offers.get(position).expirydate);
                 if(offers.get(position).status.equals("Opened"))
                     status.setImageResource(R.drawable.active_img);
                 else
@@ -92,7 +94,11 @@ public class Offer_Screen_Activity extends Activity {
     public void onBackPressed() {
         if (offer_details.getDisplayedChild()==1)
             offer_details.setDisplayedChild(0);
+        else
+            super.onBackPressed();
     }
+
+
     private void getOffers(){
         String url;
         final ProgressDialog progressDialog = new ProgressDialog(this);
