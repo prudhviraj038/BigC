@@ -99,4 +99,16 @@ public class Settings {
       SharedPreferences  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       return sharedPreferences.getString(lan_key,"en");
    }
+
+   public static String get_gcmid(Context context) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      return sharedPreferences.getString("gcm_id", "-1");
+   }
+   public static void set_gcmid(Context context, String gcm_id) {
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString("gcm_id",gcm_id);
+      editor.commit();
+   }
+
 }

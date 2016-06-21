@@ -22,16 +22,10 @@ public class SplashActivity extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(Settings.get_store(getApplicationContext()).equals("-1")){
-                    Intent intent = new Intent(SplashActivity.this, BigC_Login_Activity.class);
-                    intent.putExtra("type","0");
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Intent intent = new Intent(SplashActivity.this, Dashboard_Activity.class);
-                    startActivity(intent);
-                    finish();
-                }
+                Intent intent = new Intent(SplashActivity.this, SplashScreen.class);
+                startActivity(intent);
+                finish();
+
             }
         }, 2000);
     }
