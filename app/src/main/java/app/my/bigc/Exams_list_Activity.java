@@ -45,7 +45,7 @@ public class Exams_list_Activity extends Activity {
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("reponse", exams.get(position).title);
+//                Log.e("reponse", exams.get(position).title);
                 show_alert(position);
 
             }
