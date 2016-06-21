@@ -1,13 +1,15 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -28,32 +30,24 @@ public class Exams_list_Activity extends Activity {
     ExamAdapter offerAdapter;
     ArrayList<Exam> exams;
     ListView offer_list;
+    ArrayList<String> lang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.reviewresult);
         exams=new ArrayList<>();
+        lang=new ArrayList<>();
+        lang.add("English");
+        lang.add("Telugu");
         offerAdapter=new ExamAdapter(this,exams);
         offer_list=(ListView)findViewById(R.id.exam_list);
         offer_list.setAdapter(offerAdapter);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("reponse", exams.get(position).title);
-                if (exams.get(position).status.equals("Completed")) {
-                    Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
-                    intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                    startActivity(intent);
-                }
-                else {
-                    if (exams.get(position).questions.size() == 0) {
-                        Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
-                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                        startActivity(intent);
-                    }
-                }
+//                Log.e("reponse", exams.get(position).title);
+                show_alert(position);
+
             }
         });
 
@@ -109,5 +103,49 @@ public class Exams_list_Activity extends Activity {
     protected void onResume() {
         super.onResume();
         getQuestions();
+    }
+    public void show_alert(final int position){
+        AlertDialog.Builder alert1 = new AlertDialog.Builder(this);
+        alert1.setTitle("Choose Language");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lang);
+        alert1.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    Settings.set_user_language(Exams_list_Activity.this, "en");
+                    if (exams.get(position).status.equals("Completed")) {
+                        Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
+                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
+                        startActivity(intent);
+                    } else {
+                        if (exams.get(position).questions.size() == 0) {
+                            Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
+                            intent.putExtra("exam", exams.get(position).jsonObject.toString());
+                            startActivity(intent);
+                        }
+                    }
+                } else {
+                    Settings.set_user_language(Exams_list_Activity.this, "te");
+                    if (exams.get(position).status.equals("Completed")) {
+                        Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
+                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
+                        startActivity(intent);
+                    } else {
+                        if (exams.get(position).questions.size() == 0) {
+                            Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
+                            intent.putExtra("exam", exams.get(position).jsonObject.toString());
+                            startActivity(intent);
+                        }
+                    }
+                }
+            }
+
+        });
+        final AlertDialog dialog = alert1.create();
+        dialog.show();
     }
     }

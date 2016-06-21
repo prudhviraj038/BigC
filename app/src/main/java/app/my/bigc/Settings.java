@@ -22,6 +22,7 @@ public class Settings {
    static String NAME="name";
    static String S_TYPE="s_type";
    static String S_NAME="s_name";
+   static String lan_key = "bigc_lan";
 
 
    public static void set_store(Context context, String area_id,String type,String name) {
@@ -87,5 +88,15 @@ public class Settings {
          res.updateConfiguration(conf, dm);
       }
 
+   }
+   public static void set_user_language(Context context,String user_id){
+      SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      SharedPreferences.Editor editor = sharedPreferences.edit();
+      editor.putString(lan_key,user_id);
+      editor.commit();
+   }
+   public static String get_user_language(Context context){
+      SharedPreferences  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+      return sharedPreferences.getString(lan_key,"en");
    }
 }
