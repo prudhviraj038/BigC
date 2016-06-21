@@ -32,7 +32,7 @@ public class Missed_Customer_List_Activity extends Activity {
     int posi;
     ArrayList<Missed_Customer> missedcustomers;
     TextView name,number,brand,model,cus_name,cus_number,cus_mobile,cus_email,cue_requri,cus_brand,cus_model,cus_reason,
-            cus_suggestions,cus_date,cus_status;
+            cus_suggestions,cus_date,cus_status,fuifill_date;
     ListView missed_listview;
     LinearLayout back_to_list,statua_ll;
     ViewFlipper viewFlipper;
@@ -53,6 +53,7 @@ public class Missed_Customer_List_Activity extends Activity {
         cue_requri = (TextView)findViewById(R.id.cus_req_missed);
         cus_brand = (TextView)findViewById(R.id.cus_brand_missed);
         cus_model = (TextView)findViewById(R.id.cus_model_missed);
+        fuifill_date = (TextView)findViewById(R.id.cus_name_missed);
         cus_reason = (TextView)findViewById(R.id.reason_not_purch);
         cus_suggestions = (TextView)findViewById(R.id.cus_suggestions);
         cus_date = (TextView)findViewById(R.id.submited_date_missed);
@@ -69,16 +70,16 @@ public class Missed_Customer_List_Activity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 viewFlipper.setDisplayedChild(1);
                 posi = i;
-                cus_name.setText       (": " + missedcustomers.get(i).name);
-                cus_number.setText     (": " + missedcustomers.get(i).phone);
-                cus_mobile.setText     (": " + missedcustomers.get(i).type);
-                cus_email.setText      (": " + missedcustomers.get(i).email);
-                cue_requri.setText     (": " + missedcustomers.get(i).requirement);
-                cus_brand.setText      (": " + missedcustomers.get(i).brand);
-                cus_model.setText      (": " + missedcustomers.get(i).model);
-                cus_reason.setText     (": " + missedcustomers.get(i).reason);
-                cus_suggestions.setText(": " + missedcustomers.get(i).suggestions);
-
+                cus_name.setText       (missedcustomers.get(i).name);
+                cus_number.setText     (missedcustomers.get(i).phone);
+                cus_mobile.setText     (missedcustomers.get(i).type);
+                cus_email.setText      (missedcustomers.get(i).email);
+                cue_requri.setText     (missedcustomers.get(i).requirement);
+                cus_brand.setText      (missedcustomers.get(i).brand);
+                cus_model.setText      (missedcustomers.get(i).model);
+                cus_reason.setText     (missedcustomers.get(i).reason);
+                cus_suggestions.setText(missedcustomers.get(i).suggestions);
+                fuifill_date.setText(missedcustomers.get(i).feedback);
                 cus_date.setText       ("Submitted Date: " + missedcustomers.get(i).date);
                 if(missedcustomers.get(i).status.equals("Open"))
                     cus_status.setText("Close");
