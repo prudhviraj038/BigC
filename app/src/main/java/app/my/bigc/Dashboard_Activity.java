@@ -15,7 +15,7 @@ import android.widget.TextView;
  */
 public class Dashboard_Activity extends Activity {
     ImageView employee,customer,menu;
-    LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout,logout_store;
+    LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout,logout_store,change_password;
     TextView store_name;
     DrawerLayout mDrawerLayout;
     @Override
@@ -34,6 +34,7 @@ public class Dashboard_Activity extends Activity {
         employeexam = (LinearLayout)findViewById(R.id.employeeexam_layout);
         result = (LinearLayout)findViewById(R.id.result_layout);
         notifications = (LinearLayout)findViewById(R.id.notification_layout);
+        change_password=(LinearLayout) findViewById(R.id.change_password);
         logout=(LinearLayout) findViewById(R.id.logout);
         logout_store =(LinearLayout) findViewById(R.id.logout_store);
         if(Settings.get_emp_id(this).equals("-1")){
@@ -63,6 +64,16 @@ public class Dashboard_Activity extends Activity {
                 startActivity(intent);
                 finish();
 
+            }
+        });
+        change_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                Intent intent = new Intent(Dashboard_Activity.this, ChangePasswordActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         menu.setOnClickListener(new View.OnClickListener() {
