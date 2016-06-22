@@ -1,11 +1,14 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +27,9 @@ import org.json.JSONObject;
  * Created by sriven on 5/31/2016.
  */
 public class BigC_Login_Activity extends Activity {
-    TextView username,password,login_name;
+    TextView username,password,login_name,fpassword;
     LinearLayout signin;
-    String username_str,password_str;
+    String username_str,password_str,write;
     String type = "0";
     String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     @Override
@@ -41,6 +44,7 @@ public class BigC_Login_Activity extends Activity {
             login_name.setText("Employee Login");
 
         username = (TextView)findViewById(R.id.uname);
+        fpassword = (TextView)findViewById(R.id.fpassword);
         password = (TextView)findViewById(R.id.pwd);
         signin = (LinearLayout)findViewById(R.id.signin);
         signin.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +62,34 @@ public class BigC_Login_Activity extends Activity {
                    // Toast.makeText(BigC_Login_Activity.this, "values are correct", Toast.LENGTH_SHORT).show();
                     login();
                 }
+            }
+        });
+        fpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder alert1 = new AlertDialog.Builder(BigC_Login_Activity.this);
+                alert1.setTitle("Enter Email id");
+                final EditText input = new EditText(BigC_Login_Activity.this);
+                input.setMinLines(5);
+                input.setVerticalScrollBarEnabled(true);
+                input.setBackgroundResource(R.drawable.comments_bg);
+                input.setPadding(10, 10, 10, 10);
+                alert1.setView(input);
+                alert1.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        write = input.getText().toString();
+                        if (write.equals(""))
+//                            alert.showAlertDialog(getActivity(), "Info", Settings.getword(getActivity(), "please_enter_email"), false);
+                            Toast.makeText(getApplicationContext(), "Please enter email id", Toast.LENGTH_SHORT).show();
+                        else if (!write.matches(emailPattern))
+//                            alert.showAlertDialog(getActivity(), "Info", Settings.getword(getActivity(),"enter_valid_email"), false);
+                            Toast.makeText(getApplicationContext(), "Please enter valid email id", Toast.LENGTH_SHORT).show();
+                        else
+                            forgot_pass();
+                    }
+                });
+                alert1.show();
             }
         });
     }
@@ -180,7 +212,56 @@ public class BigC_Login_Activity extends Activity {
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
 
+    public void forgot_pass(){
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("please wait...");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        String url="";
+        if(type.equals("0")) {
+             url = Settings.SERVER_URL + "forget-password.php?email=" + write+"&type=stores";
+        }else{
+             url = Settings.SERVER_URL + "forget-password.php?email=" + write+"type=members";
+        }
+        Log.e("url--->", url);
 
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                progressDialog.dismiss();
+                Log.e("response is: ", jsonObject.toString());
+                try {
+                    String reply=jsonObject.getString("status");
+                    if(reply.equals("Failed")) {
+                        String msg = jsonObject.getString("message");
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        String msg = jsonObject.getString("message");
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+//                Toast.makeText(getApplicationContext(), Settings.getword(getApplicationContext(),"server_not_connected"), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+
+        });
+
+// Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsObjRequest);
+
+    }
 }
 
 
