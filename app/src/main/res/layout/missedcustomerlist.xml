@@ -64,6 +64,33 @@
                 <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Missed Customers List(Last 15 Days)"
+                        android:id="@+id/textView15"
+                        android:textColor="#187ac8"
+                        android:textSize="20sp"
+                        android:background="#d8ebf9"
+                        android:padding="20dp" />
+
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/missed_listview"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
@@ -498,33 +525,6 @@
                             android:textSize="20sp"
                             android:layout_marginLeft="10dp" />
                     </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Missed Customers List(Last 15 Days)"
-                        android:id="@+id/textView15"
-                        android:textColor="#187ac8"
-                        android:textSize="20sp"
-                        android:background="#d8ebf9"
-                        android:padding="20dp" />
-
-                    <ListView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/missed_listview"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginRight="40dp" />
-
                 </LinearLayout>
 
             </ViewFlipper>

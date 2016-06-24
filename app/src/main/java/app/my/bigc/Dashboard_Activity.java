@@ -73,7 +73,7 @@ public class Dashboard_Activity extends Activity {
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(Dashboard_Activity.this, ChangePasswordActivity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
         menu.setOnClickListener(new View.OnClickListener() {
@@ -185,6 +185,16 @@ public class Dashboard_Activity extends Activity {
                 startActivity(intent);
             }
         });
+
+       String gotos =  getIntent().getStringExtra("goto");
+        if(gotos!=null){
+            if(gotos.equals("Offer")){
+                notifications.performClick();
+            }
+            else if(gotos.equals("Missed_Customer")){
+                missedcustomerlist.performClick();
+            }
+        }
     }
     @Override
     protected void onResume() {

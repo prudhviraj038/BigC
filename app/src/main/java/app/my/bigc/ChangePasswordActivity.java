@@ -45,11 +45,12 @@ public class ChangePasswordActivity extends Activity {
         old_password = (EditText) findViewById(R.id.old_password);
         new_password = (EditText) findViewById(R.id.new_password);
         confirm_password = (EditText) findViewById(R.id.confirm_password);
+               acc_type = (LinearLayout) findViewById(R.id.type_cpassword);
         if(Settings.get_emp_id(ChangePasswordActivity.this).equals("-1"))
             acc_type.setVisibility(View.GONE);
         else
             acc_type.setVisibility(View.VISIBLE);
-        acc_type = (LinearLayout) findViewById(R.id.type_cpassword);
+
         acc_type.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +115,7 @@ public class ChangePasswordActivity extends Activity {
                             String msg = jsonObject.getString("message");
                             Log.e("msg", msg);
                             Toast.makeText(ChangePasswordActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             String msg = jsonObject.getString("message");
                             Toast.makeText(ChangePasswordActivity.this, msg, Toast.LENGTH_SHORT).show();

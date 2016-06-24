@@ -398,7 +398,7 @@
                         android:layout_width="40sp"
                         android:layout_height="60dp"
                         android:id="@+id/imageView69"
-                        android:src="@drawable/logout_icon"
+                        android:src="@drawable/password_icon"
                         android:layout_marginLeft="50dp"
                         android:layout_marginRight="25dp" />
 

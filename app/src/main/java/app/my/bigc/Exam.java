@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Created by Chinni on 10-06-2016.
  */
 public class Exam implements java.io.Serializable{
-    String id,title,total,correctt,wrong,skiped,status,started,ended;
+    String id,title,total,correctt,wrong,skiped,status,started,ended,duration;
     JSONArray jsonArray;
     ArrayList<Question> questions;
     JSONObject jsonObject;
@@ -29,6 +29,7 @@ public class Exam implements java.io.Serializable{
             started = jsonObject.getString("started");
             ended = jsonObject.getString("ended");
             status = jsonObject.getString("status");
+            duration = jsonObject.optString("duration","5min");
             jsonArray=jsonObject.getJSONArray("questions");
 
             for (int i=0;i<jsonArray.length();i++){

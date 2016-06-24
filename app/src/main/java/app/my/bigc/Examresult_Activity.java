@@ -43,7 +43,7 @@ public class Examresult_Activity extends Activity {
         correct_tv.setText(correct);
         wrong_tv.setText(wrong);
         you_scored.setText("You Scored "+correct+"/"+number);
-
+        time_tacken.setText(exams.duration);
         String CurrentString = exams.started;
         String[] separated = CurrentString.split(" ");
         if(separated.length>0)

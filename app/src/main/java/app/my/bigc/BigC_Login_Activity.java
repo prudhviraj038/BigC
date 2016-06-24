@@ -221,7 +221,7 @@ public class BigC_Login_Activity extends Activity {
         if(type.equals("0")) {
              url = Settings.SERVER_URL + "forget-password.php?email=" + write+"&type=stores";
         }else{
-             url = Settings.SERVER_URL + "forget-password.php?email=" + write+"type=members";
+             url = Settings.SERVER_URL + "forget-password.php?email=" + write+"&type=members";
         }
         Log.e("url--->", url);
 

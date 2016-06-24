@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
@@ -31,6 +32,14 @@ public class ImageZoomActivity extends Activity {
         String url = getIntent().getStringExtra("url");
         new DownloadImageTask(imageView)
                 .execute(url);
+        ImageView close_btn = (ImageView) findViewById(R.id.close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             finish();
+            }
+        });
+
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

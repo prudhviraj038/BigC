@@ -58,13 +58,35 @@ public class GCMIntentService extends GCMBaseIntentService {
     @Override
     protected void onMessage(Context context, Intent intent) {
         Log.i(TAG, "Received message");
-        String title = intent.getExtras().getString("title");
-        String message = intent.getExtras().getString("message");
-        String image_url = intent.getExtras().getString("image");
-        String product_id = intent.getExtras().getString("product_id");
-        String category_id = intent.getExtras().getString("category_id");
-        displayMessage(context, message);
-        generateCustomNotification(context,title, message,image_url,product_id,category_id);
+        String type = intent.getExtras().getString("type","Offer");
+        if(type.equals("Offer")) {
+            String title = intent.getExtras().getString("title");
+            String message = intent.getExtras().getString("message");
+            String image_url = intent.getExtras().getString("image");
+            String product_id = intent.getExtras().getString("start_date");
+            String category_id = intent.getExtras().getString("expiry_date");
+            displayMessage(context, message);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+        }
+      else if(type.equals("Missed_Customer")) {
+            String title = intent.getExtras().getString("title");
+            String message = intent.getExtras().getString("message");
+            String image_url = intent.getExtras().getString("image");
+            String product_id = intent.getExtras().getString("phone");
+            String category_id = intent.getExtras().getString("email");
+            displayMessage(context, message);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+        }
+        else if(type.equals("welcome")) {
+            String title = intent.getExtras().getString("title");
+            String message = intent.getExtras().getString("message");
+            String image_url = intent.getExtras().getString("image");
+            String product_id = intent.getExtras().getString("title");
+            String category_id = intent.getExtras().getString("message");
+            displayMessage(context, message);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+        }
+
     }
 
     /**
@@ -126,7 +148,7 @@ public class GCMIntentService extends GCMBaseIntentService {
     }
 
 
-    private static void generateCustomNotification(Context context,String title,String message,String image_url,String product_id,String category_id){
+    private static void generateCustomNotification(String type,Context context,String title,String message,String image_url,String product_id,String category_id){
 
         //Bitmap icon1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.lock);
 
@@ -146,18 +168,17 @@ public class GCMIntentService extends GCMBaseIntentService {
         mBuilder.setPriority(Notification.PRIORITY_MAX);
         // Creates an explicit intent for an Activity in your app
         Intent resultIntent;
-        if(!category_id.equals("0")) {
-            Log.e("sdsfsf", category_id);
-            resultIntent = new Intent(context, SplashActivity.class);
-            resultIntent.putExtra("parent_id", category_id);
-            resultIntent.putExtra("page_name", "category_name");
+        resultIntent = new Intent(context, SplashActivity.class);
+        if(type.equals("Offer"))
+        {
+          //  resultIntent = new Intent(context, Offer_Screen_Activity.class);
+            resultIntent.putExtra("goto","Offer");
         }
-        else if(!product_id.equals("0")){
-            resultIntent = new Intent(context,SplashActivity.class);
-            resultIntent.putExtra("add_id", product_id);
+        else if(type.equals("Missed_Customer")){
+            resultIntent.putExtra("goto","Missed_Customer");
         }
         else{
-            resultIntent = new Intent(context, SplashScreen.class);
+            resultIntent = new Intent(context, SplashActivity.class);
         }
         // The stack builder object will contain an artificial back stack for
         // the

@@ -26,8 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -107,7 +110,10 @@ public class Missed_Customer_feedback_Activity extends Activity {
                         //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                         brand_id = brands_id.get(which);
                         brand_str = brands_title.get(which);
+                        model_id = "not selected";
+                        model_str = "not selected";
                         selectbrand.setText(brands_title.get(which));
+                        selectmodel.setText("Select Model");
                         get_model();
                     }
                 });
@@ -123,6 +129,9 @@ public class Missed_Customer_feedback_Activity extends Activity {
             public void onClick(View view) {
                 if (brand_id.equals(""))
                     Toast.makeText(getApplicationContext(), "Please select Brand", Toast.LENGTH_SHORT).show();
+                else if(models_title.size()==0){
+                    Toast.makeText(getApplicationContext(), "No models available for this brand", Toast.LENGTH_SHORT).show();
+                }
                 else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
                     builder.setTitle("CHOOSE MODEL");
@@ -153,16 +162,44 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Missed_Customer_feedback_Activity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String temp=String.valueOf(monthOfYear);
+
+                        String temp=String.valueOf(monthOfYear+1);
                         if(temp.length()<2)
                             temp="0"+temp;
                         String temp1=String.valueOf(dayOfMonth);
                         if(temp1.length()<2)
                             temp1="0"+temp1;
                         fulfill_date = year + "-" + temp + "-" +temp1;
-//                        date1 = temp1+"-"+temp+"-"+year;
-                        no_of_days_tv.setText(fulfill_date);
-                    }
+
+                        String strThatDay = fulfill_date;
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        Date d = null;
+                        try {
+                            d = formatter.parse(strThatDay);//catch exception
+                            Calendar thatDay = Calendar.getInstance();
+                            thatDay.setTime(d);
+                            Calendar today = Calendar.getInstance();
+                            long diff =   today.getTimeInMillis() - thatDay.getTimeInMillis();
+                            long days = diff / (24 * 60 * 60 * 1000);
+                            Log.e("date dif",String.valueOf(diff));
+                            Log.e("today",today.toString());
+                            Log.e("selectedday",thatDay.toString());
+
+                            if(thatDay.before(today)){
+                                fulfill_date="";
+                                no_of_days_tv.setText(fulfill_date);
+                                Toast.makeText(Missed_Customer_feedback_Activity.this,"please select a date after today.",Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                no_of_days_tv.setText(fulfill_date);
+                            }
+
+                        } catch (ParseException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+
+                                            }
                 }, mYear, mMonth, mDay);
                 datePickerDialog.show();
             }
@@ -207,27 +244,28 @@ public class Missed_Customer_feedback_Activity extends Activity {
                 else if(contact_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter contact number", Toast.LENGTH_SHORT).show();
                 }
-                else if(!email_str.matches(emailPattern)){
+                else if((!email_str.equals(""))&& (!email_str.matches(emailPattern))){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
-                else if(requirement_str.equals("")){
-                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the requirement", Toast.LENGTH_SHORT).show();
-                }
+
                 else if(mobile_acs.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select mobile or accessories", Toast.LENGTH_SHORT).show();
                 }
-                else if(brand_str.equals("")){
-                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
-                }
-                else if(model_str.equals("")){
-                   Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
+               // else if(brand_str.equals("")){
+                 //   Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the brand", Toast.LENGTH_SHORT).show();
+               // }
+             //   else if(model_str.equals("")){
+              //     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
+             //   }
+                else if(fulfill_date.equals("")){
+                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please select fullfill date", Toast.LENGTH_SHORT).show();
                 }
                 else if(reason_str.equals("")){
                     Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter the reason", Toast.LENGTH_SHORT).show();
                 }
-                else if(suggestions_str.equals("")){
-                    Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
-                }
+              //  else if(suggestions_str.equals("")){
+              //      Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
+              //  }
                 else {
                     send_missed_customer_feedback();
 //                   Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
@@ -274,6 +312,8 @@ public class Missed_Customer_feedback_Activity extends Activity {
         // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
+
+
     private void get_model(){
         String url=Settings.SERVER_URL+"models.php?brand="+brand_id;
         Log.e("url--->", url);

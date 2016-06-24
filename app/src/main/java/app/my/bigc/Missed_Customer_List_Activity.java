@@ -53,7 +53,7 @@ public class Missed_Customer_List_Activity extends Activity {
         cue_requri = (TextView)findViewById(R.id.cus_req_missed);
         cus_brand = (TextView)findViewById(R.id.cus_brand_missed);
         cus_model = (TextView)findViewById(R.id.cus_model_missed);
-        fuifill_date = (TextView)findViewById(R.id.cus_name_missed);
+        fuifill_date = (TextView)findViewById(R.id.fulfill_date_tv);
         cus_reason = (TextView)findViewById(R.id.reason_not_purch);
         cus_suggestions = (TextView)findViewById(R.id.cus_suggestions);
         cus_date = (TextView)findViewById(R.id.submited_date_missed);
