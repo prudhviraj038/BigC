@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView26"
-            android:src="@drawable/missedcustomer_image"
+            android:src="@drawable/missed_customer_background"
             android:scaleType="fitXY" />
 
         <LinearLayout
