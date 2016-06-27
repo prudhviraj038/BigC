@@ -1,22 +1,25 @@
 package app.my.bigc;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by sriven on 6/8/2016.
+ * Created by sriven on 6/7/2016.
  */
-public class Review_Exam_Activity extends Fragment{
-    LinearLayout next,backtoresult;
-    Exam exams;
+public class HomeFragment extends Fragment {
+    LinearLayout backtoresults;
+    ImageView employee,customer,menu;
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
-
+        public void  to_exam_list();
+        public  void to_customer();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -33,34 +36,35 @@ public class Review_Exam_Activity extends Fragment{
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.review_exam_screen, container, false);
+        return inflater.inflate(R.layout.home_screen, container, false);
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
-//        try {
-//            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")),this);
-
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-        next = (LinearLayout)v.findViewById(R.id.review_next);
-        backtoresult = (LinearLayout)v.findViewById(R.id.review_results);
-        next.setOnClickListener(new View.OnClickListener() {
+        employee = (ImageView)v.findViewById(R.id.employee);
+        customer = (ImageView)v.findViewById(R.id.customer);
+        employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(Settings.get_emp_id(getActivity()).equals("-1")){
+                    Intent intent = new Intent(getActivity(),BigC_Login_Activity.class);
+                    intent.putExtra("type","emp");
+                    intent.putExtra("goto","exam");
+                    startActivity(intent);
+                }else {
+                    mCallBack.to_exam_list();
 
+                }
+            }
+
+        });
+        customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCallBack.to_customer();
 
             }
         });
-        backtoresult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
     }
 }

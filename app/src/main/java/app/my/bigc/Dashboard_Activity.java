@@ -1,8 +1,9 @@
 package app.my.bigc;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
@@ -13,19 +14,24 @@ import android.widget.TextView;
 /**
  * Created by sriven on 6/7/2016.
  */
-public class Dashboard_Activity extends Activity {
-    ImageView employee,customer,menu;
+public class Dashboard_Activity extends FragmentActivity implements ChangePasswordActivity.FragmentTouchListner,
+        CustomerFeedback.FragmentTouchListner, Employee_exam_Activity.FragmentTouchListner,
+        Employee_reexam_Activity.FragmentTouchListner, Examresult_Activity.FragmentTouchListner,
+        Exams_list_Activity.FragmentTouchListner, FeedBack_Activity.FragmentTouchListner,
+        Missed_Customer_feedback_Activity.FragmentTouchListner, Missed_Customer_List_Activity.FragmentTouchListner,
+        Offer_Details_Activity.FragmentTouchListner, Offer_Screen_Activity.FragmentTouchListner,
+        Review_Exam_Activity.FragmentTouchListner, HomeFragment.FragmentTouchListner {
+    ImageView menu;
     LinearLayout home,customerfeedback,missedcustomerfeedback,missedcustomerlist,employeexam,result,notifications,logout,logout_store,change_password;
     TextView store_name;
     DrawerLayout mDrawerLayout;
+    FragmentManager fragmentManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_activity);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         store_name=(TextView)findViewById(R.id.store_name_navigation);
-        employee = (ImageView)findViewById(R.id.employee);
-        customer = (ImageView)findViewById(R.id.customer);
         menu = (ImageView)findViewById(R.id.nav_menu_img);
         home = (LinearLayout)findViewById(R.id.home_layout);
         customerfeedback = (LinearLayout)findViewById(R.id.customer_layout);
@@ -71,8 +77,8 @@ public class Dashboard_Activity extends Activity {
             public void onClick(View view) {
                 if(mDrawerLayout!=null)
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-                Intent intent = new Intent(Dashboard_Activity.this, ChangePasswordActivity.class);
-                startActivity(intent);
+                    ChangePasswordActivity fragment1 = new ChangePasswordActivity();
+                    fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
 
             }
         });
@@ -83,56 +89,33 @@ public class Dashboard_Activity extends Activity {
             }
         });
 
-        employee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
-                    Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
-                    intent.putExtra("type","emp");
-                    intent.putExtra("goto","exam");
-
-                    startActivity(intent);
-                }else {
-                    Intent intent = new Intent(Dashboard_Activity.this, Exams_list_Activity.class);
-                    startActivity(intent);
-                }            }
-
-        });
-        customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback.class);
-                intent.putExtra("type", "cus");
-                startActivity(intent);
-            }
-        });
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                HomeFragment fragment1 = new HomeFragment();
+                fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
         });
         store_name.setText(Settings.get_store_name(getApplicationContext()));
         customerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this, CustomerFeedback.class);
-                startActivity(intent);
+                CustomerFeedback fragment1 = new CustomerFeedback();
+                fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
         });
         missedcustomerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")) {
-
                     Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
                     intent.putExtra("type", "emp");
                     intent.putExtra("goto", "missed");
                     startActivity(intent);
 
                 } else {
-                    Intent intent = new Intent(Dashboard_Activity.this, Missed_Customer_feedback_Activity.class);
-                    startActivity(intent);
+                   Missed_Customer_feedback_Activity fragment1 = new Missed_Customer_feedback_Activity();
+                   fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
                 }
             }
         });
@@ -145,8 +128,8 @@ public class Dashboard_Activity extends Activity {
                     intent.putExtra("goto", "missed_list");
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(Dashboard_Activity.this,Missed_Customer_List_Activity.class);
-                    startActivity(intent);
+                    Missed_Customer_List_Activity fragment1 = new Missed_Customer_List_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
                 }
             }
         });
@@ -160,8 +143,8 @@ public class Dashboard_Activity extends Activity {
 
                     startActivity(intent);
                 }else {
-                    Intent intent = new Intent(Dashboard_Activity.this, Exams_list_Activity.class);
-                    startActivity(intent);
+                    Exams_list_Activity fragment1 = new Exams_list_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
                 }
             }
         });
@@ -174,15 +157,15 @@ public class Dashboard_Activity extends Activity {
                     intent.putExtra("goto","reexam");
                     startActivity(intent);
                 }else {
-                Intent intent = new Intent(Dashboard_Activity.this,Exams_list_Activity.class);
-                startActivity(intent);
+                    Exams_list_Activity fragment1 = new Exams_list_Activity();
+                    fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }}
         });
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Dashboard_Activity.this,Offer_Screen_Activity.class);
-                startActivity(intent);
+                Offer_Screen_Activity fragment1 = new Offer_Screen_Activity();
+                fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
         });
 
@@ -211,5 +194,43 @@ public class Dashboard_Activity extends Activity {
             logout.setVisibility(View.VISIBLE);
         }
     }
-
+  @Override
+  public  void exam_result(String exam){
+      FragmentManager fragmentManager = getSupportFragmentManager();
+      Examresult_Activity examresult_activity = new Examresult_Activity();
+      Bundle bundle = new Bundle();
+      bundle.putSerializable("exam",exam);
+      examresult_activity.setArguments(bundle);
+      fragmentManager.beginTransaction().replace(R.id.container_main, examresult_activity).addToBackStack(null).commit();
+  }
+    @Override
+    public  void emp_exam(String exam){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Employee_exam_Activity employee_exam_activity = new Employee_exam_Activity();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("exam",exam);
+        employee_exam_activity.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.container_main, employee_exam_activity).addToBackStack(null).commit();
+    }
+    @Override
+    public  void reexam(String exam){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Employee_reexam_Activity employee_reexam_activity = new Employee_reexam_Activity();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("exam",exam);
+        employee_reexam_activity.setArguments(bundle);
+        fragmentManager.beginTransaction().replace(R.id.container_main, employee_reexam_activity).addToBackStack(null).commit();
+    }
+    @Override
+    public  void to_exam_list(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Exams_list_Activity exams_list_activity = new Exams_list_Activity();
+        fragmentManager.beginTransaction().replace(R.id.container_main, exams_list_activity).addToBackStack(null).commit();
+    }
+    @Override
+    public  void to_customer(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        CustomerFeedback customerFeedback = new CustomerFeedback();
+        fragmentManager.beginTransaction().replace(R.id.container_main, customerFeedback).addToBackStack(null).commit();
+    }
 }

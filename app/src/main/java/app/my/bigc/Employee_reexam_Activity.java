@@ -5,8 +5,11 @@ import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +24,7 @@ import org.json.JSONObject;
 /**
  * Created by sriven on 6/8/2016.
  */
-public class Employee_reexam_Activity extends Activity {
+public class Employee_reexam_Activity extends Fragment {
     Exam exams;
     TextView ques_name,question,ans1,ans2,ans3,ans4,a,b,c,d,question_count,title_reexam;
     LinearLayout next_ll,ans1_ll,ans2_ll,ans3_ll,ans4_ll,back;
@@ -31,38 +34,57 @@ public class Employee_reexam_Activity extends Activity {
     TextView mTextField;
     CountDownTimer countDownTimer;
     LinearLayout all_views ;
+    FragmentTouchListner mCallBack;
+    public interface FragmentTouchListner {
 
-
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.employee_reexamscreen);
-        mTextField = (TextView) findViewById(R.id.time_exam);
-        title_reexam = (TextView) findViewById(R.id.title_reexam);
-        all_views = (LinearLayout) findViewById(R.id.all_views);
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
-        question_count = (TextView) findViewById(R.id.question_count);
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
         try {
-            exams=new Exam(new JSONObject(getIntent().getStringExtra("exam")),this);
+            mCallBack = (Dashboard_Activity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Listner");
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.employee_reexamscreen, container, false);
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View v = getView();
+        mTextField = (TextView)v.findViewById(R.id.time_exam);
+        title_reexam = (TextView)v.findViewById(R.id.title_reexam);
+        all_views = (LinearLayout)v.findViewById(R.id.all_views);
+
+        question_count = (TextView)v.findViewById(R.id.question_count);
+        try {
+            exams=new Exam(new JSONObject(getArguments().getString("exam")),getActivity());
         } catch (JSONException e) {
             e.printStackTrace();
         }
         title_reexam.setText(exams.title + "  Review");
-        ques_name=(TextView)findViewById(R.id.que_name);
-        question=(TextView)findViewById(R.id.question);
-        ans1=(TextView)findViewById(R.id.ans1);
-        ans2=(TextView)findViewById(R.id.ans2);
-        ans3=(TextView)findViewById(R.id.ans3);
-        ans4=(TextView)findViewById(R.id.ans4);
-        a=(TextView)findViewById(R.id.a_ll);
-        b=(TextView)findViewById(R.id.b_ll);
-        c=(TextView)findViewById(R.id.c_ll);
-        d=(TextView)findViewById(R.id.d_ll);
-        next_ll=(LinearLayout)findViewById(R.id.next);
-        ans1_ll=(LinearLayout)findViewById(R.id.ans1_ll);
-        ans2_ll=(LinearLayout)findViewById(R.id.ans2_ll);
-        ans3_ll=(LinearLayout)findViewById(R.id.ans3_ll);
-        ans4_ll=(LinearLayout)findViewById(R.id.ans4_ll);
+        ques_name=(TextView)v.findViewById(R.id.que_name);
+        question=(TextView)v.findViewById(R.id.question);
+        ans1=(TextView)v.findViewById(R.id.ans1);
+        ans2=(TextView)v.findViewById(R.id.ans2);
+        ans3=(TextView)v.findViewById(R.id.ans3);
+        ans4=(TextView)v.findViewById(R.id.ans4);
+        a=(TextView)v.findViewById(R.id.a_ll);
+        b=(TextView)v.findViewById(R.id.b_ll);
+        c=(TextView)v.findViewById(R.id.c_ll);
+        d=(TextView)v.findViewById(R.id.d_ll);
+        next_ll=(LinearLayout)v.findViewById(R.id.next);
+        ans1_ll=(LinearLayout)v.findViewById(R.id.ans1_ll);
+        ans2_ll=(LinearLayout)v.findViewById(R.id.ans2_ll);
+        ans3_ll=(LinearLayout)v.findViewById(R.id.ans3_ll);
+        ans4_ll=(LinearLayout)v.findViewById(R.id.ans4_ll);
        countDownTimer = new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -128,7 +150,7 @@ public class Employee_reexam_Activity extends Activity {
                 } else {
 
                     //update_exam_status("1");
-                    finish();
+//                    finish();
 
                 }
               //  update_question_status();
@@ -211,7 +233,7 @@ next_ll.performClick();
         }
     }
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();  // Always call the superclass method first
 
         // Save the note's current draft, because the activity is stopping
@@ -221,8 +243,8 @@ next_ll.performClick();
 
     }
     private void  update_exam_status(final String status){
-        String url = Settings.SERVER_URL+"exam-status.php?member_id="+Settings.get_emp_id(this)+"&exam_id="+exams.id+"&status="+status;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        String url = Settings.SERVER_URL+"exam-status.php?member_id="+Settings.get_emp_id(getActivity())+"&exam_id="+exams.id+"&status="+status;
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
@@ -264,7 +286,7 @@ next_ll.performClick();
                     intent.putExtra("wrong", String.valueOf(wrong_count));
                     startActivity(intent);*/
 
-                    finish();
+//                    finish();
                 }
 
             }
@@ -285,8 +307,8 @@ next_ll.performClick();
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
     private void  update_question_status(){
-        String url = Settings.SERVER_URL+"member_answers.php?member_id="+Settings.get_emp_id(this)+"&exam_id="+exams.id+"&question_id="+exams.questions.get(i).id+"&answer="+correct;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        String url = Settings.SERVER_URL+"member_answers.php?member_id="+Settings.get_emp_id(getActivity())+"&exam_id="+exams.id+"&question_id="+exams.questions.get(i).id+"&answer="+correct;
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);

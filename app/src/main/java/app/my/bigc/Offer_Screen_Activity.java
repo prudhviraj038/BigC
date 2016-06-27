@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,7 +32,7 @@ import java.util.ArrayList;
  */
 
 
-public class Offer_Screen_Activity extends Activity {
+public class Offer_Screen_Activity extends Fragment {
     OfferAdapter offerAdapter;
     ArrayList<Offers> offers;
     ListView offer_list;
@@ -38,34 +41,55 @@ public class Offer_Screen_Activity extends Activity {
     ImageView offers_image,status;
     ViewFlipper offer_details;
     int position;
+    FragmentTouchListner mCallBack;
+    public interface FragmentTouchListner {
+
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallBack = (Dashboard_Activity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Listner");
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.offers_screen, container, false);
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.offers_screen);
+        View v = getView();
         offers=new ArrayList<>();
-        offersdisplay = (LinearLayout)findViewById(R.id.offers_dispaly);
-        offer_details = (ViewFlipper)findViewById(R.id.viewFlipper);
-        title = (TextView)findViewById(R.id.offers_title);
-        discription = (TextView)findViewById(R.id.offers_discription);
-        expiry = (TextView)findViewById(R.id.offers_expiry);
-        expirydate = (TextView)findViewById(R.id.offers_expiry_date);
-        offers_image = (ImageView)findViewById(R.id.offers_image_ll);
-        backtooffers = (LinearLayout)findViewById(R.id.back_offers_ll);
-        offerAdapter=new OfferAdapter(this,offers);
-        offer_list=(ListView)findViewById(R.id.offer_list);
+        offersdisplay = (LinearLayout)v.findViewById(R.id.offers_dispaly);
+        offer_details = (ViewFlipper)v.findViewById(R.id.viewFlipper);
+        title = (TextView)v.findViewById(R.id.offers_title);
+        discription = (TextView)v.findViewById(R.id.offers_discription);
+        expiry = (TextView)v.findViewById(R.id.offers_expiry);
+        expirydate = (TextView)v.findViewById(R.id.offers_expiry_date);
+        offers_image = (ImageView)v.findViewById(R.id.offers_image_ll);
+        backtooffers = (LinearLayout)v.findViewById(R.id.back_offers_ll);
+        offerAdapter=new OfferAdapter(getActivity(),offers);
+        offer_list=(ListView)v.findViewById(R.id.offer_list);
         offer_list.setAdapter(offerAdapter);
-        status=(ImageView)findViewById(R.id.offer_status_page);
+        status=(ImageView)v.findViewById(R.id.offer_status_page);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Log.e("reponse", offers.get(position).title);
                 offer_details.setDisplayedChild(1);
                title.setText(offers.get(position).title);
-               Picasso.with(getApplicationContext()).load(offers.get(position).image).into(offers_image);
+               Picasso.with(getActivity()).load(offers.get(position).image).into(offers_image);
                 offers_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Offer_Screen_Activity.this, ImageZoomActivity.class);
+                        Intent intent = new Intent(getActivity(), ImageZoomActivity.class);
                         intent.putExtra("url", offers.get(position).image);
                         startActivity(intent);
                     }
@@ -90,18 +114,18 @@ public class Offer_Screen_Activity extends Activity {
 
 
     }
-    @Override
-    public void onBackPressed() {
-        if (offer_details.getDisplayedChild()==1)
-            offer_details.setDisplayedChild(0);
-        else
-            super.onBackPressed();
-    }
+
+//    public void onBackPressed() {
+//        if (offer_details.getDisplayedChild()==1)
+//            offer_details.setDisplayedChild(0);
+//        else
+//            super.onBackPressed();
+//    }
 
 
     private void getOffers(){
         String url;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);

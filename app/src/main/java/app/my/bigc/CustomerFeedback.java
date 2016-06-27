@@ -6,8 +6,11 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -32,7 +35,7 @@ import java.util.Map;
 /**
  * Created by sriven on 6/13/2016.
  */
-public class CustomerFeedback extends Activity {
+public class CustomerFeedback extends Fragment {
     String newspaper_id = "0";
     String storeambiance_id = "0";
     String staffresponce_id = "0";
@@ -49,15 +52,36 @@ public class CustomerFeedback extends Activity {
     LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll,visit_ll,purchase_ll;
     String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str,visited_str,bill_str;
     RadioButton visited_yes,visited_no,bill_yes,bill_no;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer_feedback_screen);
-        visited_yes = (RadioButton) findViewById(R.id.radioButton3);
-        visited_no = (RadioButton) findViewById(R.id.radioButton4);
+    FragmentTouchListner mCallBack;
+    public interface FragmentTouchListner {
 
-        bill_yes = (RadioButton) findViewById(R.id.radioButton5);
-        bill_no = (RadioButton) findViewById(R.id.radioButton6);
+    }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallBack = (Dashboard_Activity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Listner");
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.customer_feedback_screen, container, false);
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        View v = getView();
+        visited_yes = (RadioButton)v.findViewById(R.id.radioButton3);
+        visited_no = (RadioButton)v.findViewById(R.id.radioButton4);
+
+        bill_yes = (RadioButton)v.findViewById(R.id.radioButton5);
+        bill_no = (RadioButton)v.findViewById(R.id.radioButton6);
 
             storeambiance_str="";
             staffresponce_str="";
@@ -105,20 +129,20 @@ public class CustomerFeedback extends Activity {
         staffresponces_title=new ArrayList<String>();
         storeambiances_id= new ArrayList<String>();
         storeambiances_title=new ArrayList<String>();
-        customername = (EditText)findViewById(R.id.cname);
-        contactnumber = (EditText)findViewById(R.id.cnumber);
-        emailid = (EditText)findViewById(R.id.emailId);
-        suggestion = (EditText)findViewById(R.id.customer_suggestions);
-        selectnewspaper = (EditText)findViewById(R.id.newspaperedit);
-        selectstaffresponce = (TextView)findViewById(R.id.staff_responce);
-        visit_ll = (LinearLayout)findViewById(R.id.visted_ll);
-        purchase_ll = (LinearLayout)findViewById(R.id.bill_purchase_ll);
+        customername = (EditText)v.findViewById(R.id.cname);
+        contactnumber = (EditText)v.findViewById(R.id.cnumber);
+        emailid = (EditText)v.findViewById(R.id.emailId);
+        suggestion = (EditText)v.findViewById(R.id.customer_suggestions);
+        selectnewspaper = (EditText)v.findViewById(R.id.newspaperedit);
+        selectstaffresponce = (TextView)v.findViewById(R.id.staff_responce);
+        visit_ll = (LinearLayout)v.findViewById(R.id.visted_ll);
+        purchase_ll = (LinearLayout)v.findViewById(R.id.bill_purchase_ll);
         visit_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                builder.setTitle("CHOOSE Newspaper");
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, visit);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, visit);
                 builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -134,9 +158,9 @@ public class CustomerFeedback extends Activity {
         purchase_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                builder.setTitle("CHOOSE Newspaper");
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, visit);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, visit);
                 builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -149,14 +173,14 @@ public class CustomerFeedback extends Activity {
                 dialog.show();
             }
         });
-        selectstoreambiance = (TextView)findViewById(R.id.store_ambiance);
-        news_paper_ll = (LinearLayout)findViewById(R.id.news_paper_ll);
+        selectstoreambiance = (TextView)v.findViewById(R.id.store_ambiance);
+        news_paper_ll = (LinearLayout)v.findViewById(R.id.news_paper_ll);
         news_paper_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("CHOOSE Newspaper");
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, newspapers_title);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, newspapers_title);
                 builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -174,21 +198,21 @@ public class CustomerFeedback extends Activity {
 
 
 
-        store_ambiance_ll = (LinearLayout)findViewById(R.id.store_ambiance_ll);
+        store_ambiance_ll = (LinearLayout)v.findViewById(R.id.store_ambiance_ll);
         store_ambiance_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 get_storeambiance();
             }
         });
-        staff_responce_ll = (LinearLayout)findViewById(R.id.staff_responce_ll);
+        staff_responce_ll = (LinearLayout)v.findViewById(R.id.staff_responce_ll);
         staff_responce_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 get_staffresponce();
                             }
         });
-        submit = (LinearLayout)findViewById(R.id.customer_submit);
+        submit = (LinearLayout)v.findViewById(R.id.customer_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -199,32 +223,32 @@ public class CustomerFeedback extends Activity {
                 suggestion_str = suggestion.getText().toString();
                 String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
                 if(customer_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please enter username", Toast.LENGTH_SHORT).show();
                 }
                 else if(contact_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter contact number", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please enter contact number", Toast.LENGTH_SHORT).show();
                 }
                 else if((!email_str.equals(""))&& (!email_str.matches(emailPattern))){
-                    Toast.makeText(CustomerFeedback.this, "please enter valid email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please enter valid email", Toast.LENGTH_SHORT).show();
                 }
                 else if(newspaper_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter which newspaper you read", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please enter which newspaper you read", Toast.LENGTH_SHORT).show();
                 }
                 else if(visited_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please select have you ever visited BigC Showroom", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please select have you ever visited BigC Showroom", Toast.LENGTH_SHORT).show();
                 }
                 else if(bill_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please select the bill type for your purchase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please select the bill type for your purchase", Toast.LENGTH_SHORT).show();
                 }
                 else if(storeambiance_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please select the ambiance", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please select the ambiance", Toast.LENGTH_SHORT).show();
                 }
                 else if(staffresponce_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please select the staffresponce", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please select the staffresponce", Toast.LENGTH_SHORT).show();
                 }
 
                 else if(suggestion_str.equals("")){
-                    Toast.makeText(CustomerFeedback.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please enter your suggestions", Toast.LENGTH_SHORT).show();
                 }
                 else {
 //                    Toast.makeText(CustomerFeedback.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
@@ -239,7 +263,7 @@ public class CustomerFeedback extends Activity {
     private void get_newspaper(){
         String url=Settings.SERVER_URL+"newspaper.php";
         Log.e("url--->", url);
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait....");
         progressDialog.setCancelable(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
@@ -266,7 +290,7 @@ public class CustomerFeedback extends Activity {
             public void onErrorResponse(VolleyError error) {
                 // TODO Auto-generated method stub
                 Log.e("response is:", error.toString());
-                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Server not connected", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
@@ -276,7 +300,7 @@ public class CustomerFeedback extends Activity {
     private void get_storeambiance(){
         String url=Settings.SERVER_URL+"store_ambience.php";
         Log.e("url--->", url);
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait....");
         progressDialog.setCancelable(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
@@ -294,9 +318,9 @@ public class CustomerFeedback extends Activity {
                         storeambiances_id.add(store_id);
                         storeambiances_title.add(storeambiance_name);
                     }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("CHOOSE AMBIANCE");
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, storeambiances_title);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, storeambiances_title);
                     builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -317,7 +341,7 @@ public class CustomerFeedback extends Activity {
             public void onErrorResponse(VolleyError error) {
                 // TODO Auto-generated method stub
                 Log.e("response is:", error.toString());
-                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Server not connected", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
@@ -327,7 +351,7 @@ public class CustomerFeedback extends Activity {
     private void get_staffresponce(){
         String url=Settings.SERVER_URL+"staff_response.php";
         Log.e("url--->", url);
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Please wait....");
         progressDialog.setCancelable(false);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
@@ -346,9 +370,9 @@ public class CustomerFeedback extends Activity {
                         staffresponces_title.add(staff_responce);
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CustomerFeedback.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setTitle("CHOOSE STAFFRESPONCE");
-                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(CustomerFeedback.this, android.R.layout.simple_dropdown_item_1line, staffresponces_title);
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, staffresponces_title);
                     builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -372,7 +396,7 @@ public class CustomerFeedback extends Activity {
             public void onErrorResponse(VolleyError error) {
                 // TODO Auto-generated method stub
                 Log.e("response is:", error.toString());
-                Toast.makeText(CustomerFeedback.this, "Server not connected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Server not connected", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
@@ -380,7 +404,7 @@ public class CustomerFeedback extends Activity {
         AppController.getInstance().addToRequestQueue(jsonArrayRequest);
     }
     public  void send_customer_feedback(){
-    final ProgressDialog progressDialog = new ProgressDialog(this);
+    final ProgressDialog progressDialog = new ProgressDialog(getActivity());
     progressDialog.setMessage("please wait.. we are processing");
     progressDialog.show();
     progressDialog.setCancelable(false);
@@ -397,15 +421,15 @@ public class CustomerFeedback extends Activity {
                 Log.e("response",jsonObject.toString());
                 if(reply.equals("Success")) {
                     String msg = jsonObject.getString("message");
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                     Intent intent;
-                    intent = new Intent(CustomerFeedback.this,FeedBack_Activity.class);
+                    intent = new Intent(getActivity(),FeedBack_Activity.class);
                     startActivity(intent);
-                    finish();
+//                    finish();
                 }
                 else {
                     String msg=jsonObject.getString("message");
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                 }
 
             } catch (JSONException e) {
@@ -418,14 +442,14 @@ public class CustomerFeedback extends Activity {
                 public void onErrorResponse(VolleyError error) {
                     if(progressDialog!=null)
                         progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_SHORT).show();
                 }
             }){
         @Override
         protected Map<String,String> getParams(){
             Map<String,String> params = new HashMap<String, String>();
-            params.put("store_id",Settings.get_store(getApplicationContext()));
-            params.put("member_id",Settings.get_store(getApplicationContext()));
+            params.put("store_id",Settings.get_store(getActivity()));
+            params.put("member_id",Settings.get_store(getActivity()));
             params.put("name",customer_str);
             params.put("phone",contact_str);
             params.put("email",email_str);
