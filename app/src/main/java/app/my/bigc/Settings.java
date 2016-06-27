@@ -15,7 +15,7 @@ import java.util.Locale;
  * Created by Chinni on 22-06-2015.
  */
 public class Settings {
-   public static final String SERVER_URL    = "http://clients.outlinedesigns.in/bigc/api/";
+   public static final String SERVER_URL    = "http://www.lotmobiles.com/bigcapp/api/";
    static String STORE_ID="store_id";
    static String EMP_ID="emp_id";
    static String TYPE="type";

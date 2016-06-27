@@ -19,7 +19,7 @@ public class Offers implements Serializable {
             image = object.getString("image");
             title = object.getString("title");
             discription = object.getString("message");
-            startdate = object.getString("expiry_date");
+            startdate = object.getString("start_date");
             expirydate = object.getString("expiry_date");
             status=object.getString("status");
 

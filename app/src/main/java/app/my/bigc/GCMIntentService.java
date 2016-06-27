@@ -77,7 +77,7 @@ public class GCMIntentService extends GCMBaseIntentService {
             displayMessage(context, message);
             generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
         }
-        else if(type.equals("welcome")) {
+        else if(type.equals("Welcome")) {
             String title = intent.getExtras().getString("title");
             String message = intent.getExtras().getString("message");
             String image_url = intent.getExtras().getString("image");
@@ -85,6 +85,11 @@ public class GCMIntentService extends GCMBaseIntentService {
             String category_id = intent.getExtras().getString("message");
             displayMessage(context, message);
             generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+        }
+        else{
+            displayMessage(context, "welcome");
+            generateCustomNotification(type, context, "welcome", "welcome", "welcome", "welcome", "welcome");
+
         }
 
     }
