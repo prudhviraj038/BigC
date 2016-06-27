@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -57,7 +56,7 @@ public class Exams_list_Activity extends Fragment {
         return inflater.inflate(R.layout.reviewresult, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         exams=new ArrayList<>();
@@ -140,9 +139,6 @@ public class Exams_list_Activity extends Fragment {
                     Settings.set_user_language(getActivity(), "en");
                     if (exams.get(position).status.equals("Completed")) {
                         mCallBack.exam_result(exams.get(position).jsonObject.toString());
-                        Intent intent = new Intent(getActivity(), Examresult_Activity.class);
-                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                        startActivity(intent);
                     } else {
                         if (exams.get(position).questions.size() == 0) {
                             Toast.makeText(getActivity(), "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
@@ -154,9 +150,6 @@ public class Exams_list_Activity extends Fragment {
                     Settings.set_user_language(getActivity(), "te");
                     if (exams.get(position).status.equals("Completed")) {
                         mCallBack.exam_result(exams.get(position).jsonObject.toString());
-                        Intent intent = new Intent(getActivity(), Examresult_Activity.class);
-                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                        startActivity(intent);
                     } else {
                         if (exams.get(position).questions.size() == 0) {
                             Toast.makeText(getActivity(), "No Questions added to this Exam", Toast.LENGTH_SHORT).show();

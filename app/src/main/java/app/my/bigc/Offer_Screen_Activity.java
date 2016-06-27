@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -34,8 +35,10 @@ import java.util.ArrayList;
 
 public class Offer_Screen_Activity extends Fragment {
     OfferAdapter offerAdapter;
+    NotificationAdapter notificationAdapter;
     ArrayList<Offers> offers;
-    ListView offer_list;
+    ArrayList<Notifications> notificationses;
+    ListView offer_list,noti_list;
     LinearLayout backtooffers,offersdisplay;
     TextView title,discription,expiry,expirydate;
     ImageView offers_image,status;
@@ -63,10 +66,11 @@ public class Offer_Screen_Activity extends Fragment {
         return inflater.inflate(R.layout.offers_screen, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         offers=new ArrayList<>();
+        notificationses=new ArrayList<>();
         offersdisplay = (LinearLayout)v.findViewById(R.id.offers_dispaly);
         offer_details = (ViewFlipper)v.findViewById(R.id.viewFlipper);
         title = (TextView)v.findViewById(R.id.offers_title);
@@ -79,13 +83,16 @@ public class Offer_Screen_Activity extends Fragment {
         offer_list=(ListView)v.findViewById(R.id.offer_list);
         offer_list.setAdapter(offerAdapter);
         status=(ImageView)v.findViewById(R.id.offer_status_page);
+        noti_list=(ListView)v.findViewById(R.id.noti_list_view);
+        notificationAdapter=new NotificationAdapter(getActivity(),notificationses);
+        noti_list.setAdapter(notificationAdapter);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Log.e("reponse", offers.get(position).title);
                 offer_details.setDisplayedChild(1);
-               title.setText(offers.get(position).title);
-               Picasso.with(getActivity()).load(offers.get(position).image).into(offers_image);
+                title.setText(offers.get(position).title);
+                Picasso.with(getActivity()).load(offers.get(position).image).into(offers_image);
                 offers_image.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -94,9 +101,9 @@ public class Offer_Screen_Activity extends Fragment {
                         startActivity(intent);
                     }
                 });
-              discription.setText(offers.get(position).discription);
-                expirydate.setText("From : " + offers.get(position).startdate+" To : "+offers.get(position).expirydate);
-                if(offers.get(position).status.equals("Opened"))
+                discription.setText(offers.get(position).discription);
+                expirydate.setText("From : " + offers.get(position).startdate + " To : " + offers.get(position).expirydate);
+                if (offers.get(position).status.equals("Opened"))
                     status.setImageResource(R.drawable.active_img);
                 else
                     status.setImageResource(R.drawable.expired_img);
@@ -144,8 +151,11 @@ public class Offer_Screen_Activity extends Fragment {
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
                         Offers offer=new Offers(tmp_json);
                         offers.add(offer);
+
                     }
                     offerAdapter.notifyDataSetChanged();
+                    setListViewHeightBasedOnItems(offer_list);
+                    getNotifications();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -166,5 +176,80 @@ public class Offer_Screen_Activity extends Fragment {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
+    private void getNotifications(){
+        String url;
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("please wait.....");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        url = Settings.SERVER_URL+"push-notifications.php?store_id="+Settings.get_store(getActivity());
+        Log.e("url", url);
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                if(progressDialog!=null)
+                    progressDialog.dismiss();
+                Log.e("reponse", jsonArray.toString());
+                try {
+                    notificationses.clear();
+                    for (int i=0;i<jsonArray.length();i++){
+                        JSONObject tmp_json = jsonArray.getJSONObject(i);
+                        Notifications notifications=new Notifications(tmp_json);
+                        notificationses.add(notifications);
+
+                    }
+                    notificationAdapter.notifyDataSetChanged();
+                    setListViewHeightBasedOnItems(noti_list);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // TODO Auto-generated method stub
+                Log.e("response is:", error.toString());
+                if(progressDialog!=null)
+                    progressDialog.dismiss();
+
+            }
+        });
+
+// Access the RequestQueue through your singleton class.
+        AppController.getInstance().addToRequestQueue(jsObjRequest);
+    }
+    public static boolean setListViewHeightBasedOnItems(ListView listView) {
+
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter != null) {
+
+            int numberOfItems = listAdapter.getCount();
+
+            // Get total height of all items.
+            int totalItemsHeight = 0;
+            for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+                View item = listAdapter.getView(itemPos, null, listView);
+                item.measure(0, 0);
+                totalItemsHeight += item.getMeasuredHeight();
+            }
+
+            // Get total height of all item dividers.
+            int totalDividersHeight = listView.getDividerHeight() *
+                    (numberOfItems - 1);
+
+            // Set list height.
+            ViewGroup.LayoutParams params = listView.getLayoutParams();
+            params.height = totalItemsHeight + totalDividersHeight;
+            listView.setLayoutParams(params);
+            listView.requestLayout();
+
+            return true;
+
+        } else {
+            return false;
+        }
+    }
 }

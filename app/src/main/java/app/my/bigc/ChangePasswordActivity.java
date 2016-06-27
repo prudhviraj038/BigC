@@ -58,8 +58,7 @@ public class ChangePasswordActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.change_password, container, false);
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         account_type=new ArrayList<>();

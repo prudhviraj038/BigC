@@ -23,6 +23,7 @@ public class Examresult_Activity extends Fragment {
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
     public void reexam(String exam);
+        public void to_back();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -42,7 +43,7 @@ public class Examresult_Activity extends Fragment {
         return inflater.inflate(R.layout.examresult, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         try {
@@ -93,7 +94,7 @@ public class Examresult_Activity extends Fragment {
         backtoresults.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            mCallBack.to_back();
 //                finish();
 
             }

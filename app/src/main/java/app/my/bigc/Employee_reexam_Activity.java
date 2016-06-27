@@ -36,7 +36,7 @@ public class Employee_reexam_Activity extends Fragment {
     LinearLayout all_views ;
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
-
+    public  void to_back();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -56,7 +56,7 @@ public class Employee_reexam_Activity extends Fragment {
         return inflater.inflate(R.layout.employee_reexamscreen, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         mTextField = (TextView)v.findViewById(R.id.time_exam);
@@ -85,6 +85,7 @@ public class Employee_reexam_Activity extends Fragment {
         ans2_ll=(LinearLayout)v.findViewById(R.id.ans2_ll);
         ans3_ll=(LinearLayout)v.findViewById(R.id.ans3_ll);
         ans4_ll=(LinearLayout)v.findViewById(R.id.ans4_ll);
+        back=(LinearLayout)v.findViewById(R.id.back_result_reexam);
        countDownTimer = new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -159,7 +160,12 @@ public class Employee_reexam_Activity extends Fragment {
         });
 
        // update_exam_status("0");
-
+back.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        mCallBack.to_back();
+    }
+});
 next_ll.performClick();
     }
     public  void Set_option(int i,int j){

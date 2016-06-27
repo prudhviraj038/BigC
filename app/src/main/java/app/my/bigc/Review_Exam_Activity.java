@@ -36,7 +36,7 @@ public class Review_Exam_Activity extends Fragment{
         return inflater.inflate(R.layout.review_exam_screen, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
 //        try {

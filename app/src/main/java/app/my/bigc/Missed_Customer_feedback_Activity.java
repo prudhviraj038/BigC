@@ -77,7 +77,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
         return inflater.inflate(R.layout.missed_customer_feedback, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         brand_str="";

@@ -61,7 +61,7 @@ public class Missed_Customer_List_Activity extends Fragment {
         return inflater.inflate(R.layout.missedcustomerlist, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         missedcustomers=new ArrayList<>();

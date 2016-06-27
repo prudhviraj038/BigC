@@ -38,11 +38,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.home_screen, container, false);
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
-        employee = (ImageView)v.findViewById(R.id.employee);
+       employee = (ImageView)v.findViewById(R.id.employee);
         customer = (ImageView)v.findViewById(R.id.customer);
         employee.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -74,7 +74,7 @@ public class CustomerFeedback extends Fragment {
         return inflater.inflate(R.layout.customer_feedback_screen, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         visited_yes = (RadioButton)v.findViewById(R.id.radioButton3);

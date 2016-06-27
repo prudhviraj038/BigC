@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by sriven on 6/7/2016.
@@ -43,6 +44,9 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         change_password=(LinearLayout) findViewById(R.id.change_password);
         logout=(LinearLayout) findViewById(R.id.logout);
         logout_store =(LinearLayout) findViewById(R.id.logout_store);
+        fragmentManager = getSupportFragmentManager();
+        HomeFragment fragment1 = new HomeFragment();
+        fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).commit();
         if(Settings.get_emp_id(this).equals("-1")){
 
             logout.setVisibility(View.GONE);
@@ -55,7 +59,9 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
                 logout.setVisibility(View.GONE);
                 if(mDrawerLayout!=null)
                     mDrawerLayout.closeDrawer(GravityCompat.START);
-
+                fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                HomeFragment fragment1 = new HomeFragment();
+                fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).commit();
             }
         });
         logout_store.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +91,7 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
@@ -92,6 +99,8 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 HomeFragment fragment1 = new HomeFragment();
                 fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
@@ -100,6 +109,8 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         customerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 CustomerFeedback fragment1 = new CustomerFeedback();
                 fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
@@ -107,11 +118,13 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         missedcustomerfeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")) {
                     Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
                     intent.putExtra("type", "emp");
                     intent.putExtra("goto", "missed");
-                    startActivity(intent);
+                   startActivityForResult(intent, 4);
 
                 } else {
                    Missed_Customer_feedback_Activity fragment1 = new Missed_Customer_feedback_Activity();
@@ -122,11 +135,13 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         missedcustomerlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 if (Settings.get_emp_id(Dashboard_Activity.this).equals("-1")) {
                     Intent intent = new Intent(Dashboard_Activity.this, BigC_Login_Activity.class);
                     intent.putExtra("type", "emp");
                     intent.putExtra("goto", "missed_list");
-                    startActivity(intent);
+                    startActivityForResult(intent,4);
                 } else {
                     Missed_Customer_List_Activity fragment1 = new Missed_Customer_List_Activity();
                     fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
@@ -136,12 +151,13 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         employeexam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
                     Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
                     intent.putExtra("type","emp");
-                    intent.putExtra("goto","exam");
-
-                    startActivity(intent);
+                    intent.putExtra("goto", "exam");
+                    startActivityForResult(intent, 4);
                 }else {
                     Exams_list_Activity fragment1 = new Exams_list_Activity();
                     fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
@@ -151,11 +167,13 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 if(Settings.get_emp_id(Dashboard_Activity.this).equals("-1")){
                     Intent intent = new Intent(Dashboard_Activity.this,BigC_Login_Activity.class);
                     intent.putExtra("type","emp");
                     intent.putExtra("goto","reexam");
-                    startActivity(intent);
+                    startActivityForResult(intent,4);
                 }else {
                     Exams_list_Activity fragment1 = new Exams_list_Activity();
                     fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
@@ -164,6 +182,8 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mDrawerLayout!=null)
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 Offer_Screen_Activity fragment1 = new Offer_Screen_Activity();
                 fragmentManager.beginTransaction().replace(R.id.container_main, fragment1).addToBackStack(null).commit();
             }
@@ -232,5 +252,40 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         FragmentManager fragmentManager = getSupportFragmentManager();
         CustomerFeedback customerFeedback = new CustomerFeedback();
         fragmentManager.beginTransaction().replace(R.id.container_main, customerFeedback).addToBackStack(null).commit();
+    }
+    @Override
+    public  void to_back(){
+        onBackPressed();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==4&&data!=null){
+            Toast.makeText(Dashboard_Activity.this,"Employee Login success",Toast.LENGTH_SHORT).show();
+//            Exams_list_Activity exams_list_activity = new Exams_list_Activity();
+//            fragmentManager.beginTransaction().replace(R.id.container_main, exams_list_activity).addToBackStack(null).commit();
+
+            if(data.getStringExtra("goto").equals("exam")) {
+                Exams_list_Activity exams_list_activity1 = new Exams_list_Activity();
+                fragmentManager.beginTransaction().replace(R.id.container_main, exams_list_activity1).addToBackStack(null).commit();
+            }
+            else if(data.getStringExtra("goto").equals("reexam")){
+                Exams_list_Activity exams_list_activity2 = new Exams_list_Activity();
+                fragmentManager.beginTransaction().replace(R.id.container_main, exams_list_activity2).addToBackStack(null).commit();
+            }
+
+            else if(data.getStringExtra("goto").equals("missed")){
+                Missed_Customer_feedback_Activity missed_customer_feedback_activity = new Missed_Customer_feedback_Activity();
+                fragmentManager.beginTransaction().replace(R.id.container_main, missed_customer_feedback_activity).addToBackStack(null).commit();
+            }
+            else if(data.getStringExtra("goto").equals("missed_list")) {
+                Missed_Customer_List_Activity missed_customer_list_activity = new Missed_Customer_List_Activity();
+                fragmentManager.beginTransaction().replace(R.id.container_main, missed_customer_list_activity).addToBackStack(null).commit();
+            }
+        }else{
+            Toast.makeText(Dashboard_Activity.this,"Employee Login Failed",Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

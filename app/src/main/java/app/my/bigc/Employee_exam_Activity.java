@@ -59,7 +59,7 @@ public class Employee_exam_Activity extends Fragment {
         return inflater.inflate(R.layout.employee_examscreen, container, false);
     }
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
         mTextField = (TextView)v.findViewById(R.id.time_exam);

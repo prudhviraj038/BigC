@@ -1,11 +1,12 @@
 package app.my.bigc;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -26,16 +27,18 @@ import org.json.JSONObject;
 /**
  * Created by sriven on 5/31/2016.
  */
-public class BigC_Login_Activity extends Activity {
+public class BigC_Login_Activity extends FragmentActivity {
     TextView username,password,login_name,fpassword;
     LinearLayout signin;
     String username_str,password_str,write;
+    FragmentManager fragmentManager;
     String type = "0";
     String emailPattern = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bigc_login_screen);
+
         type = getIntent().getStringExtra("type");
         login_name = (TextView)findViewById(R.id.sta_login_name);
         if(type.equals("0"))
@@ -46,6 +49,7 @@ public class BigC_Login_Activity extends Activity {
         username = (TextView)findViewById(R.id.uname);
         fpassword = (TextView)findViewById(R.id.fpassword);
         password = (TextView)findViewById(R.id.pwd);
+        fragmentManager = getSupportFragmentManager();
         signin = (LinearLayout)findViewById(R.id.signin);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,21 +135,9 @@ public class BigC_Login_Activity extends Activity {
                                 String mem_id= jsonObject.getJSONObject(0).getString("member_id");
                                 Toast.makeText(BigC_Login_Activity.this, "welcome  "+name, Toast.LENGTH_SHORT).show();
                                 Settings.set_emp_id(getApplicationContext(), mem_id, login_type, name);
-                                Intent intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
-
-                                if(getIntent().getStringExtra("goto").equals("exam"))
-                                    intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
-
-                                else if(getIntent().getStringExtra("goto").equals("reexam"))
-                                    intent = new Intent(BigC_Login_Activity.this, Exams_list_Activity.class);
-
-                                else if(getIntent().getStringExtra("goto").equals("missed"))
-                                    intent = new Intent(BigC_Login_Activity.this, Missed_Customer_feedback_Activity.class);
-
-                                else if(getIntent().getStringExtra("goto").equals("missed_list"))
-                                    intent = new Intent(BigC_Login_Activity.this, Missed_Customer_List_Activity.class);
-
-                                startActivity(intent);
+                                Intent intent=new Intent();
+                                intent.putExtra("goto", getIntent().getStringExtra("goto"));
+                                setResult(4, intent);
                                 finish();
 
                             }
