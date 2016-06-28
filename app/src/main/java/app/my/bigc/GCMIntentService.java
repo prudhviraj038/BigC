@@ -182,8 +182,12 @@ public class GCMIntentService extends GCMBaseIntentService {
         else if(type.equals("Missed_Customer")){
             resultIntent.putExtra("goto","Missed_Customer");
         }
+        else if(type.equals("Welcome")){
+            resultIntent.putExtra("goto","Offer");
+        }
         else{
             resultIntent = new Intent(context, SplashActivity.class);
+            resultIntent.putExtra("goto","Offer");
         }
         // The stack builder object will contain an artificial back stack for
         // the
