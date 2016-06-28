@@ -10,7 +10,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView6"
+            android:id="@+id/imageView29"
             android:src="@drawable/dashboardbackground"
             android:scaleType="centerCrop" />
 
@@ -18,19 +18,19 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/emp1"
-            android:layout_marginTop="50dp">
+            android:id="@+id/linearLayout7"
+            android:layout_marginTop="50dp" >
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal" >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView8"
+                    android:id="@+id/imageView29"
                     android:src="@drawable/bigclogo"
                     android:adjustViewBounds="true"
                     android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView38"
+                    android:id="@+id/imageView30"
                     android:src="@drawable/bigclogo"
                     android:adjustViewBounds="true"
                     android:layout_gravity="center_horizontal"
@@ -49,13 +49,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView39"
+                    android:id="@+id/imageView33"
                     android:src="@drawable/bigclogo"
                     android:adjustViewBounds="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:visibility="invisible" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -67,12 +66,12 @@
                 android:layout_marginRight="20dp"
                 android:divider="@drawable/dashboard_whitedivider"
                 android:showDividers="middle|beginning|end"
-                android:paddingTop="80dp">
+                android:paddingTop="80dp" >
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/employeee"
+                    android:id="@+id/employee"
                     android:src="@drawable/redcircle"
                     android:adjustViewBounds="true"
                     android:layout_weight="1" />
@@ -80,22 +79,11 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/customerr"
+                    android:id="@+id/customer"
                     android:src="@drawable/bluecircle"
                     android:adjustViewBounds="true"
                     android:layout_weight="1" />
             </LinearLayout>
-
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:id="@+id/headerbtn"
-            android:src="@drawable/headericon"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="10dp"
-            android:adjustViewBounds="false" />
     </RelativeLayout>
-
 </LinearLayout>

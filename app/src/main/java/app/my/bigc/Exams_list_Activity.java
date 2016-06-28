@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -26,21 +28,43 @@ import java.util.ArrayList;
 /**
  * Created by sriven on 6/7/2016.
  */
-public class Exams_list_Activity extends Activity {
+public class Exams_list_Activity extends Fragment {
     ExamAdapter offerAdapter;
     ArrayList<Exam> exams;
     ListView offer_list;
     ArrayList<String> lang;
+    FragmentTouchListner mCallBack;
+    public interface FragmentTouchListner {
+        public  void exam_result(String exam);
+        public  void emp_exam(String exam);
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallBack = (Dashboard_Activity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Listner");
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.reviewresult, container, false);
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reviewresult);
+        View v = getView();
         exams=new ArrayList<>();
         lang=new ArrayList<>();
         lang.add("English");
         lang.add("Telugu");
-        offerAdapter=new ExamAdapter(this,exams);
-        offer_list=(ListView)findViewById(R.id.exam_list);
+        offerAdapter=new ExamAdapter(getActivity(),exams);
+        offer_list=(ListView)v.findViewById(R.id.exam_list);
         offer_list.setAdapter(offerAdapter);
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,11 +81,11 @@ public class Exams_list_Activity extends Activity {
 
     private void getQuestions(){
         String url;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"member_exams.php?member_id="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"member_exams.php?member_id="+Settings.get_emp_id(getActivity());
         Log.e("url", url);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 
@@ -75,7 +99,7 @@ public class Exams_list_Activity extends Activity {
                     jsonArray = jsonArray.getJSONObject(0).getJSONArray("exams");
                     for (int i=0;i<jsonArray.length();i++){
                         JSONObject tmp_json = jsonArray.getJSONObject(i);
-                        Exam exam=new Exam(tmp_json,Exams_list_Activity.this);
+                        Exam exam=new Exam(tmp_json,getActivity());
                         exams.add(exam);
                     }
                     offerAdapter.notifyDataSetChanged();
@@ -100,45 +124,37 @@ public class Exams_list_Activity extends Activity {
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
         getQuestions();
     }
     public void show_alert(final int position){
-        AlertDialog.Builder alert1 = new AlertDialog.Builder(this);
+        AlertDialog.Builder alert1 = new AlertDialog.Builder(getActivity());
         alert1.setTitle("Choose Language");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, lang);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, lang);
         alert1.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
-                    Settings.set_user_language(Exams_list_Activity.this, "en");
+                    Settings.set_user_language(getActivity(), "en");
                     if (exams.get(position).status.equals("Completed")) {
-                        Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
-                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                        startActivity(intent);
+                        mCallBack.exam_result(exams.get(position).jsonObject.toString());
                     } else {
                         if (exams.get(position).questions.size() == 0) {
-                            Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
                         } else {
-                            Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
-                            intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                            startActivity(intent);
+                            mCallBack.emp_exam(exams.get(position).jsonObject.toString());
                         }
                     }
                 } else {
-                    Settings.set_user_language(Exams_list_Activity.this, "te");
+                    Settings.set_user_language(getActivity(), "te");
                     if (exams.get(position).status.equals("Completed")) {
-                        Intent intent = new Intent(Exams_list_Activity.this, Examresult_Activity.class);
-                        intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                        startActivity(intent);
+                        mCallBack.exam_result(exams.get(position).jsonObject.toString());
                     } else {
                         if (exams.get(position).questions.size() == 0) {
-                            Toast.makeText(Exams_list_Activity.this, "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "No Questions added to this Exam", Toast.LENGTH_SHORT).show();
                         } else {
-                            Intent intent = new Intent(Exams_list_Activity.this, Employee_exam_Activity.class);
-                            intent.putExtra("exam", exams.get(position).jsonObject.toString());
-                            startActivity(intent);
+                            mCallBack.emp_exam(exams.get(position).jsonObject.toString());
                         }
                     }
                 }

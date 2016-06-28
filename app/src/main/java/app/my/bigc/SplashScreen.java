@@ -66,7 +66,7 @@ public class SplashScreen extends Activity {
                     @Override
                     protected void onPostExecute(Void result) {
                         mRegisterTask = null;
-                        goto_next_screen();
+//                        goto_next_screen();
                     }
 
                 };
@@ -92,7 +92,7 @@ public class SplashScreen extends Activity {
                     @Override
                     protected void onPostExecute(Void result) {
                         mRegisterTask = null;
-                        goto_next_screen();
+//                        goto_next_screen();
                     }
 
                 };

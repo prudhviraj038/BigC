@@ -3,8 +3,11 @@ package app.my.bigc;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -27,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Created by sriven on 6/17/2016.
  */
-public class Missed_Customer_List_Activity extends Activity {
+public class Missed_Customer_List_Activity extends Fragment {
     MissedCustomerAdapter missedcustomer;
     int posi;
     ArrayList<Missed_Customer> missedcustomers;
@@ -36,33 +39,54 @@ public class Missed_Customer_List_Activity extends Activity {
     ListView missed_listview;
     LinearLayout back_to_list,statua_ll;
     ViewFlipper viewFlipper;
+    FragmentTouchListner mCallBack;
+    public interface FragmentTouchListner {
+
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallBack = (Dashboard_Activity) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement Listner");
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.missedcustomerlist, container, false);
+    }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.missedcustomerlist);
+        View v = getView();
         missedcustomers=new ArrayList<>();
-        viewFlipper=(ViewFlipper)findViewById(R.id.viewFlipper2);
-        name = (TextView)findViewById(R.id.missed_name);
-        number = (TextView)findViewById(R.id.missed_number);
-        brand = (TextView)findViewById(R.id.missed_brand);
-        model = (TextView)findViewById(R.id.missed_model);
-        cus_name = (TextView)findViewById(R.id.cus_name_missed);
-        cus_number = (TextView)findViewById(R.id.cus_number_missed);
-        cus_mobile = (TextView)findViewById(R.id.cus_mobile_missed);
-        cus_email = (TextView)findViewById(R.id.cus_email_missed);
-        cue_requri = (TextView)findViewById(R.id.cus_req_missed);
-        cus_brand = (TextView)findViewById(R.id.cus_brand_missed);
-        cus_model = (TextView)findViewById(R.id.cus_model_missed);
-        fuifill_date = (TextView)findViewById(R.id.fulfill_date_tv);
-        cus_reason = (TextView)findViewById(R.id.reason_not_purch);
-        cus_suggestions = (TextView)findViewById(R.id.cus_suggestions);
-        cus_date = (TextView)findViewById(R.id.submited_date_missed);
-        cus_status = (TextView)findViewById(R.id.missed_status);
-        back_to_list=(LinearLayout)findViewById(R.id.back_list_ll);
-        statua_ll=(LinearLayout)findViewById(R.id.status_ll_missed);
+        viewFlipper=(ViewFlipper)v.findViewById(R.id.viewFlipper2);
+        name = (TextView)v.findViewById(R.id.missed_name);
+        number = (TextView)v.findViewById(R.id.missed_number);
+        brand = (TextView)v.findViewById(R.id.missed_brand);
+        model = (TextView)v.findViewById(R.id.missed_model);
+        cus_name = (TextView)v.findViewById(R.id.cus_name_missed);
+        cus_number = (TextView)v.findViewById(R.id.cus_number_missed);
+        cus_mobile = (TextView)v.findViewById(R.id.cus_mobile_missed);
+        cus_email = (TextView)v.findViewById(R.id.cus_email_missed);
+        cue_requri = (TextView)v.findViewById(R.id.cus_req_missed);
+        cus_brand = (TextView)v.findViewById(R.id.cus_brand_missed);
+        cus_model = (TextView)v.findViewById(R.id.cus_model_missed);
+        fuifill_date = (TextView)v.findViewById(R.id.fulfill_date_tv);
+        cus_reason = (TextView)v.findViewById(R.id.reason_not_purch);
+        cus_suggestions = (TextView)v.findViewById(R.id.cus_suggestions);
+        cus_date = (TextView)v.findViewById(R.id.submited_date_missed);
+        cus_status = (TextView)v.findViewById(R.id.missed_status);
+        back_to_list=(LinearLayout)v.findViewById(R.id.back_list_ll);
+        statua_ll=(LinearLayout)v.findViewById(R.id.status_ll_missed);
         missedcustomers=new ArrayList<>();
-        missedcustomer=new MissedCustomerAdapter(this,missedcustomers);
-        missed_listview = (ListView)findViewById(R.id.missed_listview);
+        missedcustomer=new MissedCustomerAdapter(getActivity(),missedcustomers);
+        missed_listview = (ListView)v.findViewById(R.id.missed_listview);
         missed_listview.setAdapter(missedcustomer);
         missed_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -107,11 +131,11 @@ public class Missed_Customer_List_Activity extends Activity {
     }
     private void getMissedcustomer(){
         String url;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
-        url = Settings.SERVER_URL+"missed-customer-list.php?member_id="+Settings.get_emp_id(getApplicationContext());
+        url = Settings.SERVER_URL+"missed-customer-list.php?member_id="+Settings.get_emp_id(getActivity());
         Log.e("url", url);
         JsonArrayRequest jsObjRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
 
@@ -150,7 +174,7 @@ public class Missed_Customer_List_Activity extends Activity {
     }
     private void  get_status_close(){
         String url;
-        final ProgressDialog progressDialog = new ProgressDialog(this);
+        final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
@@ -172,7 +196,7 @@ public class Missed_Customer_List_Activity extends Activity {
                      //   Toast.makeText(Missed_Customer_List_Activity.this, msg, Toast.LENGTH_SHORT).show();
                     }else {
                         String msg = jsonObject.getString("message");
-                        Toast.makeText(Missed_Customer_List_Activity.this, msg, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

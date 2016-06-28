@@ -59,41 +59,65 @@
             </LinearLayout>
 
             <ViewFlipper
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/viewFlipper" >
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:divider="@drawable/whitedivider2"
-                    android:showDividers="middle"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginRight="70dp"
-                    android:layout_marginBottom="10dp"
-                    android:gravity="center"
-                    android:id="@+id/offers_dispaly">
+                    android:id="@+id/scrollView4" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notifications/Offers"
-                        android:id="@+id/textView29"
-                        android:textColor="#3f3f3f"
-                        android:textSize="30sp"
-                        android:background="#f3f1f1"
-                        android:padding="20dp" />
-
-                    <ListView
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/offer_list"
-                        android:divider="#00000000"
-                        android:descendantFocusability="blocksDescendants" />
+                        android:divider="@drawable/whitedivider2"
+                        android:showDividers="middle"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="70dp"
+                        android:layout_marginRight="70dp"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center"
+                        android:id="@+id/offers_dispaly">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Offers"
+                            android:id="@+id/textView29"
+                            android:textColor="#3f3f3f"
+                            android:textSize="30sp"
+                            android:background="#f3f1f1"
+                            android:padding="15dp"
+                            android:layout_marginBottom="5dp" />
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/offer_list"
+                            android:divider="#00000000"
+                            android:descendantFocusability="blocksDescendants" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Notifications"
+                            android:id="@+id/textView64"
+                            android:textColor="#3f3f3f"
+                            android:textSize="30sp"
+                            android:background="#f3f1f1"
+                            android:padding="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp" />
+
+                        <ListView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/noti_list_view" />
+
+                    </LinearLayout>
+                </ScrollView>
 
                 <RelativeLayout
                     android:orientation="vertical"
