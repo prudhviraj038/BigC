@@ -40,7 +40,7 @@ public class Offer_Screen_Activity extends Fragment {
     ArrayList<Notifications> notificationses;
     ListView offer_list,noti_list;
     LinearLayout backtooffers,offersdisplay;
-    TextView title,discription,expiry,expirydate;
+    TextView title,discription,expiry,expirydate,back;
     ImageView offers_image,status;
     ViewFlipper offer_details;
     int position;
@@ -71,6 +71,7 @@ public class Offer_Screen_Activity extends Fragment {
         View v = getView();
         offers=new ArrayList<>();
         notificationses=new ArrayList<>();
+        back = (TextView)v.findViewById(R.id.back_to_screen);
         offersdisplay = (LinearLayout)v.findViewById(R.id.offers_dispaly);
         offer_details = (ViewFlipper)v.findViewById(R.id.viewFlipper);
         title = (TextView)v.findViewById(R.id.offers_title);
@@ -86,9 +87,30 @@ public class Offer_Screen_Activity extends Fragment {
         noti_list=(ListView)v.findViewById(R.id.noti_list_view);
         notificationAdapter=new NotificationAdapter(getActivity(),notificationses);
         noti_list.setAdapter(notificationAdapter);
+        noti_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                offer_details.setDisplayedChild(1);
+                back.setText("Back to Notifications");
+                title.setText(notificationses.get(position).title);
+                Picasso.with(getActivity()).load(notificationses.get(position).image).into(offers_image);
+                offers_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), ImageZoomActivity.class);
+                        intent.putExtra("url", notificationses.get(position).image);
+                        startActivity(intent);
+                    }
+                });
+                discription.setText(notificationses.get(position).message);
+                status.setVisibility(View.GONE);
+                expirydate.setVisibility(View.GONE);
+            }
+        });
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                back.setText("Back to Offers");
                 Log.e("reponse", offers.get(position).title);
                 offer_details.setDisplayedChild(1);
                 title.setText(offers.get(position).title);
@@ -102,7 +124,9 @@ public class Offer_Screen_Activity extends Fragment {
                     }
                 });
                 discription.setText(offers.get(position).discription);
+                expirydate.setVisibility(View.VISIBLE);
                 expirydate.setText("From : " + offers.get(position).startdate + " To : " + offers.get(position).expirydate);
+                status.setVisibility(View.VISIBLE);
                 if (offers.get(position).status.equals("Opened"))
                     status.setImageResource(R.drawable.active_img);
                 else
