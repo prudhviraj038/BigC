@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -143,7 +144,22 @@ public class Offer_Screen_Activity extends Fragment {
             }
         });
 
-
+        v.setFocusableInTouchMode(true);
+        v.requestFocus();
+        v.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    if (offer_details.getDisplayedChild() == 1) {
+                        offer_details.setDisplayedChild(0);
+                        return true;
+                    } else
+                        return false;
+//                            viewFlipper.setDisplayedChild(0);
+                }
+                return false;
+            }
+        });
     }
 
 //    public void onBackPressed() {

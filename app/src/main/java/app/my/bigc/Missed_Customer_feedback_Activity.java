@@ -43,7 +43,7 @@ import java.util.Map;
 public class Missed_Customer_feedback_Activity extends Fragment {
     String brand_id="0";
     String model_id="0";
-    String fulfill_date;
+    String fulfill_date="0";
     private int  mYear, mMonth, mDay,mHour, mMinute;
     TextView selectbrand,selectmodel,no_of_days_tv;
     ArrayList<String> brands_id;
@@ -281,7 +281,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
              //   else if(model_str.equals("")){
               //     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
              //   }
-                else if(fulfill_date.equals("")){
+                else if(fulfill_date.equals("")||fulfill_date.equals("0")){
                     Toast.makeText(getActivity(), "please select fullfill date", Toast.LENGTH_SHORT).show();
                 }
                 else if(reason_str.equals("")){

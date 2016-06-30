@@ -100,7 +100,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/customer_name"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:hint="Customer Name"
                         android:autoText="false"
                         android:padding="15dp"
@@ -111,7 +111,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/contact_number"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:padding="15dp"
                         android:hint="Contact Number"
                         android:phoneNumber="false"
@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/email_id"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:padding="15dp"
                         android:hint="Email Id"
                         android:inputType="textEmailAddress"
@@ -162,7 +162,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:id="@+id/select_brand_ll">
 
                         <TextView
@@ -186,7 +186,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:id="@+id/select_model_ll">
 
                         <TextView
@@ -210,7 +210,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/customer_req"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:padding="15dp"
                         android:hint="If Any Other"
                         android:singleLine="true"
@@ -220,7 +220,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:id="@+id/no_of_dayss" >
 
                         <TextView
@@ -245,7 +245,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/reason"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:padding="15dp"
                         android:hint="Reasons For Not Purchasing"
                         android:textSize="18sp" />
@@ -254,7 +254,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/suggestions"
-                        android:background="#d3d4d5"
+                        android:background="@drawable/missed_item_rounded_corners"
                         android:padding="15dp"
                         android:hint="Suggestions"
                         android:textSize="18sp" />

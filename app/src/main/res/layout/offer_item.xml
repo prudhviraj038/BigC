@@ -13,7 +13,7 @@
             android:layout_height="100dp"
             android:layout_margin="5dp"
             android:padding="7dp"
-            android:background="#f9f8f8">
+            android:background="#bcf9f8f8">
 
             <ImageView
                 android:layout_width="80dp"

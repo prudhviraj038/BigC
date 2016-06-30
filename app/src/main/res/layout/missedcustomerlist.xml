@@ -74,7 +74,7 @@
                         android:text="Missed Customers List(Last 15 Days)"
                         android:id="@+id/textView15"
                         android:textColor="#187ac8"
-                        android:background="#d8ebf9"
+                        android:background="@drawable/offers_notifications_rounded_corners"
                         android:textSize="20sp"
                         android:padding="20dp" />
 

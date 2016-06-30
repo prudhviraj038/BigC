@@ -7,7 +7,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#aecbe0"
+        android:background="#b0aecbe0"
         android:padding="10dp"
         android:id="@+id/missed_ll">
 
