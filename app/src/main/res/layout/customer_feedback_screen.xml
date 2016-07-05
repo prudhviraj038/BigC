@@ -185,7 +185,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/editText8"
+                                android:id="@+id/visited_tv"
                                 android:textSize="20sp"
                                 android:textColor="#000000"
                                 android:hint="Have You Ever Visited BigC Showroom Earlier?"
@@ -244,7 +244,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/editText9"
+                                android:id="@+id/purchase_tv"
                                 android:layout_gravity="center_horizontal"
                                 android:textSize="20sp"
                                 android:textColor="#000000"
@@ -301,7 +301,8 @@
                             android:textSize="20sp"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:padding="15dp" />
+                            android:padding="15dp"
+                            android:textColor="#000000" />
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -327,7 +328,8 @@
                             android:layout_weight="1"
                             android:textSize="20sp"
                             android:gravity="center_vertical"
-                            android:padding="15dp" />
+                            android:padding="15dp"
+                            android:textColor="#000000" />
 
                         <ImageView
                             android:layout_width="wrap_content"

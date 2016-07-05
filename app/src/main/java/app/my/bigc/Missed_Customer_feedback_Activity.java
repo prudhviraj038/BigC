@@ -57,7 +57,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
     String customer_str,contact_str,email_str,requirement_str,brand_str,model_str,reason_str,suggestions_str,mobile_acs,no_days;
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
-
+        public  void go_back();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -103,7 +103,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
             }
         });
         no_of_days= new ArrayList<String>();
-        for(int i=1;i<=10;i++)
+        for(int i=1;i<=7;i++)
         no_of_days.add(String.valueOf(i));
         brands_id= new ArrayList<String>();
         brands_title=new ArrayList<String>();
@@ -176,7 +176,8 @@ public class Missed_Customer_feedback_Activity extends Fragment {
             }
         });
         no_of_days_ll = (LinearLayout)v.findViewById(R.id.no_of_dayss);
-        no_of_days_ll.setOnClickListener(new View.OnClickListener() {
+
+        /* no_of_days_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final Calendar c = Calendar.getInstance();
@@ -227,28 +228,29 @@ public class Missed_Customer_feedback_Activity extends Fragment {
                 }, mYear, mMonth, mDay);
                 datePickerDialog.show();
             }
+        }); */
+
+        no_of_days_ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Select no of days");
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_dropdown_item_1line, no_of_days);
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
+
+                            fulfill_date = no_of_days.get(which);
+                            no_of_days_tv.setText(no_of_days.get(which));
+                        }
+                    });
+
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+
+            }
         });
-//        no_of_days_ll.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(Missed_Customer_feedback_Activity.this);
-//                    builder.setTitle("Select no of days");
-//                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Missed_Customer_feedback_Activity.this, android.R.layout.simple_dropdown_item_1line, no_of_days);
-//                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
-//
-//                            no_days = no_of_days.get(which);
-//                            no_of_days_tv.setText(no_of_days.get(which));
-//                        }
-//                    });
-//
-//                    final AlertDialog dialog = builder.create();
-//                    dialog.show();
-//
-//            }
-//        });
 
         submit = (LinearLayout)v.findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -390,6 +392,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
                     progressDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
+                    Log.e("response",jsonObject.toString());
                     String reply=jsonObject.getString("status");
                     if(reply.equals("Success")) {
                         String msg = jsonObject.getString("message");
@@ -427,7 +430,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
                 params.put("brand",brand_id);
                 params.put("model",model_id);
                 params.put("reason",reason_str);
-                params.put("fulfill_date",fulfill_date);
+                params.put("fulfill_days",fulfill_date);
                 params.put("suggestions",suggestions_str);
                 return params;
             }

@@ -90,7 +90,7 @@ public class Offer_Screen_Activity extends Fragment {
         noti_list.setAdapter(notificationAdapter);
         noti_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
                 offer_details.setDisplayedChild(1);
                 back.setText("Back to Notifications");
                 title.setText(notificationses.get(position).title);

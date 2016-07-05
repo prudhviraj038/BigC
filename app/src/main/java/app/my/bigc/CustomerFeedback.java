@@ -48,13 +48,13 @@ public class CustomerFeedback extends Fragment {
     ArrayList<String> storeambiances_title;
     ArrayList<String> visit;
     EditText selectnewspaper;
-    TextView selectstaffresponce,selectstoreambiance;
+    TextView selectstaffresponce,selectstoreambiance,visited_tv,bill_tv;
     LinearLayout submit,news_paper_ll,staff_responce_ll,store_ambiance_ll,visit_ll,purchase_ll;
     String customer_str,contact_str,email_str,newspaper_str,storeambiance_str,staffresponce_str,suggestion_str,visited_str,bill_str;
     RadioButton visited_yes,visited_no,bill_yes,bill_no;
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
-
+        public  void to_feedback();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -137,6 +137,8 @@ public class CustomerFeedback extends Fragment {
         selectstaffresponce = (TextView)v.findViewById(R.id.staff_responce);
         visit_ll = (LinearLayout)v.findViewById(R.id.visted_ll);
         purchase_ll = (LinearLayout)v.findViewById(R.id.bill_purchase_ll);
+        visited_tv = (TextView) v.findViewById(R.id.visited_tv);
+        bill_tv = (TextView) v.findViewById(R.id.purchase_tv);
         visit_ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,6 +150,7 @@ public class CustomerFeedback extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                         visited_str = visit.get(which);
+                        visited_tv.setText(visited_str);
 
                     }
                 });
@@ -166,6 +169,7 @@ public class CustomerFeedback extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         //Toast.makeText(ChooseSubjectActivity.this, level_title.get(which), Toast.LENGTH_SHORT).show();
                         bill_str = visit.get(which);
+                        bill_tv.setText(bill_str);
 
                     }
                 });
@@ -424,8 +428,9 @@ public class CustomerFeedback extends Fragment {
                     Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
                     Intent intent;
                     intent = new Intent(getActivity(),FeedBack_Activity.class);
-                    startActivity(intent);
+                //                    startActivity(intent);
 //                    finish();
+                    mCallBack.to_feedback();
                 }
                 else {
                     String msg=jsonObject.getString("message");

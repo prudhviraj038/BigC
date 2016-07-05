@@ -253,6 +253,14 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         CustomerFeedback customerFeedback = new CustomerFeedback();
         fragmentManager.beginTransaction().replace(R.id.container_main, customerFeedback).addToBackStack(null).commit();
     }
+
+    @Override
+    public  void to_feedback(){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FeedBack_Activity customerFeedback = new FeedBack_Activity();
+        fragmentManager.beginTransaction().replace(R.id.container_main, customerFeedback).commit();
+    }
+
     @Override
     public  void to_back(){
         onBackPressed();

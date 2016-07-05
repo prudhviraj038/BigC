@@ -110,6 +110,7 @@ public class Settings {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       return sharedPreferences.getString("gcm_id", "-1");
    }
+
    public static void set_gcmid(Context context, String gcm_id) {
       SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
       SharedPreferences.Editor editor = sharedPreferences.edit();

@@ -228,7 +228,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/no_of_days_tv"
                             android:padding="15dp"
-                            android:hint="Fulfill Date"
+                            android:hint="Fulfill Days"
                             android:layout_weight="1"
                             android:textSize="18sp"
                             android:text="Fulfill Date" />
