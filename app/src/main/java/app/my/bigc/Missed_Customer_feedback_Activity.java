@@ -105,6 +105,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
         no_of_days= new ArrayList<String>();
         for(int i=1;i<=7;i++)
         no_of_days.add(String.valueOf(i));
+
         brands_id= new ArrayList<String>();
         brands_title=new ArrayList<String>();
         models_id= new ArrayList<String>();
@@ -284,7 +285,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
               //     Toast.makeText(Missed_Customer_feedback_Activity.this, "please select the model", Toast.LENGTH_SHORT).show();
              //   }
                 else if(fulfill_date.equals("")||fulfill_date.equals("0")){
-                    Toast.makeText(getActivity(), "please select fullfill date", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "please select FullFill days", Toast.LENGTH_SHORT).show();
                 }
                 else if(reason_str.equals("")){
                     Toast.makeText(getActivity(), "please enter the reason", Toast.LENGTH_SHORT).show();
@@ -293,6 +294,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
               //      Toast.makeText(Missed_Customer_feedback_Activity.this, "please enter your suggestions", Toast.LENGTH_SHORT).show();
               //  }
                 else {
+                    submit.setEnabled(false);
                     send_missed_customer_feedback();
 //                   Toast.makeText(Missed_Customer_feedback_Activity.this, "thank you for your feedback", Toast.LENGTH_SHORT).show();
 
@@ -398,6 +400,7 @@ public class Missed_Customer_feedback_Activity extends Fragment {
                         String msg = jsonObject.getString("message");
                         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
 //                        finish();
+                        mCallBack.go_back();
                     }
                     else {
                         String msg=jsonObject.getString("message");

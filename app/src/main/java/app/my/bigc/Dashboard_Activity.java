@@ -296,4 +296,9 @@ public class Dashboard_Activity extends FragmentActivity implements ChangePasswo
         }
 
     }
+
+    @Override
+    public void go_back() {
+        onBackPressed();
+    }
 }
