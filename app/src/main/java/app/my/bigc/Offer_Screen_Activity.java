@@ -49,6 +49,7 @@ public class Offer_Screen_Activity extends Fragment {
     public interface FragmentTouchListner {
 
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -62,10 +63,12 @@ public class Offer_Screen_Activity extends Fragment {
                     + " must implement Listner");
         }
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.offers_screen, container, false);
     }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +111,7 @@ public class Offer_Screen_Activity extends Fragment {
                 expirydate.setVisibility(View.GONE);
             }
         });
+
         offer_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -160,6 +164,49 @@ public class Offer_Screen_Activity extends Fragment {
                 return false;
             }
         });
+
+
+        if( getArguments().getString("data") != null && !getArguments().getString("data").equals("")){
+            Log.e("check", getArguments().getString("data"));
+            back.setText("Back to Offers");
+            JSONObject jsonObject = new JSONObject();
+            try {
+                 jsonObject = new JSONObject(getArguments().getString("data"));
+                Log.e("reponse", jsonObject.getString("title"));
+                offer_details.setDisplayedChild(1);
+                title.setText(jsonObject.getString("title"));
+                Picasso.with(getActivity()).load(jsonObject.getString("image")).into(offers_image);
+                final JSONObject finalJsonObject = jsonObject;
+                offers_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), ImageZoomActivity.class);
+                        try {
+                            intent.putExtra("url", finalJsonObject.getString("image"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        startActivity(intent);
+                    }
+                });
+                discription.setText(jsonObject.getString("message"));
+                if(jsonObject.has("status")){
+                    expirydate.setVisibility(View.VISIBLE);
+                    expirydate.setText("From : " + jsonObject.getString("start_date") + " To : " + jsonObject.getString("expiry_date"));
+                    status.setVisibility(View.VISIBLE);
+                    if (jsonObject.getString("status").equals("Opened"))
+                        status.setImageResource(R.drawable.active_img);
+                    else
+                        status.setImageResource(R.drawable.expired_img);
+
+                }else{
+                    status.setVisibility(View.GONE);
+                    expirydate.setVisibility(View.GONE);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 //    public void onBackPressed() {
@@ -216,6 +263,7 @@ public class Offer_Screen_Activity extends Fragment {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
+
     private void getNotifications(){
         String url;
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -241,6 +289,7 @@ public class Offer_Screen_Activity extends Fragment {
                     }
                     notificationAdapter.notifyDataSetChanged();
                     setListViewHeightBasedOnItems(noti_list);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -261,6 +310,7 @@ public class Offer_Screen_Activity extends Fragment {
 // Access the RequestQueue through your singleton class.
         AppController.getInstance().addToRequestQueue(jsObjRequest);
     }
+
     public static boolean setListViewHeightBasedOnItems(ListView listView) {
 
         ListAdapter listAdapter = listView.getAdapter();

@@ -39,7 +39,7 @@ public class Employee_exam_Activity extends Fragment {
     ArrayList<TextView> progress_blocks;
     FragmentTouchListner mCallBack;
     public interface FragmentTouchListner {
-
+        public  void go_back();
     }
     @Override
     public void onAttach(Activity activity) {
@@ -62,6 +62,7 @@ public class Employee_exam_Activity extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = getView();
+
         mTextField = (TextView)v.findViewById(R.id.time_exam);
         progress_bar = (LinearLayout)v.findViewById(R.id.progress_bar);
         progress_blocks=new ArrayList<>();
@@ -70,6 +71,8 @@ public class Employee_exam_Activity extends Fragment {
         question_count = (TextView)v.findViewById(R.id.question_count);
         try {
             exams=new Exam(new JSONObject(getArguments().getString("exam")),getActivity());
+            i=exams.start_from;
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -243,7 +246,11 @@ public class Employee_exam_Activity extends Fragment {
                 if(progressDialog!=null)
                     progressDialog.dismiss();
                 Log.e("reponse", jsonObject.toString());
+
                 if(status.equals("0")) {
+                    if(i>0){
+                        next_ll.performClick();
+                    }
                     Set_option(0);
                     temp = 0;
                     if (i < exams.questions.size()) {
@@ -263,7 +270,10 @@ public class Employee_exam_Activity extends Fragment {
                             progress_blocks.add(temp);
                             progress_bar.addView(progress_blocks.get(i));
                         }
-                        progress_blocks.get(i).setVisibility(View.VISIBLE);
+                        for(int j=0;j<=i;j++){
+                            progress_blocks.get(j).setVisibility(View.VISIBLE);
+                        }
+
 
                     } else {
 
@@ -284,6 +294,8 @@ public class Employee_exam_Activity extends Fragment {
                     startActivity(intent);*/
 
 //                    finish();
+
+                    mCallBack.go_back();
                 }
 
             }

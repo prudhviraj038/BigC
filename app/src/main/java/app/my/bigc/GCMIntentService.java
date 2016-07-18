@@ -13,6 +13,9 @@ import android.util.Log;
 
 import com.google.android.gcm.GCMBaseIntentService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -59,36 +62,68 @@ public class GCMIntentService extends GCMBaseIntentService {
     protected void onMessage(Context context, Intent intent) {
         Log.i(TAG, "Received message");
         String type = intent.getExtras().getString("type","Offer");
-        if(type.equals("Offer")) {
-            String title = intent.getExtras().getString("title");
-            String message = intent.getExtras().getString("message");
-            String image_url = intent.getExtras().getString("image");
-            String product_id = intent.getExtras().getString("start_date");
-            String category_id = intent.getExtras().getString("expiry_date");
-            displayMessage(context, message);
-            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+        String data_temp = intent.getExtras().getString("data","");
+        JSONObject jsonObject = new JSONObject();
+        try {
+             jsonObject = new JSONObject(data_temp);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-      else if(type.equals("Missed_Customer")) {
-            String title = intent.getExtras().getString("title");
-            String message = intent.getExtras().getString("message");
-            String image_url = intent.getExtras().getString("image");
-            String product_id = intent.getExtras().getString("phone");
-            String category_id = intent.getExtras().getString("email");
+
+        if(type.equals("Offer")) {
+            String title= "",message= "",image_url= "",product_id= "",category_id = "";
+
+            try {
+                 title = jsonObject.getString("title");
+                 message = jsonObject.getString("message");
+                 image_url = jsonObject.getString("image");
+                 product_id = jsonObject.getString("start_date");
+                 category_id = jsonObject.getString("expiry_date");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             displayMessage(context, message);
-            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id,jsonObject);
+        }
+
+      else if(type.equals("Missed_Customer")) {
+
+            String title= "",message= "",image_url= "",product_id= "",category_id = "";
+
+            try {
+                category_id = jsonObject.getString("email");
+                title = jsonObject.getString("name");
+                message = jsonObject.getString("reason");
+                image_url = jsonObject.getString("image");
+                product_id = jsonObject.getString("phone");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            displayMessage(context, message);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id,jsonObject);
         }
         else if(type.equals("Welcome")) {
-            String title = intent.getExtras().getString("title");
-            String message = intent.getExtras().getString("message");
-            String image_url = intent.getExtras().getString("image");
-            String product_id = intent.getExtras().getString("title");
-            String category_id = intent.getExtras().getString("message");
+
+            String title= "",message= "",image_url= "",product_id= "",category_id = "";
+
+            try {
+                title = jsonObject.getString("title");
+                message = jsonObject.getString("message");
+                image_url = jsonObject.getString("image");
+                product_id = jsonObject.getString("title");
+                 category_id = jsonObject.getString("message");
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             displayMessage(context, message);
-            generateCustomNotification(type, context, title, message, image_url, product_id, category_id);
+            generateCustomNotification(type, context, title, message, image_url, product_id, category_id,jsonObject);
         }
         else{
             displayMessage(context, "welcome");
-            generateCustomNotification(type, context, "welcome", "welcome", "welcome", "welcome", "welcome");
+            generateCustomNotification(type, context, "welcome", "welcome", "welcome", "welcome", "welcome",jsonObject);
 
         }
 
@@ -153,12 +188,13 @@ public class GCMIntentService extends GCMBaseIntentService {
     }
 
 
-    private static void generateCustomNotification(String type,Context context,String title,String message,String image_url,String product_id,String category_id){
+    private static void generateCustomNotification(String type,Context context,String title,String message,String image_url,String product_id,String category_id,JSONObject jsonObject){
 
         //Bitmap icon1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.lock);
 
         //String imageurl = "http://mamacgroup.com//qatar//uploads//products//DayepIMG_20150512_213312516.jpg";
         Bitmap notify_bitmap = getBitmapFromURL(image_url);
+        Log.e("image_url",image_url);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context).setAutoCancel(true)
        . setDefaults(Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
                 .setContentTitle(title)
@@ -178,12 +214,17 @@ public class GCMIntentService extends GCMBaseIntentService {
         {
           //  resultIntent = new Intent(context, Offer_Screen_Activity.class);
             resultIntent.putExtra("goto","Offer");
+            resultIntent.putExtra("data",jsonObject.toString());
+
+
         }
         else if(type.equals("Missed_Customer")){
             resultIntent.putExtra("goto","Missed_Customer");
+            resultIntent.putExtra("data",jsonObject.toString());
         }
         else if(type.equals("Welcome")){
             resultIntent.putExtra("goto","Offer");
+            resultIntent.putExtra("data",jsonObject.toString());
         }
         else{
             resultIntent = new Intent(context, SplashActivity.class);

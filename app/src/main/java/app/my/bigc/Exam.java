@@ -17,7 +17,8 @@ public class Exam implements java.io.Serializable{
     ArrayList<Question> questions;
     JSONObject jsonObject;
     Context context;
-    String append ;
+    String append;
+    int start_from=-1;
     Exam(JSONObject jsonObject,Context context){
         this.jsonObject = jsonObject;
         this.context=context;
@@ -29,7 +30,7 @@ public class Exam implements java.io.Serializable{
             started = jsonObject.getString("started");
             ended = jsonObject.getString("ended");
             status = jsonObject.getString("status");
-            duration = jsonObject.optString("duration","5min");
+            duration = jsonObject.optString("duration", "5min");
             jsonArray=jsonObject.getJSONArray("questions");
 
             for (int i=0;i<jsonArray.length();i++){
@@ -39,6 +40,8 @@ public class Exam implements java.io.Serializable{
             total=String.valueOf(questions.size());
             correctt =String.valueOf(jsonObject.getInt("correct_cnt"));
             wrong = String.valueOf(jsonObject.getInt("wrong_cnt"));
+            skiped = String.valueOf(jsonObject.getInt("skipped_cnt"));
+            start_from = Integer.parseInt(correctt) + Integer.parseInt(wrong) + Integer.parseInt(skiped) ;
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -55,6 +58,7 @@ public class Exam implements java.io.Serializable{
                 ans4=json_question.getString("answer4"+append);
                 correct=json_question.getString("correct");
                 result =json_question.getString("result");
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

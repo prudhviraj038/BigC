@@ -24,6 +24,7 @@ public class SplashActivity extends Activity {
             public void run() {
                 Intent intent = new Intent(SplashActivity.this, SplashScreen.class);
                 intent.putExtra("goto",getIntent().getStringExtra("goto"));
+                intent.putExtra("data",getIntent().getStringExtra("data"));
                 startActivity(intent);
                 finish();
 

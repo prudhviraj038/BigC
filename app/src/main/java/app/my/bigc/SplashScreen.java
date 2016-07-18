@@ -146,11 +146,13 @@ public class SplashScreen extends Activity {
          Intent intent = new Intent(SplashScreen.this, BigC_Login_Activity.class);
          intent.putExtra("type","0");
          intent.putExtra("goto",getIntent().getStringExtra("goto"));
+         intent.putExtra("data",getIntent().getStringExtra("data"));
          startActivity(intent);
          finish();
      }else{
          Intent intent = new Intent(SplashScreen.this, Dashboard_Activity.class);
          intent.putExtra("goto",getIntent().getStringExtra("goto"));
+         intent.putExtra("data",getIntent().getStringExtra("data"));
          startActivity(intent);
          finish();
      }

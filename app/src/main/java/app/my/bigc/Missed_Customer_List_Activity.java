@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class Missed_Customer_List_Activity extends Fragment {
     MissedCustomerAdapter missedcustomer;
     int posi;
+    String id = "";
     ArrayList<Missed_Customer> missedcustomers;
     TextView name,number,brand,model,cus_name,cus_number,cus_mobile,cus_email,cue_requri,cus_brand,cus_model,cus_reason,
             cus_suggestions,cus_date,cus_status,fuifill_date;
@@ -95,18 +96,18 @@ public class Missed_Customer_List_Activity extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 viewFlipper.setDisplayedChild(1);
                 posi = i;
-                cus_name.setText       (missedcustomers.get(i).name);
-                cus_number.setText     (missedcustomers.get(i).phone);
-                cus_mobile.setText     (missedcustomers.get(i).type);
-                cus_email.setText      (missedcustomers.get(i).email);
-                cue_requri.setText     (missedcustomers.get(i).requirement);
-                cus_brand.setText      (missedcustomers.get(i).brand);
-                cus_model.setText      (missedcustomers.get(i).model);
-                cus_reason.setText     (missedcustomers.get(i).reason);
+                cus_name.setText(missedcustomers.get(i).name);
+                cus_number.setText(missedcustomers.get(i).phone);
+                cus_mobile.setText(missedcustomers.get(i).type);
+                cus_email.setText(missedcustomers.get(i).email);
+                cue_requri.setText(missedcustomers.get(i).requirement);
+                cus_brand.setText(missedcustomers.get(i).brand);
+                cus_model.setText(missedcustomers.get(i).model);
+                cus_reason.setText(missedcustomers.get(i).reason);
                 cus_suggestions.setText(missedcustomers.get(i).suggestions);
                 fuifill_date.setText(missedcustomers.get(i).feedback);
-                cus_date.setText       ("Submitted Date: " + missedcustomers.get(i).date);
-                if(missedcustomers.get(i).status.equals("Open"))
+                cus_date.setText("Submitted Date: " + missedcustomers.get(i).date);
+                if (missedcustomers.get(i).status.equals("Open"))
                     cus_status.setText("Close");
                 else
                     cus_status.setText("Open");
@@ -143,7 +144,39 @@ public class Missed_Customer_List_Activity extends Fragment {
                 return false;
             }
         });
-    }
+
+        if( getArguments().getString("data") != null && !getArguments().getString("data").equals("")) {
+            Log.e("check", getArguments().getString("data"));
+            try {
+                Missed_Customer missedcustomer = new Missed_Customer(new JSONObject(getArguments().getString("data")));
+                viewFlipper.setDisplayedChild(1);
+                posi = -1;
+                id = missedcustomer.id;
+                cus_name.setText(missedcustomer.name);
+                cus_number.setText(missedcustomer.phone);
+                cus_mobile.setText(missedcustomer.type);
+                cus_email.setText(missedcustomer.email);
+                cue_requri.setText(missedcustomer.requirement);
+                cus_brand.setText(missedcustomer.brand);
+                cus_model.setText(missedcustomer.model);
+                cus_reason.setText(missedcustomer.reason);
+                cus_suggestions.setText(missedcustomer.suggestions);
+                fuifill_date.setText(missedcustomer.feedback);
+                cus_date.setText("Submitted Date: " + missedcustomer.date);
+                if (missedcustomer.status.equals("Open"))
+                    cus_status.setText("Close");
+                else
+                    cus_status.setText("Open");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        }
+
+
     private void getMissedcustomer(){
         String url;
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
@@ -193,6 +226,12 @@ public class Missed_Customer_List_Activity extends Fragment {
         progressDialog.setMessage("please wait.....");
         progressDialog.show();
         progressDialog.setCancelable(false);
+        if(posi==-1)
+        {
+            url = Settings.SERVER_URL+"missed-customer-update.php?missed_customer_id="+id;
+        }
+        else
+
         url = Settings.SERVER_URL+"missed-customer-update.php?missed_customer_id="+missedcustomers.get(posi).id;
         Log.e("url", url);
         final JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET,url,null, new Response.Listener<JSONObject>() {
